@@ -1,42 +1,18 @@
 .tradein {
-  background: #1E2023;
-  padding: 5rem 2.5rem;
+  background: var(--mm-bg-soft);
+  padding: clamp(4rem, 9vw, 6.5rem) var(--mm-section-x);
   position: relative;
   overflow: hidden;
   
 }
 
-.tradein::before {
-  content: '';
-  position: absolute;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(5rem, 15vw, 16rem);
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.04);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  pointer-events: none;
-  letter-spacing: 0.1em;
-  user-select: none;
-}
-
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #FF9F1C 50%, transparent 100%);
-  transform-origin: center;
-  margin-top: 4rem;
-}
-
 .tradein__inner {
-  max-width: 1100px;
+  max-width: 82rem;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
-  padding: 0 20px;
+  gap: clamp(2rem, 6vw, 4rem);
 }
 
 /* ── Texto ── */
@@ -52,24 +28,24 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FF9F1C;
+  color: var(--mm-accent);
 }
 
 .tradein__text h2 {
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   font-weight: 500;
-  color: #ffffff;
+  color: var(--mm-text);
   line-height: 1.2;
   margin: 0;
 }
 
-.tradein__text h2 .accent-red {
-  color: #FF9F1C;
+.tradein__text h2 .tradein__accent {
+  color: var(--mm-accent);
 }
 
 .tradein__sub {
   font-size: 1rem;
-  color: #A1A1AA;
+  color: var(--mm-text-muted);
   line-height: 1.65;
   max-width: 480px;
   margin: 0;
@@ -80,14 +56,15 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #FF9F1C;
-  color: #181a1b;
+  background: var(--mm-accent);
+  color: var(--mm-accent-ink);
   border: none;
-  padding: 13px 28px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  padding: var(--mm-btn-padding-y) var(--mm-btn-padding-x);
+  border-radius: var(--mm-btn-radius);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   cursor: pointer;
   width: fit-content;
   margin-top: 6px;
@@ -102,8 +79,8 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: rgba(255, 159, 28, 0.08);
-  border: 2px solid rgba(255, 159, 28, 0.2);
+  background: var(--mm-accent-soft);
+  border: 1px solid var(--mm-border-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,14 +88,14 @@
 
 .tradein__moto-icon {
   font-size: 5rem;
-  color: #FF9F1C;
+  color: var(--mm-accent);
   opacity: 0.85;
 }
 
 /* ── Tablet ── */
 @media (max-width: 1024px) {
   .tradein {
-    padding: 60px 32px;
+    padding: clamp(3rem, 7vw, 4.5rem) var(--mm-section-x);
   }
 
   .tradein__inner {

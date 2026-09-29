@@ -23,15 +23,15 @@
   padding: 0.75rem 1.5rem;
   border-radius: var(--mm-radius-sm);
   transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(255, 159, 28, 0.3);
-  color: #fff;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--mm-accent) 30%, transparent);
+  color: var(--mm-text);
   cursor: pointer;
   margin-top: 0.5rem;
 }
 
 .consent-banner .btn-accept:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 159, 28, 0.4);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--mm-accent) 40%, transparent);
 }
 
 .consent-banner .btn-accept:active {
@@ -75,6 +75,6 @@
 
 /* Accessibility: focus-visible */
 .consent-banner .btn-accept:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--mm-text);
   outline-offset: 3px;
 }

@@ -1,9 +1,13 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import { tokenColor } from "../../utils/cssTokens";
 import "./WhatsAppButton.css";
 
 // URL de chat directo con el asesor
 const WA_URL =
   "https://api.whatsapp.com/send?phone=573054300302&text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20sobre%20motos%20y%20accesorios.";
+
+/* Framer Motion necesita un color concreto: se resuelve el token una vez. */
+const WA_PRESS = tokenColor("--mm-wa", "#25d366");
 
 const WhatsAppButton = ({ moveUp }) => (
   <LazyMotion features={domAnimation}>
@@ -17,7 +21,7 @@ const WhatsAppButton = ({ moveUp }) => (
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
       whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95, backgroundColor: "#1DA851" }}
+      whileTap={{ scale: 0.95, backgroundColor: WA_PRESS }}
     >
       {/* Anillo de pulso */}
       <span className="wa-btn__pulse" />

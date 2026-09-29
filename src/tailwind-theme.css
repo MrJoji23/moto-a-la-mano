@@ -16,9 +16,17 @@
   /* ── Superficies (Dark Carbon) ── */
   --color-carbon: #181a1b;
   --color-carbon-soft: #1e2023;
+  --color-carbon-deep: #0e0f11;
+  --color-shadow-ink: #0a0b0c;
   --color-steel: #24282c;
   --color-steel-2: #2e3339;
   --color-steel-3: #383e45;
+
+  /* ── Superficie clara (páginas informativas) ── */
+  --color-light-bg: #f5f6f8;
+  --color-light-surface: #ffffff;
+  --color-light-text: #2e3339;
+  --color-light-muted: #4a5058;
 
   /* ── Texto ── */
   --color-ink: #f5f6f8;
@@ -64,4 +72,14 @@
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
   --shadow-button: 0 6px 32px rgba(255, 159, 28, 0.28);
   --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 18px 44px rgba(255, 159, 28, 0.22);
+  --shadow-glow-strong: 0 22px 60px rgba(255, 159, 28, 0.3);
+
+  /* ── Estados de foco (WCAG 2.4.11) ── */
+  --ring-focus: 0 0 0 3px color-mix(in srgb, var(--mm-accent) 45%, transparent);
+  --ring-focus-cyan: 0 0 0 3px color-mix(in srgb, var(--mm-accent-2) 45%, transparent);
+
+  /* ── Chips ── */
+  --radius-chip: 999px;
+  --radius-button: 999px;
 }

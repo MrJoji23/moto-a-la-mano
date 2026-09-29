@@ -8,88 +8,61 @@ import slidecuatro from '../assets/images/banners-carousel/apache-160.webp';
 import slidecuatroMobil from '../assets/images/banners-carousel/apache_160_mobil.webp';
 import slidecinco from '../assets/images/banners-carousel/apache-200.webp';
 import slidecincoMobil from '../assets/images/banners-carousel/apache_200_mobil.webp';
-import specsN125 from '../assets/images/banners-carousel/carburada-n125-specs.webp';
-import specsNS200 from '../assets/images/banners-carousel/ns-200-specs.webp';
-import specsSport110 from '../assets/images/banners-carousel/sport-110-specs.webp';
-import specsApache160 from '../assets/images/banners-carousel/apache-160-specs.webp';
-import specsApache200 from '../assets/images/banners-carousel/apache-200-specs.webp';
 
 // ── Datos de slides del carrusel ───────────────
+/* Cada slide declara UNA línea de título, UN subtítulo y el promo que se
+   muestra como chip discreto. Nada más: el hero no lleva bloques de
+   especificaciones ni contadores, según el sistema visual MotoCenter. */
 export const SLIDES = [
   {
     id: 0,
-    tag: 'NUEVO LANZAMIENTO',
-    model: 'Pulsar',
-    title: 'N',
-    titleAccent: '125',
-    titleSub: 'CARBURADA',
-    sub: 'SIENTE LA EMOCIÓN',
-    badgeNum: '124',
-    badgeLabel: 'cc',
-    badgeDesc: 'MODELO 2027',
+    eyebrow: 'Bajaj',
+    title: 'Pulsar N125',
+    subtitle: 'Ligera, económica y lista para todos los días.',
+    promo: 'Nuevo 2027',
     bgImage: slideuno,
-    bgImageMobile:slideunoMobil,
-    specsImage: specsN125,
-    
+    bgImageMobile: slideunoMobil,
+    alt: 'Bajaj Pulsar N125 negra — MotoCenter Bogotá',
   },
   {
     id: 1,
-    tag: 'NUEVA 2027',
-    model: 'TVS',
-    title: '',
-    titleAccent: 'SPORT',
-    titleSub: '110 FI',
-    sub: 'Potencia pura — domina la ciudad',
-    badgeNum: '109',
-    badgeLabel: 'cc',
-    badgeDesc: 'TRABAJO',
+    eyebrow: 'TVS',
+    title: 'Sport 110 FI',
+    subtitle: 'Potencia pura para dominar la ciudad.',
+    promo: 'Trabajo',
     bgImage: slidedos,
-    bgImageMobile:slidedosMobil,
-    specsImage: specsSport110,
+    bgImageMobile: slidedosMobil,
+    alt: 'TVS Sport 110 FI — MotoCenter Bogotá',
   },
   {
     id: 2,
-    tag: 'La mas vendida',
-    model: 'PULSAR',
-    title: 'NS',
-    titleAccent: '200',
-    titleSub: 'FI ABS SC',
-    sub: 'Sin límites — conquista cada ruta',
-    badgeNum: '24',
-    badgeLabel: 'HP',
-    badgeDesc: 'para rutas extremas',
+    eyebrow: 'Bajaj',
+    title: 'NS200 FI ABS SC',
+    subtitle: 'Sin límites: conquista cada ruta.',
+    promo: 'Más vendida',
     bgImage: slidetres,
-    bgImageMobile:slidetresMobil,
-    specsImage: specsNS200,
+    bgImageMobile: slidetresMobil,
+    alt: 'Bajaj NS200 FI ABS SC — MotoCenter Bogotá',
   },
   {
     id: 3,
-    tag: 'NUEVO LANZAMIENTO',
-    model: 'TVS',
-    title: '',
-    titleAccent: 'APACHE 160',
-    titleSub: 'CARBURADA ABS',
-    sub: '',
-    badgeNum: '159',
-    badgeLabel: 'cc',
-    badgeDesc: 'DESAFIA LA CARRETERA',
+    eyebrow: 'TVS',
+    title: 'Apache 160',
+    subtitle: 'Desafía la carretera.',
+    promo: 'Nuevo lanzamiento',
     bgImage: slidecuatro,
-    bgImageMobile:slidecuatroMobil,
-    specsImage: specsApache160,
-  },{
+    bgImageMobile: slidecuatroMobil,
+    alt: 'TVS Apache 160 — MotoCenter Bogotá',
+  },
+  {
     id: 4,
-    tag: 'NUEVO LANZAMIENTO',
-    model: 'TVS',
-    title: '',
-    titleAccent: 'APACHE 200',
-    titleSub: 'CARBURADA ABS',
-    sub: 'Conquista tus sueños',
-    badgeNum: '197',
-    badgeLabel: 'CC',
-    badgeDesc: 'Para desafios extremos',
+    eyebrow: 'TVS',
+    title: 'Apache 200',
+    subtitle: 'Conquista tus sueños.',
+    promo: 'Nuevo lanzamiento',
     bgImage: slidecinco,
-    bgImageMobile:slidecincoMobil,
-    specsImage: specsApache200,
+    bgImageMobile: slidecincoMobil,
+    alt: 'TVS Apache 200 — MotoCenter Bogotá',
   },
 ];
 

@@ -1,24 +1,26 @@
 import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { FaAward, FaShippingFast, FaHeadset } from 'react-icons/fa';
 import './WhyUs.css';
 
+/* Nada de copy de e-commerce: esto es un concesionario. */
 const WHY_US = [
   {
-    icon: '✦',
+    Icon: FaAward,
     number: '01',
-    title: 'Calidad Garantizada',
-    desc: 'Todos nuestros productos son de primera calidad, con garantía directa del fabricante.',
+    title: 'Concesionario oficial',
+    desc: 'Somos distribuidor autorizado Bajaj y Auteco: garantía de fábrica, repuestos originales y respaldo real del fabricante.',
   },
   {
-    icon: '✦',
+    Icon: FaShippingFast,
     number: '02',
-    title: 'Envíos a Todo el País',
-    desc: 'Recibe tus productos en la puerta de tu casa. Cobertura nacional con seguimiento en tiempo real.',
+    title: 'Entrega y prueba de manejo',
+    desc: 'Preparas tu moto antes de entregarla y te la probamos en ruta. Sin sorpresas el primer día.',
   },
   {
-    icon: '✦',
+    Icon: FaHeadset,
     number: '03',
-    title: 'Atención Personalizada',
-    desc: 'Nuestro equipo de expertos te asesorará en todo lo que necesites, antes y después de tu compra.',
+    title: 'Acompañamiento real',
+    desc: 'Un asesor fijo te acompaña antes y después de la compra. Taller propio para que tu moto nunca se detenga.',
   },
 ];
 
@@ -47,9 +49,9 @@ export default function WhyUs() {
         </m.h2>
 
         <div className="why-us__grid">
-          {WHY_US.map((item, i) => (
+          {WHY_US.map(({ Icon, title, number, desc }, i) => (
             <m.div
-              key={item.title}
+              key={title}
               className="why-card"
               initial="hidden"
               whileInView="visible"
@@ -58,13 +60,13 @@ export default function WhyUs() {
               variants={fadeUp}
             >
               <span className="why-card__icon" aria-hidden="true">
-                {item.icon}
+                <Icon />
               </span>
               <span className="why-card__number" aria-hidden="true">
-                {item.number}
+                {number}
               </span>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
+              <h3>{title}</h3>
+              <p>{desc}</p>
             </m.div>
           ))}
         </div>

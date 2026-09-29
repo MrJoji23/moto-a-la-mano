@@ -58,16 +58,11 @@ const Brands = () => {
                 key={brand.id}
                 to={`/${brand.id}`}
                 className="brand-tile"
-                style={{ '--brand-color': brand.color }}
               >
                 <m.div
                   className="brand-tile__inner"
                   variants={cardVariants}
                 >
-                  <span className="brand-tile__glow" aria-hidden="true" />
-
-                  <span className="brand-tile__bar" aria-hidden="true" />
-
                   <span className="brand-tile__body">
                     <span className="brand-tile__logo-wrap">
                       <img src={brand.logo} alt="" className="brand-tile__logo" />

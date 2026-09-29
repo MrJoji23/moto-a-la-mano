@@ -13,36 +13,82 @@ test.describe('Catálogo y filtros', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   })
 
-  for (const [marca, catalogo] of [
-    ['bajaj', '#bajaj-catalogo'],
-    ['auteco', '#auteco-catalogo'],
+  for (const [marca, catalogo, card] of [
+    ['bajaj', '#bajaj-catalogo', '.bajaj-card'],
+    ['auteco', '#auteco-catalogo', '.auteco-mcard'],
   ]) {
-    test(`${marca}: filtra por segmento y muestra el contador`, async ({ page }) => {
+    test(`${marca}: filtra por segmento con chips y actualiza el contador`, async ({ page }) => {
       await page.goto(`/${marca}`)
 
       const grid = page.locator(catalogo)
       await grid.scrollIntoViewIfNeeded()
       await expect(grid).toBeVisible()
 
-      const totalInicial = await grid.locator('article, .moto-card').count()
+      const totalInicial = await grid.locator(card).count()
       expect(totalInicial).toBeGreaterThan(0)
 
-      const selectSegmento = grid.getByLabel('Segmento')
-      const opciones = await selectSegmento.locator('option').count()
-      expect(opciones).toBeGreaterThan(1)
+      // Los filtros son chips, no <select> (§10)
+      await expect(grid.locator('select')).toHaveCount(0)
 
-      const valor = await selectSegmento
-        .locator('option')
-        .nth(1)
-        .getAttribute('value')
-      await selectSegmento.selectOption(valor)
+      const grupoSegmento = grid.getByTestId('filtro-tipo')
+      await expect(grupoSegmento).toBeVisible()
+
+      const chips = grupoSegmento.getByRole('button')
+      const totalChips = await chips.count()
+      expect(totalChips).toBeGreaterThan(1)
+
+      // El primer chip es "Todos" y arranca activo
+      await expect(chips.first()).toHaveAttribute('aria-pressed', 'true')
+
+      const chipFiltro = chips.nth(1)
+      const nombreChip = (await chipFiltro.innerText()).trim()
+      await chipFiltro.click()
+      await expect(chipFiltro).toHaveAttribute('aria-pressed', 'true')
+      await expect(chips.first()).toHaveAttribute('aria-pressed', 'false')
 
       const contador = grid.getByRole('status')
       await expect(contador).toContainText(/\d+/)
-      expect(await grid.locator('article, .moto-card').count()).toBeGreaterThan(0)
+      await expect(grid.getByText(nombreChip).first()).toBeVisible()
 
       await grid.getByRole('button', { name: /limpiar/i }).click()
-      expect(await grid.locator('article, .moto-card').count()).toBe(totalInicial)
+      await expect(chips.first()).toHaveAttribute('aria-pressed', 'true')
+      expect(await grid.locator(card).count()).toBe(totalInicial)
+    })
+
+    test(`${marca}: los chips del catálogo son alcanzables con teclado`, async ({ page }) => {
+      await page.goto(`/${marca}`)
+
+      const grid = page.locator(catalogo)
+      await grid.scrollIntoViewIfNeeded()
+
+      const chip = grid.getByTestId('filtro-tipo').getByRole('button').nth(1)
+      await chip.focus()
+      await expect(chip).toBeFocused()
+      await page.keyboard.press('Enter')
+      await expect(chip).toHaveAttribute('aria-pressed', 'true')
+      await page.keyboard.press(' ')
+      await expect(chip).toHaveAttribute('aria-pressed', 'true')
+    })
+
+    test(`${marca}: la tarjeta de moto no usa borde de color grueso`, async ({ page }) => {
+      await page.goto(`/${marca}`)
+
+      const grid = page.locator(catalogo)
+      await grid.scrollIntoViewIfNeeded()
+
+      const tarjeta = grid.locator(card).first()
+      await tarjeta.scrollIntoViewIfNeeded()
+
+      const borde = await tarjeta.evaluate((el) => getComputedStyle(el).borderTopColor)
+      // Sin rojo ni azul de marca en el borde de la tarjeta
+      expect(borde).not.toBe('rgb(204, 31, 37)')
+      expect(borde).not.toBe('rgb(59, 130, 246)')
+
+      const grosor = await tarjeta.evaluate((el) => getComputedStyle(el).borderTopWidth)
+      expect(Number.parseFloat(grosor)).toBeLessThanOrEqual(2)
+
+      // Sin franja de color de 3px al pie de la tarjeta
+      await expect(tarjeta.locator('[class$="__bar"]')).toHaveCount(0)
     })
   }
 
@@ -64,7 +110,7 @@ test.describe('Catálogo y filtros', () => {
 
     const grid = page.locator('#bajaj-catalogo')
     await grid.scrollIntoViewIfNeeded()
-    await grid.locator('article, .moto-card').first().click()
+    await grid.locator('.bajaj-card__hit').first().click()
 
     const dialog = page.getByRole('dialog')
     await expect(dialog).toBeVisible()
@@ -78,7 +124,7 @@ test.describe('Catálogo y filtros', () => {
     const grid = page.locator('#auteco-catalogo')
     await grid.scrollIntoViewIfNeeded()
 
-    const tarjeta = grid.locator('article, .moto-card').first()
+    const tarjeta = grid.locator('.auteco-mcard').first()
     const nombre = (await tarjeta.locator('h3').first().innerText()).trim()
 
     const [popup] = await Promise.all([

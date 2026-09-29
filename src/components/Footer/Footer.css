@@ -1,6 +1,6 @@
 /* ===== CONTENEDOR PRINCIPAL ===== */
 .footer-container {
-  background-color: #1E2023;
+  background-color: var(--mm-bg-soft);
   color: white;
   position: relative;
   width: 100%;
@@ -13,7 +13,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #FF9F1C;
+  background-color: var(--mm-accent);
 }
 
 .footer-content {
@@ -26,7 +26,7 @@
 .footer-company-section {
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid color-mix(in srgb, var(--mm-text) 5%, transparent);
 }
 
 .company-header {
@@ -60,7 +60,7 @@
 
 .company-razon {
   font-size: 13px;
-  color: #A1A1AA;
+  color: var(--mm-text-muted);
   margin: 0;
 }
 
@@ -89,7 +89,7 @@
 
 /* ===== ETIQUETAS ===== */
 .footer-label {
-  color: #FF9F1C;
+  color: var(--mm-accent);
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 900;
@@ -107,7 +107,7 @@
 }
 
 .footer-sub-text {
-  color: #A1A1AA;
+  color: var(--mm-text-muted);
   font-size: 12px;
   margin: 0;
 }
@@ -122,7 +122,7 @@
 .social-box {
   width: 34px;
   height: 34px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid color-mix(in srgb, var(--mm-text) 15%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,8 +134,8 @@
 }
 
 .social-box:hover {
-  background-color: #FF9F1C;
-  border-color: #FF9F1C;
+  background-color: var(--mm-accent);
+  border-color: var(--mm-accent);
   transform: translateY(-3px);
 }
 
@@ -150,7 +150,7 @@
 }
 
 .footer-links a {
-  color: #A1A1AA;
+  color: var(--mm-text-muted);
   text-decoration: none;
   font-size: 13px;
   transition: color 0.2s;
@@ -164,7 +164,7 @@
 .footer-links button {
   background: none;
   border: none;
-  color: #A1A1AA;
+  color: var(--mm-text-muted);
   text-decoration: none;
   font-size: 13px;
   transition: color 0.2s;
@@ -181,12 +181,12 @@
 
 /* Contraste AA sobre el fondo del footer */
 .footer-link-button {
-  color: #D6D7DA;
+  color: var(--mm-text-soft);
 }
 
 /* ===== MAPA ===== */
 .map-link {
-  color: #FF9F1C;
+  color: var(--mm-accent);
   text-decoration: none;
   font-size: 12px;
   margin-top: 4px;
@@ -209,14 +209,14 @@
 }
 
 .icon-red {
-  color: #FF9F1C;
+  color: var(--mm-accent);
 }
 
 /* ===== COPYRIGHT ===== */
 .footer-bottom {
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid color-mix(in srgb, var(--mm-text) 5%, transparent);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -234,7 +234,7 @@
 
 .footer-developers-label {
   font-size: 9px;
-  color: #8A8A93;
+  color: var(--mm-text-muted);
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
@@ -247,7 +247,7 @@
 
 .footer-developers-links a {
   font-size: 11px;
-  color: #A1A1AA;
+  color: var(--mm-text-muted);
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -257,13 +257,13 @@
 }
 
 .footer-developers-divider {
-  color: #8A8A93;
+  color: var(--mm-text-muted);
   font-size: 10px;
 }
 
 .copyright-text {
   font-size: 9px;
-  color: #8A8A93;
+  color: var(--mm-text-muted);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin: 0;
@@ -277,7 +277,7 @@
 
 .footer-legal a {
   font-size: 9px;
-  color: #8A8A93;
+  color: var(--mm-text-muted);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -289,7 +289,7 @@
 }
 
 .divider {
-  color: #8A8A93;
+  color: var(--mm-text-muted);
   font-size: 9px;
 }
 

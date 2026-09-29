@@ -5,16 +5,15 @@
   sobre blanco. Los tokens canónicos viven en `src/index.css`.
 */
 .aboutUs {
-  --mm-dark: #1E2023;
-  --mm-dark-2: #24282C;
-  --mm-accent: var(--mm-accent-deep, #8a5200);
-  --mm-accent-2: var(--mm-accent-2-deep, #0b6d7a);
-  --mm-light: #f5f6f8;
-  --mm-text: #2E3339;
-  --mm-text-muted: #1E2023;
+  /* Superficie clara: se reapuntan los tokens de texto y se eligen las
+     variantes profundas del acento, que sí alcanzan 4.5:1 sobre blanco. */
+  --mm-accent: var(--mm-accent-deep);
+  --mm-accent-2: var(--mm-accent-2-deep);
+  --mm-text: var(--mm-light-text);
+  --mm-text-muted: var(--mm-light-text-muted);
 
-  background: var(--mm-light);
-  color: var(--mm-text);
+  background: var(--mm-light-bg);
+  color: var(--mm-light-text);
 }
 
 /* ---------- Banner ---------- */
@@ -37,10 +36,10 @@
   inset: 0;
   background: linear-gradient(
     100deg,
-    rgba(30, 32, 35, 0.7) 0%,
-    rgba(30, 32, 35, 0.45) 38%,
-    rgba(30, 32, 35, 0.15) 68%,
-    rgba(30, 32, 35, 0) 100%
+    color-mix(in srgb, var(--mm-bg-soft) 70%, transparent) 0%,
+    color-mix(in srgb, var(--mm-bg-soft) 45%, transparent) 38%,
+    color-mix(in srgb, var(--mm-bg-soft) 15%, transparent) 68%,
+    transparent 100%
   );
 }
 
@@ -70,7 +69,7 @@
 
 .bannerTitle {
   margin: 0;
-  color: #fff;
+  color: var(--mm-text);
   font-size: clamp(2rem, 5vw, 3.4rem);
   font-weight: 800;
   line-height: 1.05;
@@ -80,7 +79,7 @@
 
 .bannerSubtitle {
   margin: 0.9rem 0 0;
-  color: rgba(255, 255, 255, 0.85);
+  color: color-mix(in srgb, var(--mm-text) 85%, transparent);
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   max-width: 640px;
 }
@@ -128,7 +127,7 @@
 .metaLine {
   margin: 0 0 2.5rem;
   padding-bottom: 1.2rem;
-  border-bottom: 1px solid rgba(30, 32, 35, 0.1);
+  border-bottom: 1px solid color-mix(in srgb, var(--mm-bg-soft) 10%, transparent);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -146,11 +145,11 @@
 }
 
 .mvCard {
-  background: #fff;
-  border: 1px solid rgba(30, 32, 35, 0.08);
+  background: var(--mm-text);
+  border: 1px solid color-mix(in srgb, var(--mm-bg-soft) 8%, transparent);
   border-radius: 14px;
   padding: 2rem 2.2rem;
-  box-shadow: 0 12px 30px -18px rgba(30, 32, 35, 0.25);
+  box-shadow: 0 12px 30px -18px color-mix(in srgb, var(--mm-bg-soft) 25%, transparent);
 }
 
 .mvText {
@@ -181,11 +180,11 @@
 }
 
 .valorCard {
-  background: #fff;
-  border: 1px solid rgba(30, 32, 35, 0.08);
+  background: var(--mm-text);
+  border: 1px solid color-mix(in srgb, var(--mm-bg-soft) 8%, transparent);
   border-radius: 14px;
   padding: 2rem 2.2rem;
-  box-shadow: 0 12px 30px -18px rgba(30, 32, 35, 0.25);
+  box-shadow: 0 12px 30px -18px color-mix(in srgb, var(--mm-bg-soft) 25%, transparent);
   color: var(--mm-text);
   display: flex;
   flex-direction: column;
@@ -203,7 +202,7 @@
 }
 
 .valorIcon {
-  color: #fff;
+  color: var(--mm-text);
   font-size: 1.3rem;
 }
 
@@ -223,7 +222,7 @@
 
 .valorDetails {
   margin-top: 1.1rem;
-  border-top: 1px solid rgba(30, 32, 35, 0.1);
+  border-top: 1px solid color-mix(in srgb, var(--mm-bg-soft) 10%, transparent);
   padding-top: 0.8rem;
 }
 
@@ -282,10 +281,10 @@
 }
 
 .politicaItem {
-  background: #fff;
-  border: 1px solid rgba(30, 32, 35, 0.08);
+  background: var(--mm-text);
+  border: 1px solid color-mix(in srgb, var(--mm-bg-soft) 8%, transparent);
   border-radius: 12px;
-  box-shadow: 0 10px 24px -18px rgba(30, 32, 35, 0.25);
+  box-shadow: 0 10px 24px -18px color-mix(in srgb, var(--mm-bg-soft) 25%, transparent);
   overflow: hidden;
 }
 
@@ -338,7 +337,7 @@
 }
 
 .politicaItem[open] .politicaSummary {
-  border-bottom: 1px solid rgba(30, 32, 35, 0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--mm-bg-soft) 8%, transparent);
 }
 
 .politicaContenido {
@@ -364,7 +363,7 @@
 .politicaFirma {
   margin-top: 1.4rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(30, 32, 35, 0.08);
+  border-top: 1px solid color-mix(in srgb, var(--mm-bg-soft) 8%, transparent);
 }
 
 .politicaFecha {

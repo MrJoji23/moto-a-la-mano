@@ -10,7 +10,7 @@
   z-index: 9500;
   padding: 0.75rem 1.25rem;
   background: var(--mm-accent);
-  color: #fff;
+  color: var(--mm-text);
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 1px;
@@ -21,7 +21,7 @@
 
 .mm-skip-link:focus-visible {
   top: 0;
-  color: #fff;
+  color: var(--mm-text);
 }
 
 /* ── Barra principal ────────────────────────────── */
@@ -64,7 +64,7 @@
 
 /* Estado sólido (tras hacer scroll) */
 .mm-navbar--scrolled {
-  background: rgba(24, 26, 27, 0.9);
+  background: color-mix(in srgb, var(--mm-bg) 90%, transparent);
   border-bottom: 1px solid var(--mm-border);
   backdrop-filter: blur(12px);
 }
@@ -204,7 +204,7 @@
   min-width: 190px;
   background: var(--mm-surface);
   border: 1px solid var(--mm-border);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--mm-shadow-ink) 40%, transparent);
   overflow: hidden;
   z-index: 1100;
   border-radius: var(--mm-radius-md);
@@ -263,7 +263,7 @@
 .mm-nav-dropdown__item:hover,
 .mm-nav-dropdown__item:focus-visible {
   color: var(--brand-color, var(--mm-accent));
-  background: rgba(255, 255, 255, 0.04);
+  background: color-mix(in srgb, var(--mm-text) 4%, transparent);
 }
 
 .mm-nav-dropdown__item:hover .mm-nav-dropdown__item-bar,
@@ -275,7 +275,7 @@
 .mm-nav-cta {
   flex-shrink: 0;
   background: var(--mm-accent);
-  color: #fff;
+  color: var(--mm-text);
   border: none;
   padding: 0.5rem 1.2rem;
   font-family: var(--font-body);
@@ -296,7 +296,7 @@
 }
 
 .mm-nav-cta:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--mm-text);
   outline-offset: 3px;
 }
 
@@ -308,7 +308,7 @@
 .mm-nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(24, 26, 27, 0.8);
+  background: color-mix(in srgb, var(--mm-bg) 80%, transparent);
   z-index: 9100;
   backdrop-filter: blur(4px);
 }
@@ -368,7 +368,7 @@
   width: 85%;
   max-width: 320px;
   background: var(--mm-surface);
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.4);
+  box-shadow: -5px 0 25px color-mix(in srgb, var(--mm-shadow-ink) 40%, transparent);
   z-index: 9111;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -404,7 +404,7 @@
 
 .mm-nav-mobile__close:hover {
   color: var(--mm-accent);
-  background: rgba(255, 159, 28, 0.12);
+  background: color-mix(in srgb, var(--mm-accent) 12%, transparent);
 }
 
 .mm-nav-mobile__list {
@@ -438,7 +438,7 @@
 .mm-nav-mobile__link:focus-visible,
 .mm-nav-mobile__link.active {
   color: var(--mm-accent);
-  background: rgba(255, 159, 28, 0.08);
+  background: color-mix(in srgb, var(--mm-accent) 8%, transparent);
 }
 
 .mm-nav-mobile__footer {
@@ -447,7 +447,7 @@
 
 .mm-nav-mobile__link--cta {
   background: var(--mm-accent);
-  color: #fff;
+  color: var(--mm-text);
   font-weight: 700;
   text-align: center;
   border: none;
@@ -457,5 +457,5 @@
 .mm-nav-mobile__link--cta:hover,
 .mm-nav-mobile__link--cta:focus-visible {
   background: var(--mm-accent-hover);
-  color: #fff;
+  color: var(--mm-text);
 }

@@ -65,30 +65,32 @@
   font-size: 0.95rem;
 }
 
-/* ── Tarjeta ────────────────────────────────────── */
+/* ── Tarjeta: borde sutil + glow ámbar al hover ─── */
 .bajaj-card {
   position: relative;
   isolation: isolate;
   display: flex;
   flex-direction: column;
   background: var(--mm-surface);
-  border: 1px solid var(--mm-border);
-  border-radius: var(--mm-radius);
+  border: var(--mm-border-card);
+  border-radius: var(--mm-radius-lg);
   overflow: hidden;
   transform: translateZ(0);
   transition:
-    border-color 0.3s,
-    box-shadow 0.3s;
+    border-color var(--mm-ease),
+    box-shadow var(--mm-ease),
+    background var(--mm-ease);
 }
 
 .bajaj-card:hover,
 .bajaj-card:focus-within {
-  border-color: color-mix(in srgb, var(--bc) 50%, transparent);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  border-color: var(--mm-border-accent);
+  background: var(--mm-surface-2);
+  box-shadow: var(--mm-glow-accent);
 }
 
 .bajaj-card--featured {
-  border-color: color-mix(in srgb, var(--bc) 30%, transparent);
+  border-color: var(--mm-border-accent);
 }
 
 /* Capa clicable que cubre la tarjeta sin bloquear los botones */
@@ -108,18 +110,17 @@
 
 .bajaj-card__featured-badge {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0.75rem;
+  left: 0.75rem;
   z-index: 3;
-  background: var(--bc, var(--mm-accent));
-  text-align: center;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 2px;
+  background: var(--mm-accent);
+  border-radius: 999px;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #181a1b;
-  padding: 5px 0;
+  color: var(--mm-accent-ink);
+  padding: 0.3125rem 0.625rem;
 }
 
 .bajaj-card__img-wrap {
@@ -147,7 +148,7 @@
 .bajaj-card__img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 45%, rgba(24, 26, 27, 0.85) 100%);
+  background: linear-gradient(to bottom, transparent 45%, color-mix(in srgb, var(--mm-bg) 85%, transparent) 100%);
   pointer-events: none;
 }
 
@@ -156,7 +157,7 @@
   bottom: 0.75rem;
   left: 0.75rem;
   z-index: 2;
-  background: rgba(24, 26, 27, 0.7);
+  background: color-mix(in srgb, var(--mm-bg) 70%, transparent);
   border: 1px solid var(--mm-border-strong);
   color: var(--mm-text);
   font-size: 9px;
@@ -183,7 +184,7 @@
   height: 11px;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border: 1.5px solid color-mix(in srgb, var(--mm-text) 45%, transparent);
   transition: transform 0.2s;
 }
 
@@ -212,7 +213,7 @@
 .bajaj-card__specs {
   display: flex;
   align-items: stretch;
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--mm-text) 3%, transparent);
   border: 1px solid var(--mm-border);
   border-radius: var(--mm-radius-sm);
   overflow: hidden;
@@ -320,21 +321,21 @@
 .bajaj-card__btn-outline:focus-visible {
   border-color: var(--mm-text-soft);
   color: var(--mm-text);
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--mm-text) 5%, transparent);
 }
 
 .bajaj-card__btn-solid {
   flex: 1;
   background: var(--mm-accent);
   border: 1px solid var(--mm-accent);
-  color: #fff;
+  color: var(--mm-text);
 }
 
 .bajaj-card__btn-solid:hover,
 .bajaj-card__btn-solid:focus-visible {
   background: var(--mm-accent-hover);
   border-color: var(--mm-accent-hover);
-  box-shadow: 0 6px 20px rgba(255, 159, 28, 0.4);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--mm-accent) 40%, transparent);
 }
 
 .bajaj-card__btn-360 {
@@ -361,22 +362,6 @@
   }
 }
 
-.bajaj-card__bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--bc, var(--mm-accent));
-  opacity: 0.55;
-  transition: opacity 0.3s;
-  pointer-events: none;
-}
-
-.bajaj-card:hover .bajaj-card__bar {
-  opacity: 1;
-}
-
 /* ── Modal 360° ─────────────────────────────────── */
 .bajaj-modal-360 {
   position: fixed;
@@ -386,7 +371,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: rgba(24, 26, 27, 0.88);
+  background: color-mix(in srgb, var(--mm-bg) 88%, transparent);
   backdrop-filter: blur(10px);
 }
 
@@ -398,7 +383,7 @@
   background: var(--mm-surface);
   border: 1px solid var(--mm-border);
   border-radius: var(--mm-radius-lg);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 60px color-mix(in srgb, var(--mm-shadow-ink) 50%, transparent);
 }
 
 .bajaj-modal-360__close {

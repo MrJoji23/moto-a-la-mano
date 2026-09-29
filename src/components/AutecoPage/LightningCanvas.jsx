@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { tokenColor, tokenRgb } from '../../utils/cssTokens';
 import './LightningCanvas.css';
 
 const isMobile = () => window.innerWidth < 768;
@@ -19,6 +20,8 @@ const LightningCanvas = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d', {alpha: true});
     let mobile = isMobile();
+    const CIAN = tokenColor('--mm-accent-2', '#00e5ff');
+    const CIAN_RGB = tokenRgb('--mm-accent-2', '#00e5ff');
 
     const doResize = () => {
       mobile= isMobile();
@@ -34,10 +37,10 @@ const LightningCanvas = () => {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.strokeStyle = `rgba(0, 229, 255,${alpha})`;
+        ctx.strokeStyle = `rgba(${CIAN_RGB},${alpha})`;
         ctx.lineWidth   = alpha * 1.5;
         if(!mobile){
-          ctx.shadowColor = '#00E5FF';
+          ctx.shadowColor = CIAN;
           ctx.shadowBlur  = 8;
         }
         ctx.stroke();
@@ -84,7 +87,7 @@ const LightningCanvas = () => {
       }
       const phase = effectiveTick % 18;
       if (phase < 3) {
-        ctx.fillStyle = `rgba(0, 229, 255,${.03 - phase * .01})`;
+        ctx.fillStyle = `rgba(${CIAN_RGB},${.03 - phase * .01})`;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
     };

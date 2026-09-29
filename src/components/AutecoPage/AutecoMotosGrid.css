@@ -45,23 +45,25 @@
   display: flex;
   flex-direction: column;
   background: var(--mm-surface);
-  border: 1px solid var(--mm-border);
-  border-radius: var(--mm-radius);
+  border: var(--mm-border-card);
+  border-radius: var(--mm-radius-lg);
   overflow: hidden;
   transform: translateZ(0);
   transition:
-    border-color 0.3s,
-    box-shadow 0.3s;
+    border-color var(--mm-ease),
+    box-shadow var(--mm-ease),
+    background var(--mm-ease);
 }
 
 .auteco-mcard:hover,
 .auteco-mcard:focus-within {
-  border-color: rgba(var(--bc-rgb, 30, 64, 175), 0.55);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  border-color: var(--mm-border-accent);
+  background: var(--mm-surface-2);
+  box-shadow: var(--mm-glow-accent);
 }
 
 .auteco-mcard--featured {
-  border-color: color-mix(in srgb, var(--bc) 30%, transparent);
+  border-color: var(--mm-border-accent);
 }
 
 /* Capa clicable que cubre la tarjeta sin bloquear los botones */
@@ -81,18 +83,17 @@
 
 .auteco-mcard__badge {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0.75rem;
+  left: 0.75rem;
   z-index: 3;
-  background: var(--bc);
-  text-align: center;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 2px;
+  background: var(--mm-accent);
+  border-radius: 999px;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #181a1b;
-  padding: 5px 0;
+  color: var(--mm-accent-ink);
+  padding: 0.3125rem 0.625rem;
 }
 
 .auteco-mcard__img-wrap {
@@ -120,7 +121,7 @@
 .auteco-mcard__img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 45%, rgba(24, 26, 27, 0.85) 100%);
+  background: linear-gradient(to bottom, transparent 45%, color-mix(in srgb, var(--mm-bg) 85%, transparent) 100%);
   pointer-events: none;
 }
 
@@ -129,7 +130,7 @@
   bottom: 0.75rem;
   left: 0.75rem;
   z-index: 2;
-  background: rgba(24, 26, 27, 0.7);
+  background: color-mix(in srgb, var(--mm-bg) 70%, transparent);
   border: 1px solid var(--mm-border-strong);
   color: var(--mm-text);
   font-size: 9px;
@@ -156,7 +157,7 @@
   height: 11px;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border: 1.5px solid color-mix(in srgb, var(--mm-text) 45%, transparent);
   transition: transform 0.2s;
 }
 
@@ -185,7 +186,7 @@
 .auteco-mcard__specs {
   display: flex;
   align-items: stretch;
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--mm-text) 3%, transparent);
   border: 1px solid var(--mm-border);
   border-radius: var(--mm-radius-sm);
   overflow: hidden;
@@ -292,37 +293,21 @@
 .auteco-mcard__btn-outline:focus-visible {
   border-color: var(--mm-text-soft);
   color: var(--mm-text);
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--mm-text) 5%, transparent);
 }
 
 .auteco-mcard__btn-solid {
   flex: 1;
   background: var(--mm-brand-auteco);
   border: 1px solid var(--mm-brand-auteco);
-  color: #fff;
+  color: var(--mm-text);
 }
 
 .auteco-mcard__btn-solid:hover,
 .auteco-mcard__btn-solid:focus-visible {
-  background: #00E5FF;
-  border-color: #00E5FF;
-  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.45);
-}
-
-.auteco-mcard__bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--bc);
-  opacity: 0.55;
-  transition: opacity 0.3s;
-  pointer-events: none;
-}
-
-.auteco-mcard:hover .auteco-mcard__bar {
-  opacity: 1;
+  background: var(--mm-accent);
+  border-color: var(--mm-accent);
+  box-shadow: var(--mm-glow-accent);
 }
 
 /* ── Responsive ─────────────────────────────────── */

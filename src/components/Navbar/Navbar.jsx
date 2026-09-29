@@ -11,8 +11,8 @@ const NAV_LINKS = [
     label: "Marcas",
     isDropdown: true,
     dropdownItems: [
-      { label: "Bajaj", to: "/bajaj", color: "#FF9F1C" },
-      { label: "Auteco", to: "/auteco", color: "#00E5FF" },
+      { label: "Bajaj", to: "/bajaj", color: "var(--mm-accent)" },
+      { label: "Auteco", to: "/auteco", color: "var(--mm-accent-2)" },
     ],
   },
   { label: "Financiamiento", to: "/financiamiento" },

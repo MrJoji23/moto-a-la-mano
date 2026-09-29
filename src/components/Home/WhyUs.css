@@ -3,8 +3,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
-    max-width: 72rem;
-    margin-top: 1.5rem;
+    max-width: 82rem;
+    margin: 0 auto;
   }
 }
 
@@ -12,17 +12,22 @@
   position: relative;
   overflow: hidden;
   background: var(--mm-surface);
-  border: 1px solid var(--mm-border);
-  border-radius: var(--mm-radius);
-  padding: 2rem 1.5rem;
+  border: var(--mm-border-card);
+  border-radius: var(--mm-radius-lg);
+  padding: 2.25rem 1.75rem;
   text-align: center;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    border-color var(--mm-ease),
+    background var(--mm-ease),
+    transform var(--mm-ease),
+    box-shadow var(--mm-ease);
 }
 
 .why-card:hover {
-  border-color: color-mix(in srgb, var(--mm-accent) 35%, transparent);
+  border-color: var(--mm-border-accent);
+  background: var(--mm-surface-2);
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--mm-glow-accent);
 }
 
 .why-card__icon {
@@ -45,8 +50,8 @@
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1;
-  color: var(--mm-text);
-  opacity: 0.05;
+  color: var(--mm-accent);
+  opacity: 0.14;
   pointer-events: none;
   user-select: none;
 }

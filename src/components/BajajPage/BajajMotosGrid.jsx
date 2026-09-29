@@ -68,7 +68,7 @@ const BajajMotosGrid = ({ marcaSeleccionada }) => {
       {
         name: "tipo",
         label: "Segmento",
-        todos: "Todos los segmentos",
+        todos: "Todos",
         opciones: BAJAJ_TIPOS.filter((tipo) =>
           BAJAJ_MOTOS.some((moto) => moto.tipoSlug === tipo.slug),
         ).map((tipo) => ({ value: tipo.slug, label: tipo.label })),
@@ -76,7 +76,7 @@ const BajajMotosGrid = ({ marcaSeleccionada }) => {
       {
         name: "submarca",
         label: "Línea",
-        todos: "Todas las líneas",
+        todos: "Todas",
         opciones: BAJAJ_BRANDS.map((marca) => ({
           value: marca.id,
           label: marca.name,
@@ -163,7 +163,6 @@ const BajajMotosGrid = ({ marcaSeleccionada }) => {
                 <m.li
                   key={moto.id}
                   className={`bajaj-card${moto.destacado ? " bajaj-card--featured" : ""}`}
-                  style={{ "--bc": moto.color }}
                   variants={CARD_VARIANTS}
                   whileHover={shouldReduce ? NO_HOVER : HOVER_ANIM}
                   transition={HOVER_TRANS}
@@ -268,8 +267,6 @@ const BajajMotosGrid = ({ marcaSeleccionada }) => {
                       </button>
                     </div>
                   </div>
-
-                  <span className="bajaj-card__bar" aria-hidden="true" />
                 </m.li>
               ))}
             </m.ul>

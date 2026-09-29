@@ -1,387 +1,277 @@
 /* ════════════════════════════════════════════════
-   Carousel.css  –  MotoCenter Group
+   Hero — MotoCenter
+   Foto a pantalla, una línea de título, un subtítulo,
+   dos CTAs. Aire generoso y un solo acento (ámbar).
    ════════════════════════════════════════════════ */
 
 /* ── Contenedor ───────────────────────────────── */
-.carousel {
+.hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 560px;
+  min-height: min(92vh, 860px);
+  display: flex;
+  align-items: flex-end;
   overflow: hidden;
+  background: var(--mm-bg);
+  isolation: isolate;
 }
 
 /* ── Fondo ────────────────────────────────────── */
-.carousel__bg {
+.hero__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.carousel__bg-layer {
+.hero__bg-layer {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 0.6s ease;
-  z-index: 0;
+  transition: opacity var(--mm-ease-slow) ease-out;
 }
 
-.carousel__bg-layer.is-active {
+.hero__bg-layer.is-active {
   opacity: 1;
   z-index: 1;
 }
 
-.carousel__bg-img {
+.hero__bg-layer picture,
+.hero__bg-img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
-.carousel__bg-overlay {
+.hero__bg-img {
+  object-fit: cover;
+  object-position: center 60%;
+}
+
+/* Velo: garantiza contraste AA del texto sobre cualquier foto */
+.hero__scrim {
   position: absolute;
   inset: 0;
   z-index: 2;
+  background: var(--mm-scrim-hero);
+  pointer-events: none;
 }
 
-/* ── Layout interno ───────────────────────────── */
-.carousel__inner {
+/* ── Contenido ────────────────────────────────── */
+.hero__inner {
   position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  padding: 80px 80px 0;
-  gap: 2rem;
-}
-
-/* ── Imagen de la moto ────────────────────────── */
-.carousel__moto {
-  flex: 0 0 52%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 100%;
-}
-
-.carousel__moto img {
+  z-index: 3;
   width: 100%;
-  max-width: 680px;
-  object-fit: contain;
-  filter: drop-shadow(-20px 20px 50px rgba(0, 0, 0, 0.8));
-  transform: translateY(5%);
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: clamp(6rem, 14vh, 9rem) var(--mm-section-x) clamp(5.5rem, 12vh, 7rem);
 }
 
-/* ── Contenido de texto ───────────────────────── */
-.carousel__content {
-  flex: 0 0 46%;
-  padding-left: 20px;
-}
-
-/* ── Tag de categoría ─────────────────────────── */
-.c-tag {
-  display: inline-block;
-  background: #FF9F1C;
-  color: #181a1b;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-  margin-bottom: 16px;
-}
-
-/* ── Modelo ───────────────────────────────────── */
-.c-model {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 18px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  margin: 0 0 4px;
-}
-
-/* ── Título principal ─────────────────────────── */
-.c-title {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(52px, 6.5vw, 90px);
-  line-height: 0.92;
-  text-transform: uppercase;
-  color: #fff;
-  letter-spacing: -1px;
-  margin: 0;
-}
-
-.c-title__accent { color: #FF9F1C; }
-.c-title__sub    { font-style: italic; color: rgba(255, 255, 255, 0.9); }
-
-/* ── Subtítulo ────────────────────────────────── */
-.c-sub {
-  margin: 16px 0 0;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-/* ── Badge ────────────────────────────────────── */
-.c-badge {
+/* ── Chip de promo (en vez de barra de anuncio) ── */
+.hero__chip {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  margin-top: 26px;
-  background: rgba(30, 32, 35, 0.65);
-  border: 1px solid rgba(46, 51, 57, 0.6);
-  border-left: 3px solid #FF9F1C;
-  padding: 14px 22px;
-  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0.35rem 0.85rem 0.35rem 0.7rem;
+  background: var(--mm-chip-bg);
+  border: var(--mm-border-card);
+  border-radius: var(--mm-chip-radius);
+  backdrop-filter: blur(6px);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mm-text-soft);
 }
 
-.c-badge__num {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 38px;
-  color: #fff;
-  line-height: 1;
+.hero__chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mm-accent);
+  box-shadow: 0 0 0 3px var(--mm-accent-soft);
 }
 
-.c-badge__text {
+/* ── Eyebrow ──────────────────────────────────── */
+.hero__eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-body);
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.65);
+  font-weight: 600;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  line-height: 1.5;
+  color: var(--mm-text-muted);
 }
 
-.c-badge__text strong {
-  color: #fff;
-  display: block;
-  font-size: 13px;
-}
-
-/* ── Specs ────────────────────────────────────── */
-.c-specs-image {
-  margin: 22px 0 0;
-}
-
-.c-specs-image img {
-  height: 70px;        /* misma altura visual que tenía la fila de íconos SVG */
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-.c-spec-item span {
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-align: center;
-  max-width: 58px;
-  line-height: 1.3;
-}
-
-/* ── Botones ──────────────────────────────────── */
-.c-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 32px;
-}
-
-.c-btn {
+/* ── Título: una sola línea de titular ─────────── */
+.hero__title {
+  margin: 0;
   font-family: var(--font-display);
+  font-size: clamp(2.75rem, 8.5vw, 6.5rem);
   font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s, border-color 0.2s, color 0.2s;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--mm-text);
+  text-wrap: balance;
+  max-width: 16ch;
 }
 
-.c-btn--primary {
-  background: #FF9F1C;
-  color: #181a1b;
-  border: none;
-  padding: 15px 38px;
-  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+/* ── Subtítulo ────────────────────────────────── */
+.hero__subtitle {
+  margin: 1.25rem 0 0;
+  max-width: 34ch;
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  line-height: 1.55;
+  color: var(--mm-text-soft);
+  text-wrap: pretty;
 }
 
-.c-btn--primary:hover {
-  background: #FFB65C;
-  transform: scale(1.03);
+/* ── CTAs ─────────────────────────────────────── */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
 }
 
-.c-btn--secondary {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 14px 30px;
-}
-
-.c-btn--secondary:hover {
-  border-color: rgba(255, 255, 255, 0.6);
-  color: #fff;
-}
-
-/* ── Flechas ──────────────────────────────────── */
-.carousel__arrow {
+/* ── Controles ────────────────────────────────── */
+.hero__controls {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #fff;
-  width: 46px;
-  height: 46px;
+  z-index: 4;
+  right: var(--mm-section-x);
+  bottom: clamp(1.75rem, 4vh, 2.5rem);
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background 0.2s, border-color 0.2s;
+  gap: 1rem;
 }
 
-.carousel__arrow:hover {
-  background: #FF9F1C;
-  border-color: #FF9F1C;
-}
-
-.carousel__arrow--prev { left: 20px; }
-.carousel__arrow--next { right: 20px; }
-
-/* ── Dots ─────────────────────────────────────── */
-.carousel__dots {
-  position: absolute;
-  bottom: 34px;
-  left: 50%;
-  transform: translateX(-50%);
+.hero__dots {
   display: flex;
-  gap: 8px;
-  z-index: 10;
+  gap: 0.5rem;
 }
 
-.carousel__dot {
-  width: 28px;
+.hero__dot {
+  width: 26px;
   height: 3px;
-  background: rgba(255, 255, 255, 0.25);
-  border: none;
-  cursor: pointer;
   padding: 0;
-  transition: background 0.3s, width 0.3s;
+  background: var(--mm-border-strong);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background var(--mm-ease),
+    width var(--mm-ease);
 }
 
-.carousel__dot.active {
-  background: #FF9F1C;
-  width: 48px;
+.hero__dot:hover {
+  background: var(--mm-text-muted);
 }
 
-/* ── Contador ─────────────────────────────────── */
-.carousel__count {
-  position: absolute;
-  bottom: 30px;
-  right: 80px;
-  z-index: 10;
-  font-family: var(--font-display);
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.35);
+.hero__dot.is-active {
+  width: 44px;
+  background: var(--mm-accent);
 }
 
-.carousel__count span {
-  color: #fff;
-  font-weight: 700;
+.hero__dot:focus-visible {
+  outline: none;
+  box-shadow: var(--mm-focus-ring-cyan);
 }
 
-/* ── Barra de progreso ────────────────────────── */
-
-@keyframes carousel-progress {
-  from { width: 0%; }
-  to   { width: 100%; }
+.hero__arrows {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.carousel__progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background: #FF9F1C;
-  z-index: 10;
-  width: 0%;
-  animation: carousel-progress var(--progress-duration, 5000ms) linear forwards;
+.hero__arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--mm-text-soft);
+  background: var(--mm-chip-bg);
+  border: var(--mm-border-card);
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition:
+    color var(--mm-ease),
+    border-color var(--mm-ease),
+    background var(--mm-ease),
+    transform var(--mm-ease);
 }
 
-/* Pausa la animación cuando el usuario hace hover */
-.carousel__progress--paused {
-  animation-play-state: paused;
+.hero__arrow:hover {
+  color: var(--mm-accent-ink);
+  background: var(--mm-accent);
+  border-color: var(--mm-accent);
+  transform: translateY(-1px);
 }
 
-/* ── Responsive ───────────────────────────────── */
+.hero__arrow:focus-visible {
+  outline: none;
+  box-shadow: var(--mm-focus-ring);
+}
+
+/* ── Responsive (mobile-first: sin scroll horizontal) ── */
 @media (max-width: 768px) {
-
-  .carousel__inner {
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 5.5rem 1.5rem 2rem;
-    gap: 0;
+  .hero {
+    min-height: 88vh;
   }
 
-  .carousel__moto {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    width: 100%;
-    align-items: flex-end;
-    justify-content: center;
-    z-index: 1;
+  .hero__scrim {
+    background: var(--mm-scrim-hero-mobile);
   }
 
-  .carousel__moto img {
-    width: 90%;
-    max-width: 380px;
-    transform: translateY(0);
+  .hero__inner {
+    padding-bottom: 6.5rem;
   }
 
-  .carousel__content {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; 
-    padding: 5.5rem 1.5rem 70px;      
-    text-align: center;
-    order: unset;
+  .hero__title {
+    max-width: 100%;
   }
 
-  .c-tag,
-  .c-model,
-  .c-title,
-  .c-sub { margin-bottom: 0; }
-
-  .c-badge {
-    position: static;
-    margin-top: auto;
-    align-self: stretch;
-    justify-content: center;
-    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  .hero__subtitle {
+    max-width: 100%;
   }
 
-  .c-specs-image {
-    position: static;
-    margin-top: 10px;
-    display: flex;
+  .hero__actions {
+    margin-top: 1.75rem;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 auto;
     justify-content: center;
   }
-  .c-specs-image img {
-    height: 52px;
+
+  .hero__controls {
+    right: auto;
+    left: var(--mm-section-x);
+    gap: 0.75rem;
   }
-  .c-actions    { display: none; }
-  .carousel__arrow { display: none; }
-  .carousel__count { right: 1.5rem; }
+
+  .hero__dot {
+    width: 20px;
+  }
+
+  .hero__dot.is-active {
+    width: 32px;
+  }
+
+  .hero__arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ── Reduced motion: sólo opacidad, sin desplazamiento ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero__bg-layer {
+    transition: opacity 200ms linear;
+  }
+
+  .hero__arrow:hover {
+    transform: none;
+  }
 }

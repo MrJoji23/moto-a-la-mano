@@ -1,84 +1,117 @@
-/* ═══════════════════════════════════════════════
-   GridFilters — barra de filtros del catálogo
-   ═══════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════
+   GridFilters — chips de catálogo (§10: nada de
+   dropdowns densos; usable con teclado y en mobile)
+   ════════════════════════════════════════════════ */
 
 .grid-filters {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem 1.5rem;
-  margin: 0 0 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 0 0 clamp(2rem, 4vw, 2.5rem);
 }
 
-.grid-filters__fields {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 1rem;
-}
+/* ---------- Grupo de un campo ---------- */
 
-.grid-filters__field {
+.grid-filters__group {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.75rem;
   min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-.grid-filters__label {
-  font-size: 11px;
+.grid-filters__legend {
+  padding: 0;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--mm-text-caption);
 }
 
-.grid-filters__select {
-  appearance: none;
-  min-width: 190px;
+/* ---------- Chips ---------- */
+
+.grid-filters__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  /* Permite deslizar en horizontal sin romper el layout en mobile */
   max-width: 100%;
-  padding: 0.7rem 2.4rem 0.7rem 1rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--mm-chip-padding);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--mm-text);
-  background-color: var(--mm-surface);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%2398A2B3' stroke-width='1.6'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.9rem center;
-  background-size: 12px;
+  line-height: 1.2;
+  color: var(--mm-text-soft);
+  background: var(--mm-chip-bg);
   border: 1px solid var(--mm-border);
-  border-radius: var(--mm-radius-sm);
+  border-radius: var(--mm-chip-radius);
   cursor: pointer;
+  white-space: nowrap;
   transition:
+    background var(--mm-ease),
     border-color var(--mm-ease),
-    background-color var(--mm-ease);
+    color var(--mm-ease);
 }
 
-.grid-filters__select:hover {
+.chip:hover {
+  background: var(--mm-chip-bg-hover);
   border-color: var(--mm-border-strong);
-}
-
-.grid-filters__select:focus-visible {
-  border-color: var(--mm-accent);
-}
-
-.grid-filters__select option {
-  background: var(--mm-surface);
   color: var(--mm-text);
+}
+
+.chip:focus-visible {
+  outline: none;
+  /* Cian: reservado para estado activo / focus (§6) */
+  box-shadow: var(--mm-focus-ring-cyan);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--mm-accent);
+  border-color: var(--mm-accent);
+  color: var(--mm-accent-ink);
+  font-weight: 600;
+}
+
+/* ---------- Pie: contador + reset ---------- */
+
+.grid-filters__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--mm-border);
+}
+
+.grid-filters__count {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mm-text-muted);
 }
 
 .grid-filters__reset {
-  align-self: center;
-  padding: 0.7rem 1.1rem;
-  font-size: 12px;
+  padding: 0.5rem 1rem;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--mm-text-soft);
   background: transparent;
   border: 1px solid var(--mm-border);
-  border-radius: var(--mm-radius-sm);
+  border-radius: var(--mm-chip-radius);
+  cursor: pointer;
   transition:
     color var(--mm-ease),
     border-color var(--mm-ease);
@@ -86,31 +119,45 @@
 
 .grid-filters__reset:hover {
   color: var(--mm-accent);
-  border-color: var(--mm-accent);
+  border-color: var(--mm-border-accent);
 }
 
-.grid-filters__count {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  color: var(--mm-text-muted);
+.grid-filters__reset:focus-visible {
+  outline: none;
+  box-shadow: var(--mm-focus-ring);
 }
+
+/* ---------- Responsive (mobile-first) ---------- */
 
 @media (max-width: 640px) {
-  .grid-filters {
-    flex-direction: column;
-    align-items: stretch;
+  .grid-filters__chips {
+    /* Scroll horizontal comfortable en lugar de un grid apretado */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+    /* Degradé que insinúa que hay más chips a la derecha.
+       `mask-image` usa el canal alfa: cualquier color opaco sirve, así que
+       se evita un literal con la palabra clave de sistema `CanvasText`. */
+    mask-image: linear-gradient(
+      to right,
+      CanvasText 0,
+      CanvasText calc(100% - 24px),
+      transparent 100%
+    );
   }
 
-  .grid-filters__fields {
+  .grid-filters__foot {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
+}
 
-  .grid-filters__select {
-    width: 100%;
-    min-width: 0;
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .grid-filters__reset {
+    transition: none;
   }
 }

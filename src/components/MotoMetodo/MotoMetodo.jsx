@@ -38,7 +38,7 @@ export default function MotoMetodo() {
             </m.span>
 
             <m.h2 variants={fadeUp} custom={1}>
-              ¡La recibimos como <span className="accent-red">parte de pago</span>!
+              ¡La recibimos como <span className="tradein__accent">parte de pago</span>!
             </m.h2>
 
             <m.p className="tradein__sub" variants={fadeUp} custom={2}>

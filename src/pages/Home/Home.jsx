@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { lazy, Suspense, useRef } from 'react';
 import { useInView } from 'framer-motion';
 import Carousel from '../../components/Carousel/Carousel';
-import HeroCopy from '../../components/Home/HeroCopy';
+import TrustStrip from '../../components/Home/TrustStrip';
 import Brands from '../../components/Brands/Brands';
 import MotoMetodo from '../../components/MotoMetodo/MotoMetodo';
 import Services from '../../components/Home/Services';
@@ -35,7 +35,7 @@ const Home = () => {
       </Helmet>
 
       <Carousel />
-      <HeroCopy />
+      <TrustStrip />
       <Brands />
       <MotoMetodo />
       <Services />

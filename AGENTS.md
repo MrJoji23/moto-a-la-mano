@@ -118,6 +118,40 @@ el `.spec.js` correspondiente y lo deja guardado, sin ejecutarlo.
 | **Texto principal** | `#F5F6F8` | Blanco suave de alto contraste |
 | **Texto secundario / Muted** | `#A1A1AA` | Gris neutro para etiquetas y subtítulos |
 
+## 7. Motion & microinteractions
+- Framer Motion solo en: entrada de secciones, hover de cards, transiciones de ruta y skeletons.
+- Duración 200–300ms, easing ease-out. Sin bounce exagerado.
+- Respetar `prefers-reduced-motion: reduce` (solo opacity o sin animación).
+- Skeletons en catálogo de motos y formularios mientras cargan datos.
+
+## 8. Performance & assets
+- Imágenes de motos siempre WebP; lazy-load fuera del viewport.
+- Visor 360: no precargar las 8 vistas al montar; cargar bajo demanda.
+- Evitar CLS: aspect-ratio o width/height fijos en cards de catálogo.
+- No bloquear LCP con scripts o CSS no críticos en el hero.
+
+## 9. SEO & content (MotoCenter)
+- Un solo H1 por vista; title y meta description únicos (Bogotá/Soacha + marca).
+- Mantener JSON-LD de AutoDealer y brands (Bajaj, Auteco, etc.).
+- Alt descriptivo: "Bajaj Boxer CT100 KS negro — MotoCenter Bogotá".
+- No romper rutas ni canonical al rediseñar.
+
+## 10. Conversion / dealer UX
+- CTA principal visible en hero y en ficha de moto (WhatsApp + Cotizar).
+- Formularios con estados: idle, loading, success, error; no perder datos al fallar.
+- Filtros de catálogo usables en mobile (chips o drawer, no dropdowns densos).
+- Mapa de sedes con teléfono clickeable (`tel:`) y horarios claros.
+
+## 11. Design tokens strict
+- Prohibido hardcodear hex en JSX o CSS de componentes.
+- Solo variables `--mm-*` de `src/index.css` (y espejo Tailwind en `src/tailwind-theme.css`).
+- Color nuevo → primero token, luego uso. Logos de terceros conservan su color de marca.
+
+## 12. Component conventions
+- Card de moto: imagen, nombre, precio/desde, badges, CTA.
+- Presentational vs contenedor: datos en `/data` o fetch; UI en `/components`.
+- Nombres consistentes (español o inglés, no mezclar en el mismo archivo).
+
 Reglas de aplicación:
 
 - **Prohibido el rojo y el azul en la interfaz.** No se usan `#EF4444`,
@@ -136,3 +170,4 @@ Reglas de aplicación:
   (cian claro), `#C77DFF` (violeta claro), `#4ADE80` (verde luminoso),
   `#8A5200` (ámbar profundo, solo sobre superficie clara) y `#0B6D7A`
   (cian profundo, solo sobre superficie clara).
+

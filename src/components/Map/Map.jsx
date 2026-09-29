@@ -10,20 +10,26 @@ import { STORES } from "../../data/storesData";
 import { FaMapMarkerAlt, FaMotorcycle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { SiWaze } from "react-icons/si";
 import { renderToStaticMarkup } from "react-dom/server";
+import { tokenColor } from "../../utils/cssTokens";
 
 const CENTER = [4.6595, -74.08];
 
 // Función para crear iconos de moto personalizados
 const createCustomIcon = (name) => {
   const isAuteco = name.toUpperCase().includes("AUTECO");
-  const color = isAuteco ? "#2E3339" : "#FF9F1C";
+  const color = isAuteco
+    ? tokenColor("--mm-surface-2", "#2e3339")
+    : tokenColor("--mm-accent", "#ff9f1c");
 
   const iconMarkup = renderToStaticMarkup(
     <div
       style={{
         color: color,
         fontSize: "2rem",
-        filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))",
+        filter: `drop-shadow(0 2px 4px color-mix(in srgb, ${tokenColor(
+          "--mm-shadow-ink",
+          "#0a0b0c",
+        )} 30%, transparent))`,
         transition: "transform 0.2s ease",
       }}
     >
@@ -244,7 +250,7 @@ const Map = () => {
                             }
                             className="popup-link popup-link-directions"
                             style={{
-                              background: "#00E5FF",
+                              background: "var(--mm-accent)",
                               border: "none",
                               cursor: "pointer",
                               display: "flex",
@@ -252,12 +258,6 @@ const Map = () => {
                               justifyContent: "center",
                               gap: "8px",
                             }}
-                            onMouseEnter={(e) =>
-                              (e.target.style.background = "#00E5FF")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.target.style.background = "#00E5FF")
-                            }
                           >
                             <SiWaze /> Waze
                           </button>

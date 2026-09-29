@@ -1,0 +1,103 @@
+/* ════════════════════════════════════════════════
+   TrustStrip — franja de confianza bajo el hero
+   Datos duros, sin titular duplicado y sin ruido visual.
+   ════════════════════════════════════════════════ */
+
+.trust-strip {
+  background: var(--mm-bg);
+  padding: clamp(3rem, 7vw, 5rem) var(--mm-section-x) 0;
+}
+
+.trust-strip__inner {
+  max-width: 82rem;
+  margin: 0 auto;
+}
+
+/* ── Estadísticas ──────────────────────────────── */
+.trust-strip__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1px;
+  margin: 0 0 2.5rem;
+  background: var(--mm-border);
+  border: var(--mm-border-card);
+  border-radius: var(--mm-radius-md);
+  overflow: hidden;
+}
+
+.trust-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem 1rem;
+  background: var(--mm-surface);
+  text-align: center;
+  transition: background var(--mm-ease);
+}
+
+.trust-stat:hover {
+  background: var(--mm-surface-2);
+}
+
+.trust-stat__value {
+  order: -1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--mm-accent);
+}
+
+.trust-stat__label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mm-text-muted);
+}
+
+/* ── Nota de confianza ─────────────────────────── */
+.trust-strip__note {
+  max-width: 62ch;
+  margin: 0 auto;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--mm-text-muted);
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.trust-strip__note strong {
+  color: var(--mm-text-soft);
+  font-weight: 600;
+}
+
+.trust-strip__link {
+  color: var(--mm-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--mm-accent-soft);
+  transition: border-color var(--mm-ease);
+}
+
+.trust-strip__link:hover {
+  border-color: var(--mm-accent);
+}
+
+.trust-strip__link:focus-visible {
+  outline: none;
+  border-radius: 2px;
+  box-shadow: var(--mm-focus-ring);
+}
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 640px) {
+  .trust-strip__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-strip__note {
+    text-align: left;
+  }
+}

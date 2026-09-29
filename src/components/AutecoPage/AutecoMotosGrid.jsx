@@ -60,7 +60,7 @@ const AutecoMotosGrid = ({ marcaSeleccionada }) => {
       {
         name: "tipo",
         label: "Segmento",
-        todos: "Todos los segmentos",
+        todos: "Todos",
         opciones: AUTECO_TIPOS.filter((tipo) =>
           AUTECO_MOTOS.some((moto) => moto.tipoSlug === tipo.slug),
         ).map((tipo) => ({ value: tipo.slug, label: tipo.label })),
@@ -68,7 +68,7 @@ const AutecoMotosGrid = ({ marcaSeleccionada }) => {
       {
         name: "submarca",
         label: "Línea",
-        todos: "Todas las líneas",
+        todos: "Todas",
         opciones: AUTECO_BRANDS.map((marca) => ({
           value: marca.id,
           label: marca.name,
@@ -155,7 +155,6 @@ const AutecoMotosGrid = ({ marcaSeleccionada }) => {
                 <m.li
                   key={moto.id}
                   className={`auteco-mcard${moto.destacado ? " auteco-mcard--featured" : ""}`}
-                  style={{ "--bc": moto.color, "--bc-rgb": moto.colorRgb || "0, 229, 255" }}
                   variants={CARD_VARIANTS}
                   whileHover={shouldReduce ? NO_HOVER : HOVER_ANIM}
                   transition={HOVER_TRANS}
@@ -244,8 +243,6 @@ const AutecoMotosGrid = ({ marcaSeleccionada }) => {
                       </button>
                     </div>
                   </div>
-
-                  <span className="auteco-mcard__bar" aria-hidden="true" />
                 </m.li>
               ))}
             </m.ul>

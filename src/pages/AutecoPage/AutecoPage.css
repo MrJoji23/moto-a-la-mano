@@ -4,7 +4,7 @@
 
 .auteco-page {
   width: 100%;
-  color: #fff;
+  color: var(--mm-text);
   padding: 0 2rem;
   box-sizing: border-box;
 }
