@@ -1,163 +1,380 @@
-/* ════════════════════════════════════════════════
-   GridFilters — chips de catálogo (§10: nada de
-   dropdowns densos; usable con teclado y en mobile)
-   ════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   GridFilters — toolbar de desplegables del catálogo
+   Desktop: fila horizontal · Mobile: botón + drawer
+   Sólo tokens --mm-* · mobile-first · WCAG AA
+   ═══════════════════════════════════════════════ */
 
-.grid-filters {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin: 0 0 clamp(2rem, 4vw, 2.5rem);
+.gf {
+  --gf-height: 2.875rem;
 }
 
-/* ---------- Grupo de un campo ---------- */
+/* ── Toolbar desktop ──────────────────────────────── */
+.gf-toolbar {
+  display: none;
+  padding: 0 0 clamp(1rem, 2.5vw, 1.5rem);
+}
 
-.grid-filters__group {
+.gf-toolbar__row {
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(1rem, 3vw, 2rem);
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: 0.875rem 1rem;
+  background: var(--mm-surface);
+  border: var(--mm-border-card);
+  border-radius: var(--mm-radius-lg);
+  box-shadow: var(--mm-shadow-small);
+}
+
+.gf-toolbar__controls {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: flex-end;
   gap: 0.75rem;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
 }
 
-.grid-filters__legend {
-  padding: 0;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+.gf-toolbar__meta {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.875rem;
+  padding-bottom: 0.125rem;
+}
+
+/* ── Campos ───────────────────────────────────────── */
+.gf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 0;
+}
+
+.gf-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--mm-text-muted);
+}
+
+/* El buscador crece; los selectores se quedan cortos y legibles */
+.gf-field--search {
+  flex: 1 1 15rem;
+  max-width: 20rem;
+}
+
+.gf-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gf-search__icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--mm-text-muted);
+  pointer-events: none;
+}
+
+.gf-input {
+  width: 100%;
+  height: var(--gf-height);
+  padding: 0 0.75rem 0 2.375rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--mm-text);
+  background: var(--mm-bg-soft);
+  border: 1px solid var(--mm-border);
+  border-radius: var(--mm-radius-sm);
+  transition:
+    border-color var(--mm-ease),
+    background var(--mm-ease),
+    box-shadow var(--mm-ease);
+}
+
+.gf-input::placeholder {
   color: var(--mm-text-caption);
 }
 
-/* ---------- Chips ---------- */
-
-.grid-filters__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  /* Permite deslizar en horizontal sin romper el layout en mobile */
-  max-width: 100%;
+.gf-input:hover {
+  border-color: var(--mm-border-strong);
 }
 
-.chip {
+/* El estado activo usa el ámbar canónico (§11) */
+.gf-input:focus-visible,
+.gf-select:focus-visible {
+  outline: 2px solid var(--mm-accent);
+  outline-offset: 1px;
+  border-color: var(--mm-accent);
+  box-shadow: var(--mm-focus-ring);
+}
+
+.gf-select {
+  height: var(--gf-height);
+  min-width: 9.5rem;
+  padding: 0 2.125rem 0 0.75rem;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--mm-text);
+  background-color: var(--mm-bg-soft);
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    right 1.0625rem center,
+    right 0.75rem center;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+  border: 1px solid var(--mm-border);
+  border-radius: var(--mm-radius-sm);
+  appearance: none;
+  cursor: pointer;
+  transition:
+    border-color var(--mm-ease),
+    background-color var(--mm-ease),
+    box-shadow var(--mm-ease);
+}
+
+.gf-select:hover {
+  border-color: var(--mm-border-strong);
+  background-color: var(--mm-surface-2);
+}
+
+.gf-select option {
+  color: var(--mm-text);
+  background: var(--mm-surface);
+}
+
+/* ── Contador y limpiar ───────────────────────────── */
+.gf-count {
+  font-size: 0.875rem;
+  color: var(--mm-text-muted);
+  white-space: nowrap;
+}
+
+.gf-clear {
+  padding: 0.25rem 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--mm-accent);
+  border-bottom: 1px solid var(--mm-accent-soft);
+  white-space: nowrap;
+  transition: border-color var(--mm-ease);
+}
+
+.gf-clear:hover {
+  border-color: var(--mm-accent);
+}
+
+.gf-clear:focus-visible {
+  outline: 2px solid var(--mm-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+  box-shadow: var(--mm-focus-ring);
+}
+
+/* ── Barra mobile ─────────────────────────────────── */
+.gf-mobilebar {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding-bottom: 1.25rem;
+}
+
+.gf-search--mobile {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.gf-btn-filtros {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.5rem;
+  height: var(--gf-height);
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--mm-text);
+  background: var(--mm-surface);
+  border: var(--mm-border-card);
+  border-radius: var(--mm-radius-sm);
+  transition:
+    border-color var(--mm-ease),
+    background var(--mm-ease);
+}
+
+.gf-btn-filtros:hover {
+  background: var(--mm-surface-2);
+  border-color: var(--mm-border-accent);
+}
+
+.gf-btn-filtros:focus-visible {
+  outline: 2px solid var(--mm-accent);
+  outline-offset: 2px;
+  box-shadow: var(--mm-focus-ring);
+}
+
+.gf-btn-filtros__badge {
   display: inline-flex;
   align-items: center;
-  padding: var(--mm-chip-padding);
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--mm-text-soft);
-  background: var(--mm-chip-bg);
-  border: 1px solid var(--mm-border);
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3125rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--mm-accent-ink);
+  background: var(--mm-accent);
   border-radius: var(--mm-chip-radius);
-  cursor: pointer;
-  white-space: nowrap;
+}
+
+/* ── Drawer ───────────────────────────────────────── */
+.gf-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  background: color-mix(in srgb, var(--mm-bg) 82%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.gf-drawer {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 30rem);
+  max-height: 88vh;
+  background: var(--mm-surface);
+  border-top: var(--mm-border-card);
+  border-radius: var(--mm-radius-lg) var(--mm-radius-lg) 0 0;
+  box-shadow: var(--mm-shadow-card);
+}
+
+.gf-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.125rem 1.25rem 0.875rem;
+  border-bottom: 1px solid var(--mm-border);
+}
+
+.gf-drawer__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--mm-text);
+}
+
+.gf-drawer__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--mm-text-muted);
+  border-radius: var(--mm-radius-sm);
+  transition:
+    color var(--mm-ease),
+    background var(--mm-ease);
+}
+
+.gf-drawer__close:hover {
+  color: var(--mm-text);
+  background: var(--mm-surface-2);
+}
+
+.gf-drawer__close:focus-visible {
+  outline: 2px solid var(--mm-accent);
+  outline-offset: 2px;
+  box-shadow: var(--mm-focus-ring);
+}
+
+.gf-drawer__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gf-drawer__footer {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--mm-border);
+}
+
+.gf-btn {
+  flex: 1 1 0;
+  height: 2.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--mm-radius-sm);
   transition:
     background var(--mm-ease),
     border-color var(--mm-ease),
     color var(--mm-ease);
 }
 
-.chip:hover {
-  background: var(--mm-chip-bg-hover);
-  border-color: var(--mm-border-strong);
+.gf-btn--ghost {
   color: var(--mm-text);
-}
-
-.chip:focus-visible {
-  outline: none;
-  /* Cian: reservado para estado activo / focus (§6) */
-  box-shadow: var(--mm-focus-ring-cyan);
-}
-
-.chip[aria-pressed='true'] {
-  background: var(--mm-accent);
-  border-color: var(--mm-accent);
-  color: var(--mm-accent-ink);
-  font-weight: 600;
-}
-
-/* ---------- Pie: contador + reset ---------- */
-
-.grid-filters__foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--mm-border);
-}
-
-.grid-filters__count {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mm-text-muted);
-}
-
-.grid-filters__reset {
-  padding: 0.5rem 1rem;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--mm-text-soft);
   background: transparent;
   border: 1px solid var(--mm-border);
-  border-radius: var(--mm-chip-radius);
-  cursor: pointer;
-  transition:
-    color var(--mm-ease),
-    border-color var(--mm-ease);
 }
 
-.grid-filters__reset:hover {
-  color: var(--mm-accent);
-  border-color: var(--mm-border-accent);
+.gf-btn--ghost:hover {
+  background: var(--mm-surface-2);
+  border-color: var(--mm-border-strong);
 }
 
-.grid-filters__reset:focus-visible {
-  outline: none;
+.gf-btn--primary {
+  color: var(--mm-accent-ink);
+  background: var(--mm-accent);
+  border: 1px solid var(--mm-accent);
+}
+
+.gf-btn--primary:hover {
+  background: var(--mm-accent-hover);
+  border-color: var(--mm-accent-hover);
+}
+
+.gf-btn:focus-visible {
+  outline: 2px solid var(--mm-accent);
+  outline-offset: 2px;
   box-shadow: var(--mm-focus-ring);
 }
 
-/* ---------- Responsive (mobile-first) ---------- */
-
-@media (max-width: 640px) {
-  .grid-filters__chips {
-    /* Scroll horizontal comfortable en lugar de un grid apretado */
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.25rem;
-    /* Degradé que insinúa que hay más chips a la derecha.
-       `mask-image` usa el canal alfa: cualquier color opaco sirve, así que
-       se evita un literal con la palabra clave de sistema `CanvasText`. */
-    mask-image: linear-gradient(
-      to right,
-      CanvasText 0,
-      CanvasText calc(100% - 24px),
-      transparent 100%
-    );
+/* ── Desktop (≥ 1024px) ──────────────────────────── */
+@media (min-width: 1024px) {
+  .gf-toolbar {
+    display: block;
   }
 
-  .grid-filters__foot {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
+  .gf-mobilebar {
+    display: none;
+  }
+
+  /* En escritorio la fila de la toolbar necesita aire lateral propio */
+  .gf-toolbar__row {
+    margin-inline: auto;
   }
 }
 
+/* ── Reduced motion ───────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .chip,
-  .grid-filters__reset {
+  .gf-input,
+  .gf-select,
+  .gf-btn,
+  .gf-btn-filtros,
+  .gf-drawer__close,
+  .gf-clear {
     transition: none;
   }
 }

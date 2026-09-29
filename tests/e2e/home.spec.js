@@ -136,4 +136,74 @@ test.describe('Home', () => {
     const campos = page.locator('input, select')
     await expect(campos.first()).toBeVisible()
   })
+
+  test('"parte de pago" está centrado, con label, título, subtítulo y CTA', async ({ page }) => {
+    await page.goto('/')
+
+    const seccion = page.locator('section.tradein')
+    await seccion.scrollIntoViewIfNeeded()
+    await expect(seccion).toBeVisible()
+
+    // Label, título y subtítulo corto
+    await expect(seccion.getByText(/¿moto usada\?/i)).toBeVisible()
+    await expect(seccion.getByRole('heading', { level: 2 })).toContainText(/parte de pago/i)
+    await expect(seccion.locator('.tradein__sub')).toBeVisible()
+    await expect(seccion.getByRole('button', { name: /más información/i })).toBeVisible()
+
+    // Contenido centrado horizontalmente
+    const alineacion = await seccion.locator('.tradein__inner').evaluate(
+      (el) => getComputedStyle(el).textAlign,
+    )
+    expect(alineacion).toBe('center')
+
+    // Sin imagen, sin icono circular y sin columnas
+    await expect(seccion.locator('img')).toHaveCount(0)
+    await expect(seccion.locator('.tradein__icon-wrap')).toHaveCount(0)
+    await expect(seccion.locator('svg.fa-motorcycle')).toHaveCount(0)
+    const radios = await seccion.locator('*').evaluateAll((nodos) =>
+      nodos
+        .map((n) => getComputedStyle(n).borderTopLeftRadius)
+        .filter((r) => r === '50%' || (r.endsWith('px') && parseFloat(r) >= 150)),
+    )
+    expect(radios, 'quedan radios circulares ≥150px').toEqual([])
+  })
+
+  test('el CTA de "parte de pago" sigue abriendo el mismo WhatsApp', async ({ page }) => {
+    await page.goto('/')
+
+    const seccion = page.locator('section.tradein')
+    await seccion.scrollIntoViewIfNeeded()
+
+    const cta = seccion.getByRole('button', { name: /más información/i })
+
+    const [popup] = await Promise.all([
+      page.waitForEvent('popup'),
+      cta.click(),
+    ])
+
+    const url = new URL(popup.url())
+    expect(url.hostname).toBe('wa.me')
+    expect(url.pathname).toBe('/573160404047')
+    expect(decodeURIComponent(url.searchParams.get('text'))).toMatch(
+      /tengo una moto usada/i,
+    )
+  })
+
+  test('"parte de pago" no desborda en móvil', async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 })
+    await page.goto('/')
+
+    const seccion = page.locator('section.tradein')
+    await seccion.scrollIntoViewIfNeeded()
+
+    const display = await seccion
+      .locator('.tradein__inner')
+      .evaluate((el) => getComputedStyle(el).display)
+    expect(display).toBe('flex')
+
+    const desborde = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    )
+    expect(desborde).toBeLessThanOrEqual(1)
+  })
 })

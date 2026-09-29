@@ -37,7 +37,10 @@ const BajajPage = () => {
         marcaSeleccionada={marcaSeleccionada}
         onMarcaSelect={setMarcaSeleccionada}
       />
-      <BajajMotosGrid marcaSeleccionada={marcaSeleccionada} />
+      <BajajMotosGrid
+        marcaSeleccionada={marcaSeleccionada}
+        onMarcaSelect={setMarcaSeleccionada}
+      />
     </main>
   );
 };

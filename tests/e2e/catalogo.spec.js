@@ -17,7 +17,7 @@ test.describe('Catálogo y filtros', () => {
     ['bajaj', '#bajaj-catalogo', '.bajaj-card'],
     ['auteco', '#auteco-catalogo', '.auteco-mcard'],
   ]) {
-    test(`${marca}: filtra por segmento con chips y actualiza el contador`, async ({ page }) => {
+    test(`${marca}: filtra por cilindrada con el desplegable y actualiza el contador`, async ({ page }) => {
       await page.goto(`/${marca}`)
 
       const grid = page.locator(catalogo)
@@ -27,47 +27,146 @@ test.describe('Catálogo y filtros', () => {
       const totalInicial = await grid.locator(card).count()
       expect(totalInicial).toBeGreaterThan(0)
 
-      // Los filtros son chips, no <select> (§10)
-      await expect(grid.locator('select')).toHaveCount(0)
+      // Los filtros son desplegables, no chips (§10 del encargo)
+      await expect(grid.locator('.grid-filters__chips')).toHaveCount(0)
 
-      const grupoSegmento = grid.getByTestId('filtro-tipo')
-      await expect(grupoSegmento).toBeVisible()
+      const cc = grid.getByLabel('Cilindrada (cc)')
+      await expect(cc).toBeVisible()
+      await expect(cc).toHaveValue('todo')
 
-      const chips = grupoSegmento.getByRole('button')
-      const totalChips = await chips.count()
-      expect(totalChips).toBeGreaterThan(1)
+      // "Todas" devuelve el catálogo completo de la marca
+      const opcionesCc = await cc.locator('option').allInnerTexts()
+      expect(opcionesCc[0]).toMatch(/todas/i)
 
-      // El primer chip es "Todos" y arranca activo
-      await expect(chips.first()).toHaveAttribute('aria-pressed', 'true')
+      await cc.selectOption('cc-125')
+      await expect(grid.getByRole('status')).toContainText(/de \d+ modelos/)
+      const filtrado = await grid.locator(card).count()
+      expect(filtrado).toBeLessThan(totalInicial)
 
-      const chipFiltro = chips.nth(1)
-      const nombreChip = (await chipFiltro.innerText()).trim()
-      await chipFiltro.click()
-      await expect(chipFiltro).toHaveAttribute('aria-pressed', 'true')
-      await expect(chips.first()).toHaveAttribute('aria-pressed', 'false')
-
-      const contador = grid.getByRole('status')
-      await expect(contador).toContainText(/\d+/)
-      await expect(grid.getByText(nombreChip).first()).toBeVisible()
-
-      await grid.getByRole('button', { name: /limpiar/i }).click()
-      await expect(chips.first()).toHaveAttribute('aria-pressed', 'true')
+      // Cada modelo mostrado cumple el rango 125 cc
+      await grid.getByRole('button', { name: /limpiar filtros/i }).click()
+      await expect(cc).toHaveValue('todo')
       expect(await grid.locator(card).count()).toBe(totalInicial)
     })
 
-    test(`${marca}: los chips del catálogo son alcanzables con teclado`, async ({ page }) => {
+    test(`${marca}: filtra por rango de precio`, async ({ page }) => {
       await page.goto(`/${marca}`)
 
       const grid = page.locator(catalogo)
       await grid.scrollIntoViewIfNeeded()
 
-      const chip = grid.getByTestId('filtro-tipo').getByRole('button').nth(1)
-      await chip.focus()
-      await expect(chip).toBeFocused()
-      await page.keyboard.press('Enter')
-      await expect(chip).toHaveAttribute('aria-pressed', 'true')
-      await page.keyboard.press(' ')
-      await expect(chip).toHaveAttribute('aria-pressed', 'true')
+      const precio = grid.getByLabel('Precio')
+      await expect(precio).toBeVisible()
+      await expect(precio).toHaveValue('precio-todo')
+
+      // Los rótulos se derivan de los precios reales del catálogo
+      const opciones = await precio.locator('option').allInnerTexts()
+      expect(opciones[0]).toMatch(/todos/i)
+      expect(opciones.length).toBeGreaterThan(2)
+
+      const totalInicial = await grid.locator(card).count()
+
+      // El rango más alto nunca puede devolver más que el catálogo completo
+      const ids = await precio.locator('option').evaluateAll((nodes) =>
+        nodes.map((n) => n.value).filter(Boolean),
+      )
+      await precio.selectOption(ids[ids.length - 1])
+      const enRangoAlto = await grid.locator(card).count()
+      expect(enRangoAlto).toBeLessThanOrEqual(totalInicial)
+
+      await precio.selectOption('precio-todo')
+      expect(await grid.locator(card).count()).toBe(totalInicial)
+    })
+
+    test(`${marca}: cada desplegable tiene label asociado y foco visible`, async ({ page }) => {
+      await page.goto(`/${marca}`)
+
+      const grid = page.locator(catalogo)
+      await grid.scrollIntoViewIfNeeded()
+
+      for (const nombre of ['Cilindrada (cc)', 'Precio', 'Ordenar por']) {
+        const select = grid.getByLabel(nombre)
+        await expect(select).toBeVisible()
+
+        await select.focus()
+        await expect(select).toBeFocused()
+
+        const outline = await select.evaluate((el) => getComputedStyle(el).outlineStyle)
+        expect(outline).not.toBe('none')
+      }
+    })
+
+    test(`${marca}: busca por nombre de modelo`, async ({ page }) => {
+      await page.goto(`/${marca}`)
+
+      const grid = page.locator(catalogo)
+      await grid.scrollIntoViewIfNeeded()
+
+      const totalInicial = await grid.locator(card).count()
+      const primera = (await grid.locator(card).first().locator('h3').first().innerText()).trim()
+      const termino = primera.split(/\s+/)[0]
+
+      const buscador = grid.getByLabel('Buscar').first()
+      await buscador.fill(termino)
+
+      const encontrados = await grid.locator(card).count()
+      expect(encontrados).toBeGreaterThan(0)
+      expect(encontrados).toBeLessThanOrEqual(totalInicial)
+
+      // Búsqueda sin coincidencias → empty state, sin crashear
+      await buscador.fill('zzz-no-existe-zzz')
+      await expect(grid.getByText(/sin resultados/i)).toBeVisible()
+
+      await buscador.fill('')
+      expect(await grid.locator(card).count()).toBe(totalInicial)
+    })
+
+    test(`${marca}: en móvil los filtros abren en un drawer con Aplicar y Limpiar`, async ({ page }) => {
+      await page.setViewportSize({ width: 390, height: 844 })
+      await page.goto(`/${marca}`)
+
+      const grid = page.locator(catalogo)
+      await grid.scrollIntoViewIfNeeded()
+
+      const boton = grid.getByRole('button', { name: /filtros/i })
+      await expect(boton).toBeVisible()
+      await expect(boton).toHaveAttribute('aria-expanded', 'false')
+
+      await boton.click()
+
+      const drawer = page.getByRole('dialog')
+      await expect(drawer).toBeVisible()
+      await expect(drawer.getByLabel('Cilindrada (cc)')).toBeVisible()
+      await expect(drawer.getByLabel('Precio')).toBeVisible()
+      await expect(drawer.getByRole('button', { name: /aplicar/i })).toBeVisible()
+      await expect(drawer.getByRole('button', { name: /limpiar filtros/i })).toBeVisible()
+
+      // Escape cierra y devuelve el foco al botón disparador
+      await page.keyboard.press('Escape')
+      await expect(drawer).toBeHidden()
+      await expect(boton).toBeFocused()
+    })
+
+    test(`${marca}: el drawer aplica el filtro y no desborda en horizontal`, async ({ page }) => {
+      await page.setViewportSize({ width: 360, height: 800 })
+      await page.goto(`/${marca}`)
+
+      const grid = page.locator(catalogo)
+      await grid.scrollIntoViewIfNeeded()
+
+      const totalInicial = await grid.locator(card).count()
+
+      await grid.getByRole('button', { name: /filtros/i }).click()
+      const drawer = page.getByRole('dialog')
+      await drawer.getByLabel('Cilindrada (cc)').selectOption('cc-125')
+      await drawer.getByRole('button', { name: /aplicar/i }).click()
+      await expect(drawer).toBeHidden()
+
+      const desborde = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      )
+      expect(desborde).toBeLessThanOrEqual(1)
+      expect(await grid.locator(card).count()).toBeLessThanOrEqual(totalInicial)
     })
 
     test(`${marca}: la tarjeta de moto no usa borde de color grueso`, async ({ page }) => {
@@ -92,17 +191,26 @@ test.describe('Catálogo y filtros', () => {
     })
   }
 
-  test('bajaj: el selector de líneas acota el catálogo', async ({ page }) => {
+  test('bajaj: la tarjeta de línea acota el catálogo y se sincroniza con el desplegable', async ({ page }) => {
     await page.goto('/bajaj')
 
-    const chips = page.getByRole('button', { name: /pulsar/i }).first()
-    await chips.scrollIntoViewIfNeeded()
-    await chips.click()
-    await expect(chips).toHaveAttribute('aria-pressed', 'true')
+    const tarjeta = page.getByRole('button', { name: /pulsar/i }).first()
+    await tarjeta.scrollIntoViewIfNeeded()
+    await tarjeta.click()
+    await expect(tarjeta).toHaveAttribute('aria-pressed', 'true')
 
     const grid = page.locator('#bajaj-catalogo')
     await expect(grid).toBeVisible()
     await expect(grid.getByRole('heading', { level: 2 })).toContainText(/Pulsar/i)
+
+    // La tarjeta y el desplegable "Línea" comparten estado
+    await expect(grid.getByLabel('Línea')).not.toHaveValue('')
+
+    // Volver a pulsar la línea activa restaura el catálogo completo
+    const totalLinea = await grid.locator('.bajaj-card').count()
+    await tarjeta.click()
+    await expect(grid.getByLabel('Línea')).toHaveValue('')
+    expect(await grid.locator('.bajaj-card').count()).toBeGreaterThan(totalLinea)
   })
 
   test('abre el detalle de una moto y lo cierra con Escape', async ({ page }) => {
@@ -140,9 +248,9 @@ test.describe('Catálogo y filtros', () => {
   test('auteco: la sección de eléctricas es alcanzable', async ({ page }) => {
     await page.goto('/auteco')
 
-    const chip = page.getByRole('button', { name: /eléctric/i }).first()
-    await chip.scrollIntoViewIfNeeded()
-    await chip.click()
+    const tarjeta = page.getByRole('button', { name: /eléctric/i }).first()
+    await tarjeta.scrollIntoViewIfNeeded()
+    await tarjeta.click()
 
     await expect(page.locator('.honda-tile__countdown')).toHaveCount(0)
     await expect(page.getByText(/eléctric/i).first()).toBeVisible()

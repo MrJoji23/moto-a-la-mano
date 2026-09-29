@@ -40,7 +40,10 @@ const AutecoPage = () => {
       />
       {marcaSeleccionada === "electricos" && <ElectricSection />}
       {marcaSeleccionada !== "electricos" && (
-        <AutecoMotosGrid marcaSeleccionada={marcaSeleccionada} />
+        <AutecoMotosGrid
+          marcaSeleccionada={marcaSeleccionada}
+          onMarcaSelect={setMarcaSeleccionada}
+        />
       )}
     </main>
   );

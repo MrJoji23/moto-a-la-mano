@@ -1,7 +1,13 @@
 import { useMemo, useRef, useState } from 'react';
 import { LazyMotion, domAnimation, m, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
-import { AUTECO_MOTOS, AUTECO_BRANDS, AUTECO_TIPOS } from '../../data/AUTECO/autecoData';
+import { AUTECO_MOTOS, AUTECO_BRANDS } from '../../data/AUTECO/autecoData';
+import {
+  FILTROS_INICIALES,
+  construirRangosPrecio,
+  filtrarMotos,
+  ordenarMotos,
+} from '../../data/catalogFilters';
 import MotoInfoModal from '../BajajPage/MotoInfoModal';
 import GridFilters from '../main-page/GridFilters/GridFilters';
 import './AutecoMotosGrid.css';
@@ -27,63 +33,50 @@ const HOVER_ANIM = { y: -5 };
 const HOVER_TRANS = { duration: 0.22 };
 const NO_HOVER = {};
 
-const FILTROS_INICIALES = { tipo: "", submarca: "" };
+/* La línea "Eléctricos" tiene su propia sección (ElectricSection) y no se
+   ofrece en el desplegable: elegirla sacaría el grid de la vista. */
+const LINEAS_CON_GRID = AUTECO_BRANDS.filter((marca) => marca.id !== 'electricos');
 
-const AutecoMotosGrid = ({ marcaSeleccionada }) => {
+const AutecoMotosGrid = ({ marcaSeleccionada, onMarcaSelect }) => {
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' });
   const shouldReduce = useReducedMotion();
   const [filtros, setFiltros] = useState(FILTROS_INICIALES);
+  const [busqueda, setBusqueda] = useState('');
+  const [orden, setOrden] = useState('');
   const [motoSeleccionada, setMotoSeleccionada] = useState(null);
 
   const motoActiva = !marcaSeleccionada || marcaSeleccionada === "todas";
 
-  const motos = useMemo(() => {
-    const base = motoActiva
-      ? AUTECO_MOTOS
-      : AUTECO_MOTOS.filter((moto) => moto.marca === marcaSeleccionada);
+  const catalogo = useMemo(
+    () =>
+      motoActiva
+        ? AUTECO_MOTOS
+        : AUTECO_MOTOS.filter((moto) => moto.marca === marcaSeleccionada),
+    [marcaSeleccionada, motoActiva],
+  );
 
-    return base.filter(
-      (moto) =>
-        (!filtros.tipo || moto.tipoSlug === filtros.tipo) &&
-        (!filtros.submarca || moto.marca === filtros.submarca),
-    );
-  }, [marcaSeleccionada, motoActiva, filtros]);
+  const rangosPrecio = useMemo(() => construirRangosPrecio(catalogo), [catalogo]);
+
+  const motos = useMemo(
+    () => ordenarMotos(filtrarMotos(catalogo, { ...filtros, busqueda }, rangosPrecio), orden),
+    [catalogo, filtros, busqueda, rangosPrecio, orden],
+  );
 
   const marcaActual = AUTECO_BRANDS.find((b) => b.id === marcaSeleccionada);
   const subtitulo = marcaActual
     ? marcaActual.tagline
     : "TVS, Victory, Kymco, Ceronte y eléctricas con la mejor relación precio-calidad.";
 
-  const campos = useMemo(
-    () => [
-      {
-        name: "tipo",
-        label: "Segmento",
-        todos: "Todos",
-        opciones: AUTECO_TIPOS.filter((tipo) =>
-          AUTECO_MOTOS.some((moto) => moto.tipoSlug === tipo.slug),
-        ).map((tipo) => ({ value: tipo.slug, label: tipo.label })),
-      },
-      {
-        name: "submarca",
-        label: "Línea",
-        todos: "Todas",
-        opciones: AUTECO_BRANDS.map((marca) => ({
-          value: marca.id,
-          label: marca.name,
-        })),
-      },
-    ],
-    [],
-  );
-
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
+  const handleFilterChange = (name, value) => {
     setFiltros((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleReset = () => setFiltros(FILTROS_INICIALES);
+  const handleReset = () => {
+    setFiltros(FILTROS_INICIALES);
+    setBusqueda('');
+    setOrden('');
+  };
 
   const handleCotizar = (moto, e) => {
     e.stopPropagation();
@@ -122,8 +115,16 @@ const AutecoMotosGrid = ({ marcaSeleccionada }) => {
 
         <GridFilters
           resultado={motos.length}
+          total={catalogo.length}
           filtros={filtros}
-          campos={campos}
+          rangosPrecio={rangosPrecio}
+          busqueda={busqueda}
+          onSearch={setBusqueda}
+          orden={orden}
+          onOrdenChange={setOrden}
+          marcas={LINEAS_CON_GRID}
+          marcaSeleccionada={marcaSeleccionada === 'todas' ? null : marcaSeleccionada}
+          onMarcaSelect={onMarcaSelect}
           onChange={handleFilterChange}
           onReset={handleReset}
         />

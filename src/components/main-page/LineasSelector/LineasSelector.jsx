@@ -4,8 +4,11 @@ import "./LineasSelector.css";
 
 /**
  * Selector de líneas de una misma marca (Pulsar, Boxer, TVS, Kymco…).
- * Cada chip filtra el catálogo de la página; volver a pulsar la línea
- * activa la deselecciona y restaura el catálogo completo.
+ *
+ * No es una fila de chips: son tarjetas con logo y tagline que filtran el
+ * catálogo de la página; volver a pulsar la línea activa la deselecciona y
+ * restaura el catálogo completo. El desplegable "Línea" de la toolbar
+ * comparte el mismo estado, así que ambas vistas quedan sincronizadas.
  */
 const LineasSelector = ({
   eyebrow,
@@ -61,7 +64,7 @@ const LineasSelector = ({
               >
                 <button
                   type="button"
-                  className={`linea-chip${activa ? " linea-chip--active" : ""}`}
+                  className={`linea-card${activa ? " linea-card--active" : ""}`}
                   style={{
                     "--brand-color": linea.color,
                     "--brand-accent": `var(${accentVar})`,
@@ -69,20 +72,20 @@ const LineasSelector = ({
                   aria-pressed={activa}
                   onClick={() => alternar(linea.id)}
                 >
-                  <span className="linea-chip__logo-wrap">
+                  <span className="linea-card__logo-wrap">
                     <img
                       src={linea.bg}
                       alt=""
-                      className="linea-chip__logo"
+                      className="linea-card__logo"
                       loading="lazy"
                       decoding="async"
                     />
                   </span>
-                  <span className="linea-chip__body">
-                    <span className="linea-chip__name">{linea.name}</span>
-                    <span className="linea-chip__tagline">{linea.tagline}</span>
+                  <span className="linea-card__body">
+                    <span className="linea-card__name">{linea.name}</span>
+                    <span className="linea-card__tagline">{linea.tagline}</span>
                   </span>
-                  <span className="linea-chip__check" aria-hidden="true">
+                  <span className="linea-card__check" aria-hidden="true">
                     {activa ? "✓" : "→"}
                   </span>
                 </button>
