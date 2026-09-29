@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   NotFound.css – MegaMoto Group (Rediseñado)
+   NotFound.css – MotoCenter Group (Rediseñado)
    ═══════════════════════════════════════════════ */
 
 .not-found {
@@ -24,7 +24,7 @@
   height: 400px;
   background: radial-gradient(
     ellipse at center,
-    rgba(204, 31, 37, 0.1) 0%,
+    rgba(255, 159, 28, 0.1) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -43,7 +43,7 @@
   position: relative;
   z-index: 1;
   /* Sombra de texto sutil */
-  text-shadow: 0 0 60px rgba(204, 31, 37, 0.3);
+  text-shadow: 0 0 60px rgba(255, 159, 28, 0.3);
 }
 
 /* Título */
@@ -116,7 +116,7 @@
 .not-found__btn:hover {
   background: var(--mm-accent-hover);
   transform: scale(1.03);
-  box-shadow: 0 8px 28px rgba(204, 31, 37, 0.4);
+  box-shadow: 0 8px 28px rgba(255, 159, 28, 0.4);
 }
 
 /* Focus-visible for keyboard */

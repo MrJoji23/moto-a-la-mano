@@ -30,8 +30,8 @@ const HondaTeaserCard = () => {
     <div
       className="brand-tile honda-tile"
       style={{
-        '--brand-color': '#E2001A',
-        '--brand-glow': 'rgba(226, 0, 26, 0.15)',
+        '--brand-color': '#FF9F1C',
+        '--brand-glow': 'rgba(255, 159, 28, 0.15)',
       }}
     >
       <div className="brand-tile__glow" />
@@ -49,7 +49,7 @@ const HondaTeaserCard = () => {
           <h3 className="brand-tile__name">Honda</h3>
           <p className="brand-tile__desc">
             Muy pronto sumamos a Honda, la marca de motos más grande del
-            mundo, a nuestro portafolio de MegaMoto Group.
+            mundo, a nuestro portafolio de MotoCenter Group.
           </p>
         </div>
 

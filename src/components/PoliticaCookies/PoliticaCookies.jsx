@@ -7,7 +7,7 @@ const PoliticaCookies = () => {
       <article className="td-document">
         <header className="td-doc-header">
           <h1 className="td-doc-title">Política de Uso de Cookies</h1>
-          <p className="td-doc-meta">MEGA MOTO GROUP · Actualizado enero 2025</p>
+          <p className="td-doc-meta">MOTOCENTER · Actualizado enero 2025</p>
         </header>
 
         <div className="td-content">

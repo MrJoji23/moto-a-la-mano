@@ -19,14 +19,14 @@ export const BOXER_MOTOS = [
     tanque: '10.5 L',
     transmision: '4 velocidades',
     img: boxer_ct100_ks,
-    color: '#B8860B',
+    color: '#FF9F1C',
     descripcion: 'La Boxer CT100 KS es sinónimo de economía y confiabilidad. Ideal para trabajo diario, con consumo excepcional y bajo costo de mantenimiento. La moto de trabajo más vendida de Colombia.',
     colores: [
       {
         nombre: 'Amarillo Negro Gris',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/boxer-ct100-ks/estaticas/mix-gris.webp',
-        hex: '#D4A017',
+        hex: '#FF9F1C',
       },
       {
         nombre: 'Negro Infinito Verde',
@@ -38,13 +38,13 @@ export const BOXER_MOTOS = [
         nombre: 'Negro Mate Amarillo',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/boxer-ct100-ks/estaticas/mix-negro.webp',
-        hex: '#1a1a1a',
+        hex: '#24282C',
       },
       {
         nombre: 'Rojo Negro',
         imagen: '/assets/motos-bajaj/colores/rojo-negro.webp',
         estatica: '/assets/motos-bajaj/boxer-ct100-ks/estaticas/mix-negro-rojo.webp',
-        hex: '#CC1F25',
+        hex: '#FF9F1C',
       }
     ],
     visor360: [
@@ -71,7 +71,7 @@ export const BOXER_MOTOS = [
     tanque: '10.5 L',
     transmision: '4 velocidades',
     img: boxer_ct100_ks_boxer_racing,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'Edición especial Boxer Racing con gráficos deportivos exclusivos. Toda la confiabilidad de la CT100 con un toque de actitud Racing.',
      colores: [
       {
@@ -84,7 +84,7 @@ export const BOXER_MOTOS = [
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/gris.webp',
         estatica: '/assets/motos-bajaj/boxer_ct100_ks_boxer_racing/estaticas/rojo_eclipse.webp',
-        hex: '#CC1F25',
+        hex: '#FF9F1C',
       },
     ],
     visor360: [
@@ -112,7 +112,7 @@ export const BOXER_MOTOS = [
     tanque: '11 L',
     transmision: '5 velocidades',
     img: boxer_150_x,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Boxer 150 X eleva el concepto de moto de trabajo con mayor cilindrada y potencia. Ideal para rutas largas y carga diaria con mayor rendimiento.',
     colores: [
       {
@@ -125,7 +125,7 @@ export const BOXER_MOTOS = [
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/rojo_eclipse.webp',
         estatica: '/assets/motos-bajaj/boxer_150x/estaticas/rojo_eclipse.webp',
-        hex: '#003366',
+        hex: '#4A5058',
       },
       {
         nombre: 'Negro Infinito Verde',
@@ -159,20 +159,20 @@ export const BOXER_MOTOS = [
     tanque: '10.5 L',
     transmision: '4 velocidades',
     img: boxer_ct100_es,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Boxer CT100 ES agrega el arranque eléctrico para mayor comodidad. Toda la confiabilidad de la CT100 con la facilidad del arranque eléctrico.',
       colores: [
       {
         nombre: 'Azul Turquesa',
         imagen: '/assets/motos-bajaj/colores/azul_turquesa.webp',
         estatica: '/assets/motos-bajaj/boxer_ct100es/estaticas/azul_turquesa.webp',
-        hex: '#40E0D0',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Negro Infinito',
         imagen: '/assets/motos-bajaj/colores/azul_petroleo.webp',
         estatica: '/assets/motos-bajaj/boxer_ct100es/estaticas/negro_infinito.webp',
-        hex: '#003366',
+        hex: '#4A5058',
       },
       {
         nombre: 'Negro',
@@ -184,13 +184,13 @@ export const BOXER_MOTOS = [
         nombre: 'Purpura',
         imagen: '/assets/motos-bajaj/colores/gris-grafito.png',
         estatica: '/assets/motos-bajaj/boxer_ct100es/estaticas/purpura.webp',
-        hex: '#391447',
+        hex: '#2E2140',
       },
       {
         nombre: 'Rojo',
         imagen: '/assets/motos-bajaj/colores/rojo-negro.png',
         estatica: '/assets/motos-bajaj/boxer_ct100es/estaticas/rojo.webp',
-        hex: '#bd1313',
+        hex: '#FF9F1C',
       },
     ],
     visor360: [
@@ -217,20 +217,20 @@ export const BOXER_MOTOS = [
     tanque: '10.5 L',
     transmision: '4 velocidades',
     img: boxer_ct100_es_racing,
-    color: '#B8860B',
+    color: '#FF9F1C',
     descripcion: 'Edición Racing de la CT100 ES con arranque eléctrico y gráficos deportivos exclusivos. La combinación perfecta entre practicidad y estilo.',
       colores: [
       {
         nombre: 'Gris',
         imagen: '/assets/motos-bajaj/colores/azul_turquesa.webp',
         estatica: '/assets/motos-bajaj/boxer_ct100es_boxer_racing/estaticas/gris.webp',
-        hex: '#2b9e93',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Rojo',
         imagen: '/assets/motos-bajaj/colores/rojo-negro.png',
         estatica: '/assets/motos-bajaj/boxer_ct100es_boxer_racing/estaticas/rojo_negro.webp',
-        hex: '#bd1313',
+        hex: '#FF9F1C',
       },
     ],
     visor360: [
@@ -257,32 +257,32 @@ export const BOXER_MOTOS = [
     tanque: '10.5 L',
     transmision: '5 velocidades',
     img: boxer_ct125_sport,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Boxer CT125 Sport eleva el estándar de las motos de trabajo. Mayor cilindrada, más potencia y un diseño Sport que la diferencia en las calles.',
       colores: [
       {
         nombre: 'Negro',
         imagen: '/assets/motos-bajaj/colores/negro_infinito.webp',
         estatica: '/assets/motos-bajaj/boxer_ct125_sport/estaticas/negro.webp',
-        hex: '#2b9e93',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Rojo',
         imagen: '/assets/motos-bajaj/colores/rojo-negro.png',
         estatica: '/assets/motos-bajaj/boxer_ct125_sport/estaticas/rojo.webp',
-        hex: '#bd1313',
+        hex: '#FF9F1C',
       },
       {
         nombre: 'Purpura',
         imagen: '/assets/motos-bajaj/colores/purpura.png',
         estatica: '/assets/motos-bajaj/boxer_ct125_sport/estaticas/purpura.webp',
-        hex: '#2b9e93',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Turquesa',
         imagen: '/assets/motos-bajaj/colores/azul_turquesa.webp',
         estatica: '/assets/motos-bajaj/boxer_ct125_sport/estaticas/turquesa.webp',
-        hex: '#bd1313',
+        hex: '#FF9F1C',
       }
     ],
     visor360: [

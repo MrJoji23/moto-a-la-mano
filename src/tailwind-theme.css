@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════════════════
+   Tailwind CSS v4 — tema MotoCenter
+   Configuración CSS-first: Tailwind v4 no usa tailwind.config.js,
+   los design tokens se declaran con @theme. Este archivo expone la
+   identidad como utilidades (bg-carbon, text-amber, border-steel…) y
+   mantiene un único origen de verdad frente a los tokens --mm-* de
+   `src/index.css`.
+
+   Nota: el proyecto usa CSS plano;Tailwind se carga vía
+   `@tailwindcss/vite` en `vite.config.js`. No se añade
+   `@import "tailwindcss"` para no activar Preflight y alterar las
+   hojas de estilo existentes. Si en el futuro se migra a utilidades,
+   basta con importar este tema junto con el entrypoint de Tailwind.
+   ═══════════════════════════════════════════════════════════════ */
+@theme {
+  /* ── Superficies (Dark Carbon) ── */
+  --color-carbon: #181a1b;
+  --color-carbon-soft: #1e2023;
+  --color-steel: #24282c;
+  --color-steel-2: #2e3339;
+  --color-steel-3: #383e45;
+
+  /* ── Texto ── */
+  --color-ink: #f5f6f8;
+  --color-ink-muted: #a1a1aa;
+  --color-ink-caption: #7c7c85;
+  --color-ink-inverse: #181a1b;
+
+  /* ── Acentos ── */
+  --color-amber: #ff9f1c;
+  --color-amber-hover: #ffb65c;
+  --color-amber-active: #e88a00;
+  --color-amber-ink: #241600;
+  --color-cyan: #00e5ff;
+  --color-cyan-hover: #66eeff;
+  --color-cyan-ink: #002430;
+  --color-violet: #a855f7;
+  --color-violet-soft: #c77dff;
+
+  /* ── Estados ── */
+  --color-success: #22c55e;
+  --color-success-ink: #052e16;
+  --color-warning: #ff9f1c;
+  --color-warning-ink: #241600;
+  --color-danger: #a855f7;
+  --color-danger-ink: #1a0930;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-ink: #04231a;
+
+  /* ── Bordes ── */
+  --color-hairline: rgba(245, 246, 248, 0.09);
+  --color-hairline-strong: rgba(245, 246, 248, 0.2);
+
+  /* ── Tipografía ── */
+  --font-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* ── Radios ── */
+  --radius-card: 14px;
+  --radius-btn: 8px;
+  --radius-pill: 20px;
+
+  /* ── Sombras ── */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
+  --shadow-button: 0 6px 32px rgba(255, 159, 28, 0.28);
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.35);
+}

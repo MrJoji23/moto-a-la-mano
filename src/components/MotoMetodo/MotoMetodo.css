@@ -1,5 +1,5 @@
 .tradein {
-  background: #0A0D1A;
+  background: #1E2023;
   padding: 5rem 2.5rem;
   position: relative;
   overflow: hidden;
@@ -24,7 +24,7 @@
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #CC1F25 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, #FF9F1C 50%, transparent 100%);
   transform-origin: center;
   margin-top: 4rem;
 }
@@ -52,7 +52,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #CC1F25;
+  color: #FF9F1C;
 }
 
 .tradein__text h2 {
@@ -64,12 +64,12 @@
 }
 
 .tradein__text h2 .accent-red {
-  color: #CC1F25;
+  color: #FF9F1C;
 }
 
 .tradein__sub {
   font-size: 1rem;
-  color: #a0aab4;
+  color: #A1A1AA;
   line-height: 1.65;
   max-width: 480px;
   margin: 0;
@@ -80,8 +80,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #CC1F25;
-  color: #fff;
+  background: #FF9F1C;
+  color: #181a1b;
   border: none;
   padding: 13px 28px;
   border-radius: 6px;
@@ -102,8 +102,8 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: rgba(204, 31, 37, 0.08);
-  border: 2px solid rgba(204, 31, 37, 0.2);
+  background: rgba(255, 159, 28, 0.08);
+  border: 2px solid rgba(255, 159, 28, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +111,7 @@
 
 .tradein__moto-icon {
   font-size: 5rem;
-  color: #CC1F25;
+  color: #FF9F1C;
   opacity: 0.85;
 }
 

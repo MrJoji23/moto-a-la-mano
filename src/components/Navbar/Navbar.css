@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   Navbar — Mega Moto Group
+   Navbar — MotoCenter
    ═══════════════════════════════════════════════ */
 
 /* ── Enlace de salto (accesibilidad) ────────────── */
@@ -64,7 +64,7 @@
 
 /* Estado sólido (tras hacer scroll) */
 .mm-navbar--scrolled {
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(24, 26, 27, 0.9);
   border-bottom: 1px solid var(--mm-border);
   backdrop-filter: blur(12px);
 }
@@ -308,7 +308,7 @@
 .mm-nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(24, 26, 27, 0.8);
   z-index: 9100;
   backdrop-filter: blur(4px);
 }
@@ -404,7 +404,7 @@
 
 .mm-nav-mobile__close:hover {
   color: var(--mm-accent);
-  background: rgba(204, 31, 37, 0.12);
+  background: rgba(255, 159, 28, 0.12);
 }
 
 .mm-nav-mobile__list {
@@ -438,7 +438,7 @@
 .mm-nav-mobile__link:focus-visible,
 .mm-nav-mobile__link.active {
   color: var(--mm-accent);
-  background: rgba(204, 31, 37, 0.08);
+  background: rgba(255, 159, 28, 0.08);
 }
 
 .mm-nav-mobile__footer {

@@ -14,20 +14,20 @@ export const DISCOVER_MOTOS =[
     tanque: '10 L',
     transmision: '5 velocidades',
     img: discover_125_sport,
-    color: '#B8860B',
+    color: '#FF9F1C',
     descripcion: 'La Discover 125 SPORT es la moto perfecta para la ciudad. Ágil, eficiente y con un diseño dinámico que la hace destacar en el tráfico urbano.',
     colores: [
       {
         nombre: 'Rojo Negro',
         imagen: '/assets/motos-bajaj/colores/rojo-negro.png',
         estatica: '/assets/motos-bajaj/discover-125-sport/estaticas/rojo-negro.webp',
-        hex: '#CC1F25',
+        hex: '#FF9F1C',
       },
       {
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/rojo_eclipse.webp',
         estatica: '/assets/motos-bajaj/discover-125-sport/estaticas/rojo-eclipse.webp',
-        hex: '#CC1F25',
+        hex: '#FF9F1C',
       },
       {
         nombre: 'Negro Infinito',

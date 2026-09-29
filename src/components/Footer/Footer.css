@@ -1,6 +1,6 @@
 /* ===== CONTENEDOR PRINCIPAL ===== */
 .footer-container {
-  background-color: #0D0F1A;
+  background-color: #1E2023;
   color: white;
   position: relative;
   width: 100%;
@@ -13,7 +13,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #bb0613;
+  background-color: #FF9F1C;
 }
 
 .footer-content {
@@ -60,7 +60,7 @@
 
 .company-razon {
   font-size: 13px;
-  color: #94a3b8;
+  color: #A1A1AA;
   margin: 0;
 }
 
@@ -89,7 +89,7 @@
 
 /* ===== ETIQUETAS ===== */
 .footer-label {
-  color: #bb0613;
+  color: #FF9F1C;
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 900;
@@ -107,7 +107,7 @@
 }
 
 .footer-sub-text {
-  color: #94a3b8;
+  color: #A1A1AA;
   font-size: 12px;
   margin: 0;
 }
@@ -134,8 +134,8 @@
 }
 
 .social-box:hover {
-  background-color: #bb0613;
-  border-color: #bb0613;
+  background-color: #FF9F1C;
+  border-color: #FF9F1C;
   transform: translateY(-3px);
 }
 
@@ -150,7 +150,7 @@
 }
 
 .footer-links a {
-  color: #94a3b8;
+  color: #A1A1AA;
   text-decoration: none;
   font-size: 13px;
   transition: color 0.2s;
@@ -164,7 +164,7 @@
 .footer-links button {
   background: none;
   border: none;
-  color: #94a3b8;
+  color: #A1A1AA;
   text-decoration: none;
   font-size: 13px;
   transition: color 0.2s;
@@ -181,12 +181,12 @@
 
 /* Contraste AA sobre el fondo del footer */
 .footer-link-button {
-  color: #cbd5e1;
+  color: #D6D7DA;
 }
 
 /* ===== MAPA ===== */
 .map-link {
-  color: #bb0613;
+  color: #FF9F1C;
   text-decoration: none;
   font-size: 12px;
   margin-top: 4px;
@@ -209,7 +209,7 @@
 }
 
 .icon-red {
-  color: #bb0613;
+  color: #FF9F1C;
 }
 
 /* ===== COPYRIGHT ===== */
@@ -234,7 +234,7 @@
 
 .footer-developers-label {
   font-size: 9px;
-  color: #64748b;
+  color: #8A8A93;
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
@@ -247,7 +247,7 @@
 
 .footer-developers-links a {
   font-size: 11px;
-  color: #94a3b8;
+  color: #A1A1AA;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -257,13 +257,13 @@
 }
 
 .footer-developers-divider {
-  color: #64748b;
+  color: #8A8A93;
   font-size: 10px;
 }
 
 .copyright-text {
   font-size: 9px;
-  color: #64748b;
+  color: #8A8A93;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin: 0;
@@ -277,7 +277,7 @@
 
 .footer-legal a {
   font-size: 9px;
-  color: #64748b;
+  color: #8A8A93;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -289,7 +289,7 @@
 }
 
 .divider {
-  color: #64748b;
+  color: #8A8A93;
   font-size: 9px;
 }
 

@@ -1,6 +1,6 @@
 /* ── Visor360 Container ─────────────────────────── */
 .visor360 {
-  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  background: linear-gradient(145deg, #24282C 0%, #24282C 100%);
   border-radius: 20px;
   padding: 20px;
   box-shadow: 
@@ -26,7 +26,7 @@
 
 .visor360__icon {
   font-size: 24px;
-  color: #CC1F25;
+  color: #FF9F1C;
   animation: rotate-hint 2s ease-in-out infinite;
 }
 
@@ -58,17 +58,17 @@
 }
 
 .visor360__autoplay-btn:hover {
-  border-color: #CC1F25;
-  color: #CC1F25;
-  background: rgba(204, 31, 37, 0.1);
+  border-color: #FF9F1C;
+  color: #FF9F1C;
+  background: rgba(255, 159, 28, 0.1);
   transform: scale(1.05);
 }
 
 .visor360__autoplay-btn--active {
-  border-color: #CC1F25;
-  color: #CC1F25;
-  background: rgba(204, 31, 37, 0.15);
-  box-shadow: 0 0 20px rgba(204, 31, 37, 0.3);
+  border-color: #FF9F1C;
+  color: #FF9F1C;
+  background: rgba(255, 159, 28, 0.15);
+  box-shadow: 0 0 20px rgba(255, 159, 28, 0.3);
 }
 
 /* ── Image Container ──────────────────────────── */
@@ -164,7 +164,7 @@
 }
 
 .visor360__nav:hover {
-  background: #CC1F25;
+  background: #FF9F1C;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -192,9 +192,9 @@
 
 .visor360__progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #CC1F25, #ff4757);
+  background: linear-gradient(90deg, #FF9F1C, #FF9F1C);
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(204, 31, 37, 0.5);
+  box-shadow: 0 0 10px rgba(255, 159, 28, 0.5);
 }
 
 .visor360__dots {
@@ -220,9 +220,9 @@
 }
 
 .visor360__dot--active {
-  background: #CC1F25;
+  background: #FF9F1C;
   transform: scale(1.3);
-  box-shadow: 0 0 8px rgba(204, 31, 37, 0.6);
+  box-shadow: 0 0 8px rgba(255, 159, 28, 0.6);
 }
 
 /* ── Responsive ───────────────────────────────── */

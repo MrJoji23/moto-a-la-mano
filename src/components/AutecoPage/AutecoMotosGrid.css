@@ -91,7 +91,7 @@
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #fff;
+  color: #181a1b;
   padding: 5px 0;
 }
 
@@ -120,7 +120,7 @@
 .auteco-mcard__img-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 45%, rgba(2, 6, 23, 0.85) 100%);
+  background: linear-gradient(to bottom, transparent 45%, rgba(24, 26, 27, 0.85) 100%);
   pointer-events: none;
 }
 
@@ -129,7 +129,7 @@
   bottom: 0.75rem;
   left: 0.75rem;
   z-index: 2;
-  background: rgba(2, 6, 23, 0.7);
+  background: rgba(24, 26, 27, 0.7);
   border: 1px solid var(--mm-border-strong);
   color: var(--mm-text);
   font-size: 9px;
@@ -304,9 +304,9 @@
 
 .auteco-mcard__btn-solid:hover,
 .auteco-mcard__btn-solid:focus-visible {
-  background: #2749c4;
-  border-color: #2749c4;
-  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.45);
+  background: #00E5FF;
+  border-color: #00E5FF;
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.45);
 }
 
 .auteco-mcard__bar {

@@ -24,20 +24,20 @@ export const PULSAR_MOTOS =[
     transmision: '5 velocidades',
     destacado: true,
     img: pulsar_n125_carburada,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La nueva Pulsar N125 Carburada no es solo una moto de entrada: es tu pase directo al mundo de la adrenalina, el estilo y la tecnología Pulsar. Con un diseño deportivo que impone presencia, un motor eficiente que responde con agilidad, y detalles que marcan la diferencia.',
     colores: [
       {
         nombre: 'Roja',
         imagen: '/assets/motos-bajaj/colores/rojo-negro.png',
         estatica: '/assets/motos-bajaj/pulsar-n125-carburada/estaticas/roja.webp',
-        hex: '#CC1F25',
+        hex: '#FF9F1C',
       },
       {
         nombre: 'Purpura',
         imagen: '/assets/motos-bajaj/colores/purpura.png',
         estatica: '/assets/motos-bajaj/pulsar-n125-carburada/estaticas/purpura.webp',
-        hex: '#800080',
+        hex: '#A855F7',
       },
       {
         nombre: 'Verde',
@@ -70,7 +70,7 @@ export const PULSAR_MOTOS =[
     tanque: '12 L',
     transmision: '6 velocidades',
     img: pulsar_ns400_z,
-    color: '#B8860B',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar NS 400 Z es la naked más potente de Bajaj. Con 39.4 HP y un diseño agresivo, es para los que no se conforman con menos.',
 
     colores: [
@@ -96,7 +96,7 @@ export const PULSAR_MOTOS =[
         nombre: 'Rojo Racing',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns-400z/estaticas/rojo-racing.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       }
     ],
     visor360:[
@@ -123,7 +123,7 @@ export const PULSAR_MOTOS =[
     tanque: '13 L',
     transmision: '6 velocidades',
     img: pulsar_rs200,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar RS 200 es la moto más deportiva de la línea Bajaj. Con diseño Full-Fairing y motor de inyección electrónica, ofrece una experiencia emocionante tanto en ciudad como en carretera.',
     colores: [
       {
@@ -142,7 +142,7 @@ export const PULSAR_MOTOS =[
         nombre: 'Albirojo',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-rs-200/estaticas/albirojo.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       }
     ],
     visor360:[
@@ -170,14 +170,14 @@ export const PULSAR_MOTOS =[
     tanque: '12 L',
     transmision: '6 velocidades',
     img: pulsar_ns200_fi_abs_dc,
-    color: '#B8860B',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar NS 200 FI ABS DC es la top de la línea NS. Motor de 200cc con inyección, ABS de doble canal y un diseño que no pasa desapercibido.',
     colores: [
       {
         nombre: 'Azul Azalea',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns200-fi-abs-dc/estaticas/azul-azalea.webp',
-        hex: '#3b82f6',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Gris Grafito',
@@ -195,7 +195,7 @@ export const PULSAR_MOTOS =[
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns200-fi-abs-dc/estaticas/rojo-eclipse.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       }
     ],
     visor360:[
@@ -222,14 +222,14 @@ export const PULSAR_MOTOS =[
     tanque: '12 L',
     transmision: '6 velocidades',
     img: pulsar_ns200_fi_abs_sc,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar NS 200 FI ABS SC ofrece toda la potencia del motor de 200cc con ABS de canal simple, haciendo la tecnología de seguridad más accesible.',
     colores: [
       {
         nombre: 'Azul Azalea',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns200-fi-abs-sc/estaticas/azul-azalea.webp',
-        hex: '#3b82f6',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Gris Grafito',
@@ -247,7 +247,7 @@ export const PULSAR_MOTOS =[
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns200-fi-abs-sc/estaticas/rojo-eclipse.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       }
     ],
     visor360:[
@@ -274,14 +274,14 @@ export const PULSAR_MOTOS =[
     tanque: '14 L',
     transmision: '5 velocidades',
     img: pulsar_n160_pro,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar N160 PRO lleva el rendimiento al siguiente nivel con motor de alta cilindrada y tecnología de inyección electrónica. Perfecta para quienes buscan potencia y estilo.',
     colores: [
       {
         nombre: 'Azul Petroleo Rojo',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/pulsar-n160-pro/estaticas/azul-petroleo-rojo.webp',
-        hex: '#3b82f6',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Gris Grafito Verde',
@@ -293,7 +293,7 @@ export const PULSAR_MOTOS =[
         nombre: 'Negro Cristal Azul',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-n160-pro/estaticas/negro-cristal-azul.webp',
-        hex: '#1B3A5E'
+        hex: '#2E3339'
       },
       {
         nombre: 'Negro',
@@ -326,14 +326,14 @@ export const PULSAR_MOTOS =[
     tanque: '12 L',
     transmision: '5 velocidades',
     img: pulsar_ns_160_fi_abs,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar NS 160 FI ABS combina rendimiento y seguridad. Con inyección electrónica y frenos ABS, es la naked sport más completa de su segmento.',
     colores: [
       {
         nombre: 'Azul Azalea',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns160-fi-abs/estaticas/azul-azalea.webp',
-        hex: '#3b82f6',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Gris Grafito',
@@ -345,13 +345,13 @@ export const PULSAR_MOTOS =[
         nombre: 'Negro Infinito',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns160-fi-abs/estaticas/negro-infinito.webp',
-        hex: '#1B3A5E'
+        hex: '#2E3339'
       },
       {
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns160-fi-abs/estaticas/rojo-eclipse.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       }
     ],
     visor360:[
@@ -377,26 +377,26 @@ export const PULSAR_MOTOS =[
     tanque: '14 L',
     transmision: '5 velocidades',
     img: pulsar_p150,
-    color: '#CC1F25',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar P150 rediseña el concepto clásico con líneas modernas y tecnología actualizada. La perfecta entrada al mundo deportivo.',
     colores: [
       {
         nombre: 'Azul',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/pulsar p150/estaticas/azul.webp',
-        hex: '#3b82f6',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Negro',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar p150/estaticas/negro.webp',
-        hex: '#1B3A5E'
+        hex: '#2E3339'
       },
       {
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar p150/estaticas/rojo-eclipse.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       },
       {
         nombre: 'Gris Grafito Negro Cristal',
@@ -408,7 +408,7 @@ export const PULSAR_MOTOS =[
         nombre: 'Negro Cristal azul extreme',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar p150/estaticas/negro-cristal-azul-extreme.webp',
-        hex: '#000080'
+        hex: '#4A5058'
       },
       {
         nombre: 'Negro Cristal Gris Grafito',
@@ -442,32 +442,32 @@ export const PULSAR_MOTOS =[
     tanque: '9.5 L',
     transmision: '5 velocidades',
     img: pulsar_n125_fi,
-    color: '#B8860B',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar N125 FI combina estilo deportivo con practicidad urbana. Su motor de inyección electrónica garantiza eficiencia de combustible sin sacrificar rendimiento.',
     colores: [
       {
         nombre: 'gris',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/pulsar-n125-fi/estaticas/gris.webp',
-        hex: '#3b82f6',
+        hex: '#00E5FF',
       },
       {
         nombre: 'purpura',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-n125-fi/estaticas/purpura.webp',
-        hex: '#1B3A5E'
+        hex: '#2E3339'
       },
       {
         nombre: 'Rojo',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-n125-fi/estaticas/roja.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       },
       {
         nombre: 'Verde',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-n125-fi/estaticas/verde.webp',
-        hex: '#CC1F25'
+        hex: '#FF9F1C'
       }
     ],
     visor360:[
@@ -494,14 +494,14 @@ export const PULSAR_MOTOS =[
     tanque: '12 L',
     transmision: '5 velocidades',
     img: pulsar_ns_125,
-    color: '#B8860B',
+    color: '#FF9F1C',
     descripcion: 'La Pulsar NS 125 es la entrada al mundo deportivo de Bajaj. Con diseño naked agresivo y motor de 125cc, es perfecta para quienes buscan adrenalina en la ciudad.',
     colores: [
       {
         nombre: 'Azul',
         imagen: '/assets/motos-bajaj/colores/amarillo-negro-gris.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns-125/estaticas/azul.webp',
-        hex: '#3b82f6',
+        hex: '#00E5FF',
       },
       {
         nombre: 'Gris Grafito',
@@ -513,7 +513,7 @@ export const PULSAR_MOTOS =[
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/negro-mate-amarillo.webp',
         estatica: '/assets/motos-bajaj/pulsar-ns-125/estaticas/rojo-eclipse.webp',
-        hex: '#CC1F25',
+        hex: '#FF9F1C',
       }
     ],
     visor360:[

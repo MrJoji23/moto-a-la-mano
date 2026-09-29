@@ -105,7 +105,7 @@ export default function PqrsPage() {
       <PqrsBanner />
 
       <div className="pqrs-page__container">
-        <p className="pqrs-page__meta">MEGA MOTO GROUP · Atención al cliente</p>
+        <p className="pqrs-page__meta">MOTOCENTER · Atención al cliente</p>
 
         <div className="pqrs-page__intro">
           <span className="pqrs-page__eyebrow">Cuéntanos qué sucedió</span>

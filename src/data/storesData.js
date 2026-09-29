@@ -1,7 +1,7 @@
 export const STORES = [
   {
     id: 1,
-    name: 'AUTECO MEGA MOTO 7 DE AGOSTO',
+    name: 'AUTECO MOTOCENTER 7 DE AGOSTO',
     address: 'Ak Carrera 24 #68-35, Bogotá',
     position: [4.659802949569392, -74.0695749326291],
     image:'images/stores/auteco-7-de-agosto.webp',
@@ -10,7 +10,7 @@ export const STORES = [
   },
   {
     id: 2,
-    name: 'UMA-BAJAJ MEGA MOTO 7 DE AGOSTO',
+    name: 'UMA-BAJAJ MOTOCENTER 7 DE AGOSTO',
     address: 'Ak Carrera 24 #68-35, Bogotá',
     position: [4.659770869449516, -74.06956420379365],
     image:'images/stores/bajaj-7-de-agosto.webp',
@@ -19,7 +19,7 @@ export const STORES = [
   },
   {
     id: 3,
-    name: 'AUTECO MEGA MOTO ENGATIVA',
+    name: 'AUTECO MOTOCENTER ENGATIVA',
     address: 'Calle 63 #110-10, Bogotá',
     position: [4.700350985900157, -74.1313057691354],
     image:'images/stores/auteco-engativa.webp',
@@ -28,7 +28,7 @@ export const STORES = [
   },
   {
     id: 4,
-    name: 'UMA-BAJAJ MEGA MOTO ENGATIVA',
+    name: 'UMA-BAJAJ MOTOCENTER ENGATIVA',
     address: 'Ac 63 #110-16, Engativáa, Bogotá',
     position: [4.700308214884683, -74.13124139612277],
     image:'images/stores/bajaj-engativa.webp',
@@ -37,7 +37,7 @@ export const STORES = [
   },
   {
     id: 5,
-    name: 'UMA-BAJAJ MEGA MOTO LA CALERA',
+    name: 'UMA-BAJAJ MOTOCENTER LA CALERA',
     address: 'Av. 2 #9A-28, La Calera, Cundinamarca',
     position: [4.721571870494537, -73.96553639815193],
     image:'images/stores/bajaj-laCalera.webp',
@@ -46,7 +46,7 @@ export const STORES = [
   },
   {
     id: 6,
-    name: 'UMA-BAJAJ MEGA MOTO SOACHA',
+    name: 'UMA-BAJAJ MOTOCENTER SOACHA',
     address: 'CR 7 26-59, Soacha, Cundinamarca',
     position: [4.585133974628718, -74.20869580055164],
     image:'images/stores/bajaj-soacha.webp',

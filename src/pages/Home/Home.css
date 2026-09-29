@@ -44,10 +44,10 @@
 /* ── Hero Copy ──────────────────────────────── */
 
 .accent-red {
-  color: #CC1F25;
+  color: #FF9F1C;
 }
 .accent-blue {
-  color: #3b82f6;
+  color: #00E5FF;
 }
 
 /* ── Buttons ────────────────────────────────── */
@@ -55,9 +55,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #CC1F25;
-  color: #fff;
-  font-family: 'Nunito Sans', sans-serif;
+  background: #FF9F1C;
+  color: #181a1b;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 3px;
@@ -84,9 +84,9 @@
 }
 
 .btn-hero:hover {
-  background: #A01519;
+  background: #FFB65C;
   transform: scale(1.03);
-  box-shadow: 0 8px 28px rgba(204, 31, 37, 0.4);
+  box-shadow: 0 8px 28px rgba(255, 159, 28, 0.4);
 }
 
 .btn-hero--outline {
@@ -107,7 +107,7 @@
 
 /* ── Products ───────────────────────────────────── */
 .products {
-  background: #0D0F1A;
+  background: #1E2023;
 }
 
 .products__grid {
@@ -128,7 +128,7 @@
 }
 
 .product-card:hover {
-  border-color: rgba(204, 31, 37, 0.5);
+  border-color: rgba(255, 159, 28, 0.5);
   transform: translateY(-5px);
 }
 
@@ -149,7 +149,7 @@
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.5rem;
-  color: #CC1F25;
+  color: #FF9F1C;
   margin: 0 0 1rem;
 }
 
@@ -170,13 +170,13 @@
 }
 
 .product-card__btn:hover {
-  background: #CC1F25;
-  border-color: #CC1F25;
+  background: #FF9F1C;
+  border-color: #FF9F1C;
 }
 
 /* ── CTA Section ─────────────────────────────────── */
 .cta-section {
-  background: linear-gradient(135deg, #CC1F25 0%, #A01519 100%);
+  background: linear-gradient(135deg, #FF9F1C 0%, #FFB65C 100%);
   padding: 5rem 1.5rem;
 }
 
@@ -204,7 +204,7 @@
 .btn-cta {
   display: inline-block;
   background: #fff;
-  color: #CC1F25;
+  color: #FF9F1C;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 14px;

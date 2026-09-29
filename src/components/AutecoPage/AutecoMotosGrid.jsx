@@ -155,7 +155,7 @@ const AutecoMotosGrid = ({ marcaSeleccionada }) => {
                 <m.li
                   key={moto.id}
                   className={`auteco-mcard${moto.destacado ? " auteco-mcard--featured" : ""}`}
-                  style={{ "--bc": moto.color, "--bc-rgb": moto.colorRgb || "30, 64, 175" }}
+                  style={{ "--bc": moto.color, "--bc-rgb": moto.colorRgb || "0, 229, 255" }}
                   variants={CARD_VARIANTS}
                   whileHover={shouldReduce ? NO_HOVER : HOVER_ANIM}
                   transition={HOVER_TRANS}

@@ -11,24 +11,24 @@ const BajajPage = () => {
   return (
     <main className="bajaj-page">
       <Helmet>
-        <title>Motos Bajaj en Bogotá y Soacha | Pulsar, Boxer, Dominar, Discover – Mega Moto Store</title>
+        <title>Motos Bajaj en Bogotá y Soacha | Pulsar, Boxer, Dominar, Discover – MotoCenter Store</title>
         <meta
           name="description"
-          content="Concesionario oficial Bajaj en Bogotá y Soacha. Pulsar, Boxer, Dominar y Discover con financiamiento disponible. ¡Visítanos en Mega Moto Store!"
+          content="Concesionario oficial Bajaj en Bogotá y Soacha. Pulsar, Boxer, Dominar y Discover con financiamiento disponible. ¡Visítanos en MotoCenter Store!"
         />
-        <link rel="canonical" href="https://mega-moto.com/bajaj" />
+        <link rel="canonical" href="https://motocenter.com/bajaj" />
         <meta
           property="og:title"
-          content="Motos Bajaj en Bogotá | Pulsar, Boxer, Dominar, Discover – Mega Moto Store"
+          content="Motos Bajaj en Bogotá | Pulsar, Boxer, Dominar, Discover – MotoCenter Store"
         />
         <meta
           property="og:description"
           content="Concesionario oficial Bajaj en Bogotá y Soacha. Pulsar, Boxer, Dominar y Discover con financiamiento disponible."
         />
-        <meta property="og:url" content="https://mega-moto.com/bajaj" />
+        <meta property="og:url" content="https://motocenter.com/bajaj" />
         <meta
           property="og:image"
-          content="https://mega-moto.com/og-image.jpg"
+          content="https://motocenter.com/og-image.jpg"
         />
         <meta property="og:type" content="website" />
       </Helmet>

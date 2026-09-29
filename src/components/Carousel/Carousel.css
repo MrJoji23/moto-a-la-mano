@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════
-   Carousel.css  –  MegaMoto Group
+   Carousel.css  –  MotoCenter Group
    ════════════════════════════════════════════════ */
 
 /* ── Contenedor ───────────────────────────────── */
@@ -81,8 +81,8 @@
 /* ── Tag de categoría ─────────────────────────── */
 .c-tag {
   display: inline-block;
-  background: #CC1F25;
-  color: #fff;
+  background: #FF9F1C;
+  color: #181a1b;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 11px;
@@ -116,7 +116,7 @@
   margin: 0;
 }
 
-.c-title__accent { color: #CC1F25; }
+.c-title__accent { color: #FF9F1C; }
 .c-title__sub    { font-style: italic; color: rgba(255, 255, 255, 0.9); }
 
 /* ── Subtítulo ────────────────────────────────── */
@@ -134,9 +134,9 @@
   align-items: center;
   gap: 14px;
   margin-top: 26px;
-  background: rgba(10, 13, 30, 0.65);
-  border: 1px solid rgba(27, 58, 94, 0.6);
-  border-left: 3px solid #CC1F25;
+  background: rgba(30, 32, 35, 0.65);
+  border: 1px solid rgba(46, 51, 57, 0.6);
+  border-left: 3px solid #FF9F1C;
   padding: 14px 22px;
   clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
 }
@@ -203,15 +203,15 @@
 }
 
 .c-btn--primary {
-  background: #CC1F25;
-  color: #fff;
+  background: #FF9F1C;
+  color: #181a1b;
   border: none;
   padding: 15px 38px;
   clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
 }
 
 .c-btn--primary:hover {
-  background: #A01519;
+  background: #FFB65C;
   transform: scale(1.03);
 }
 
@@ -247,8 +247,8 @@
 }
 
 .carousel__arrow:hover {
-  background: #CC1F25;
-  border-color: #CC1F25;
+  background: #FF9F1C;
+  border-color: #FF9F1C;
 }
 
 .carousel__arrow--prev { left: 20px; }
@@ -276,7 +276,7 @@
 }
 
 .carousel__dot.active {
-  background: #CC1F25;
+  background: #FF9F1C;
   width: 48px;
 }
 
@@ -309,7 +309,7 @@
   bottom: 0;
   left: 0;
   height: 3px;
-  background: #CC1F25;
+  background: #FF9F1C;
   z-index: 10;
   width: 0%;
   animation: carousel-progress var(--progress-duration, 5000ms) linear forwards;

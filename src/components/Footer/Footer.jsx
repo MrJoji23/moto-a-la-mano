@@ -20,13 +20,13 @@ const Footer = () => {
             <div className="logo-wrapper">
               <img
                 src={logo}
-                alt="Mega Moto Group"
+                alt="MotoCenter"
                 className="footer-logo-img"
               />
             </div>
             <div className="company-info">
-              <h3 className="company-name">MEGA MOTO GROUP</h3>
-              <p className="company-razon">Mega Moto Group S.A.S</p>
+              <h3 className="company-name">MOTOCENTER</h3>
+              <p className="company-razon">MotoCenter S.A.S</p>
             </div>
           </div>
         </div>
@@ -45,13 +45,13 @@ const Footer = () => {
               <FaPhoneAlt size={9} className="icon-red" /> Comercial: 305 4300302
             </p>
             <div className="footer-socials">
-              <a href="https://www.instagram.com/megamotocolombia/" className="social-box" aria-label="Instagram">
+              <a href="https://www.instagram.com/motocenter/" className="social-box" aria-label="Instagram">
                 <FaInstagram size={14} />
               </a>
-              <a href="https://www.facebook.com/people/Mega-Moto-Group/61572458607809/" className="social-box" aria-label="Facebook">
+              <a href="https://www.facebook.com/people/MotoCenter/" className="social-box" aria-label="Facebook">
                 <FaFacebookF size={14} />
               </a>
-              <a href="https://www.tiktok.com/@mega.moto.colombia" className="social-box" aria-label="TikTok">
+              <a href="https://www.tiktok.com/@motocenter" className="social-box" aria-label="TikTok">
                 <FaTiktok size={14} />
               </a>
             </div>
@@ -110,7 +110,7 @@ const Footer = () => {
             </div>
           </div>
           <p className="copyright-text">
-            © 2026 MEGA MOTO GROUP | TODOS LOS DERECHOS RESERVADOS
+            © 2026 MOTOCENTER | TODOS LOS DERECHOS RESERVADOS
           </p>
         </div>
 

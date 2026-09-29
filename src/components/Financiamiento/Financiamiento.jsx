@@ -101,7 +101,7 @@ const Financiamiento = () => {
             <span>Sin complicaciones</span>
           </h1>
           <p className="fin-banner-text">
-            Con MegaMoto puedes financiar hasta el 100% de tu moto. Elige
+            Con MotoCenter puedes financiar hasta el 100% de tu moto. Elige
             entre nuestras opciones de financiamiento y estrena sin
             preocuparte por el pago inmediato.
           </p>

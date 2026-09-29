@@ -34,7 +34,7 @@ export default function HeroCopy() {
 
           <m.h1 id="hero-title" className="hero-copy__title" {...item(1)}>
             Tu próxima moto <br />
-            empieza en <span>Mega Moto</span>
+            empieza en <span>MotoCenter</span>
           </m.h1>
 
           <m.p className="hero-copy__sub" {...item(2)}>

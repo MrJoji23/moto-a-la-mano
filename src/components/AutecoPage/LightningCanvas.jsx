@@ -34,10 +34,10 @@ const LightningCanvas = () => {
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
-        ctx.strokeStyle = `rgba(120,200,255,${alpha})`;
+        ctx.strokeStyle = `rgba(0, 229, 255,${alpha})`;
         ctx.lineWidth   = alpha * 1.5;
         if(!mobile){
-          ctx.shadowColor = '#00CFFF';
+          ctx.shadowColor = '#00E5FF';
           ctx.shadowBlur  = 8;
         }
         ctx.stroke();
@@ -84,7 +84,7 @@ const LightningCanvas = () => {
       }
       const phase = effectiveTick % 18;
       if (phase < 3) {
-        ctx.fillStyle = `rgba(0,180,255,${.03 - phase * .01})`;
+        ctx.fillStyle = `rgba(0, 229, 255,${.03 - phase * .01})`;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
     };

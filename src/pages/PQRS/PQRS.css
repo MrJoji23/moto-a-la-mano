@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   PQRS.css – MegaMoto Group (Rediseñado)
+   PQRS.css – MotoCenter Group (Rediseñado)
    ═══════════════════════════════════════════════ */
 
 /* ── Banner ── */
@@ -16,10 +16,10 @@
   inset: 0;
   background: linear-gradient(
     100deg,
-    rgba(15, 23, 42, 0.7) 0%,
-    rgba(15, 23, 42, 0.45) 38%,
-    rgba(15, 23, 42, 0.15) 68%,
-    rgba(15, 23, 42, 0) 100%
+    rgba(24, 26, 27, 0.7) 0%,
+    rgba(24, 26, 27, 0.45) 38%,
+    rgba(24, 26, 27, 0.15) 68%,
+    rgba(24, 26, 27, 0) 100%
   );
 }
 
@@ -126,13 +126,13 @@
 }
 
 .pqrs-page__successBg {
-  background: rgba(204, 31, 37, 0.1);
-  border: 1px solid rgba(204, 31, 37, 0.3);
+  background: rgba(255, 159, 28, 0.1);
+  border: 1px solid rgba(255, 159, 28, 0.3);
 }
 
 .pqrs-page__errorBg {
-  background: rgba(230, 57, 70, 0.1);
-  border: 1px solid rgba(230, 57, 70, 0.3);
+  background: rgba(255, 159, 28, 0.1);
+  border: 1px solid rgba(255, 159, 28, 0.3);
 }
 
 .pqrs-page__statusIcon svg {
@@ -206,7 +206,7 @@
 .pqrs-page__formGroup textarea:focus {
   outline: none;
   border-color: var(--mm-accent);
-  box-shadow: 0 0 0 3px rgba(204, 31, 37, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 159, 28, 0.15);
 }
 
 .pqrs-page__formGroup textarea {
@@ -257,7 +257,7 @@
 .pqrs-page__uploadLabel:hover,
 .pqrs-page__uploadLabel:focus-within {
   border-color: var(--mm-accent);
-  background: rgba(204, 31, 37, 0.05);
+  background: rgba(255, 159, 28, 0.05);
 }
 
 /* El input nativo se oculta visualmente, pero sigue siendo enfocable y
@@ -307,7 +307,7 @@
 .pqrs-page__btnSubmit:hover:not(:disabled) {
   background: var(--mm-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(204, 31, 37, 0.3);
+  box-shadow: 0 8px 20px rgba(255, 159, 28, 0.3);
 }
 
 .pqrs-page__btnSubmit:disabled {

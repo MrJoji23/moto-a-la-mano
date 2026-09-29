@@ -81,7 +81,7 @@ const MotoInfoModal = ({ moto, onClose }) => {
           exit={{ scale: 0.92, opacity: 0, y: 24 }}
           transition={{ duration: 0.35, ease: [0.22, 0.61, 0.36, 1] }}
           onClick={(e) => e.stopPropagation()}
-          style={{ "--mc": esElectrica ? "#00CFFF" : moto.color }}
+          style={{ "--mc": esElectrica ? "#00E5FF" : moto.color }}
         >
           {/* ── Header sin imagen de fondo ── */}
           <div className="moto-modal__header">

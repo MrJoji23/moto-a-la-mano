@@ -5,10 +5,10 @@ const PoliticaCookiesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Política de Cookies | Mega Moto</title>
+        <title>Política de Cookies | MotoCenter</title>
         <meta
           name="description"
-          content="Política de uso de cookies de Mega Moto: qué son, cuáles utilizamos y cómo puedes gestionarlas."
+          content="Política de uso de cookies de MotoCenter: qué son, cuáles utilizamos y cómo puedes gestionarlas."
         />
         <meta name="robots" content="noindex, follow" />
       </Helmet>

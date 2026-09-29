@@ -11,8 +11,8 @@ const NAV_LINKS = [
     label: "Marcas",
     isDropdown: true,
     dropdownItems: [
-      { label: "Bajaj", to: "/bajaj", color: "#CC1F25" },
-      { label: "Auteco", to: "/auteco", color: "#1E40A1" },
+      { label: "Bajaj", to: "/bajaj", color: "#FF9F1C" },
+      { label: "Auteco", to: "/auteco", color: "#00E5FF" },
     ],
   },
   { label: "Financiamiento", to: "/financiamiento" },
@@ -151,8 +151,8 @@ const Navbar = () => {
         }`}
         aria-label="Navegación principal"
       >
-        <Link to="/" className="mm-nav-logo" aria-label="Mega Moto Group — Inicio">
-          <img src={logo} alt="Mega Moto Group" height="52" width="auto" />
+        <Link to="/" className="mm-nav-logo" aria-label="MotoCenter — Inicio">
+          <img src={logo} alt="MotoCenter" height="52" width="auto" />
         </Link>
 
         {/* Links desktop */}

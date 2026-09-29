@@ -12,24 +12,24 @@ const AutecoPage = () => {
   return (
     <main className="auteco-page">
       <Helmet>
-        <title>Motos Auteco en Bogotá | TVS, Victory, Kymco, Ceronte, Eléctricos – Mega Moto Mobility</title>
+        <title>Motos Auteco en Bogotá | TVS, Victory, Kymco, Ceronte, Eléctricos – MotoCenter Mobility</title>
         <meta
           name="description"
-          content="Concesionario oficial Auteco en Bogotá. TVS, Victory Motorcycles, Kymco Scooters, Ceronte y motos eléctricas. Financiamiento disponible. ¡Cotiza hoy en Mega Moto Mobility!"
+          content="Concesionario oficial Auteco en Bogotá. TVS, Victory Motorcycles, Kymco Scooters, Ceronte y motos eléctricas. Financiamiento disponible. ¡Cotiza hoy en MotoCenter Mobility!"
         />
-        <link rel="canonical" href="https://mega-moto.com/auteco" />
+        <link rel="canonical" href="https://motocenter.com/auteco" />
         <meta
           property="og:title"
-          content="Motos Auteco en Bogotá | TVS, Victory, Kymco – Mega Moto Mobility"
+          content="Motos Auteco en Bogotá | TVS, Victory, Kymco – MotoCenter Mobility"
         />
         <meta
           property="og:description"
           content="Concesionario oficial Auteco en Bogotá. TVS, Victory, Kymco, Ceronte y motos eléctricas con financiamiento disponible."
         />
-        <meta property="og:url" content="https://mega-moto.com/auteco" />
+        <meta property="og:url" content="https://motocenter.com/auteco" />
         <meta
           property="og:image"
-          content="https://mega-moto.com/og-image.jpg"
+          content="https://motocenter.com/og-image.jpg"
         />
         <meta property="og:type" content="website" />
       </Helmet>

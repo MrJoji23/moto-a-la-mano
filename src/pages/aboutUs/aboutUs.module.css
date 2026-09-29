@@ -1,17 +1,17 @@
 /*
-  Paleta: ajusta estas variables a los colores exactos de mega-moto.com
-  (por ejemplo si ya tienes variables globales tipo --primary / --accent,
-  reemplaza los valores de abajo por var(--tu-variable)).
-  Referencia usada aquí: azul oscuro corporativo + rojo Bajaj como acento.
+  Paleta MotoCenter. Esta página usa superficie clara, por eso el acento
+  se resuelve con las variantes profundas (`--mm-accent-deep` /
+  `--mm-accent-2-deep`): el ámbar y el cian claros no alcanzan 4.5:1
+  sobre blanco. Los tokens canónicos viven en `src/index.css`.
 */
 .aboutUs {
-  --mm-dark: #0f1b2d;
-  --mm-dark-2: #16263d;
-  --mm-accent: #e63946;
-  --mm-accent-2: #ff6b6b;
+  --mm-dark: #1E2023;
+  --mm-dark-2: #24282C;
+  --mm-accent: var(--mm-accent-deep, #8a5200);
+  --mm-accent-2: var(--mm-accent-2-deep, #0b6d7a);
   --mm-light: #f5f6f8;
-  --mm-text: #1c2530;
-  --mm-text-muted: #0f1b2d;
+  --mm-text: #2E3339;
+  --mm-text-muted: #1E2023;
 
   background: var(--mm-light);
   color: var(--mm-text);
@@ -37,10 +37,10 @@
   inset: 0;
   background: linear-gradient(
     100deg,
-    rgba(15, 27, 45, 0.7) 0%,
-    rgba(15, 27, 45, 0.45) 38%,
-    rgba(15, 27, 45, 0.15) 68%,
-    rgba(15, 27, 45, 0) 100%
+    rgba(30, 32, 35, 0.7) 0%,
+    rgba(30, 32, 35, 0.45) 38%,
+    rgba(30, 32, 35, 0.15) 68%,
+    rgba(30, 32, 35, 0) 100%
   );
 }
 
@@ -128,7 +128,7 @@
 .metaLine {
   margin: 0 0 2.5rem;
   padding-bottom: 1.2rem;
-  border-bottom: 1px solid rgba(15, 27, 45, 0.1);
+  border-bottom: 1px solid rgba(30, 32, 35, 0.1);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -147,10 +147,10 @@
 
 .mvCard {
   background: #fff;
-  border: 1px solid rgba(15, 27, 45, 0.08);
+  border: 1px solid rgba(30, 32, 35, 0.08);
   border-radius: 14px;
   padding: 2rem 2.2rem;
-  box-shadow: 0 12px 30px -18px rgba(15, 27, 45, 0.25);
+  box-shadow: 0 12px 30px -18px rgba(30, 32, 35, 0.25);
 }
 
 .mvText {
@@ -182,10 +182,10 @@
 
 .valorCard {
   background: #fff;
-  border: 1px solid rgba(15, 27, 45, 0.08);
+  border: 1px solid rgba(30, 32, 35, 0.08);
   border-radius: 14px;
   padding: 2rem 2.2rem;
-  box-shadow: 0 12px 30px -18px rgba(15, 27, 45, 0.25);
+  box-shadow: 0 12px 30px -18px rgba(30, 32, 35, 0.25);
   color: var(--mm-text);
   display: flex;
   flex-direction: column;
@@ -223,7 +223,7 @@
 
 .valorDetails {
   margin-top: 1.1rem;
-  border-top: 1px solid rgba(15, 27, 45, 0.1);
+  border-top: 1px solid rgba(30, 32, 35, 0.1);
   padding-top: 0.8rem;
 }
 
@@ -283,9 +283,9 @@
 
 .politicaItem {
   background: #fff;
-  border: 1px solid rgba(15, 27, 45, 0.08);
+  border: 1px solid rgba(30, 32, 35, 0.08);
   border-radius: 12px;
-  box-shadow: 0 10px 24px -18px rgba(15, 27, 45, 0.25);
+  box-shadow: 0 10px 24px -18px rgba(30, 32, 35, 0.25);
   overflow: hidden;
 }
 
@@ -338,7 +338,7 @@
 }
 
 .politicaItem[open] .politicaSummary {
-  border-bottom: 1px solid rgba(15, 27, 45, 0.08);
+  border-bottom: 1px solid rgba(30, 32, 35, 0.08);
 }
 
 .politicaContenido {
@@ -364,7 +364,7 @@
 .politicaFirma {
   margin-top: 1.4rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(15, 27, 45, 0.08);
+  border-top: 1px solid rgba(30, 32, 35, 0.08);
 }
 
 .politicaFecha {

@@ -4,7 +4,7 @@ import styles from "./aboutUs.module.css";
 import bannerImage from "../../assets/images/aboutUsbanner.webp";
 
 // Textos del banner — edítalos directo aquí
-const BANNER_TITLE = "Mega Moto Group";
+const BANNER_TITLE = "MotoCenter";
 const BANNER_SUBTITLE = "Conócenos"; // opcional, deja vacío si no quieres subtítulo
 
 function AboutUsBanner() {
@@ -74,7 +74,7 @@ const VALORES = [
       "Manteniendo una actitud proactiva frente a los retos.",
       "Buscando soluciones antes que excusas.",
       "Cuidando la calidad de nuestro trabajo.",
-      "Representando con orgullo y responsabilidad a Megamoto Group.",
+      "Representando con orgullo y responsabilidad a MotoCenter.",
     ],
   },
   {
@@ -98,8 +98,8 @@ const POLITICAS = [
     titulo: "Política de Seguridad y Salud en el Trabajo",
     fechaRevision: "15/04/2026",
     parrafos: [
-      "MEGAMOTO STORE es una organización dedicada a la comercialización de motocicletas, repuestos, accesorios y prestación de servicios asociados al sector automotriz, comprometida con la protección de la seguridad, salud y bienestar físico, mental y social de sus trabajadores, contratistas, proveedores, clientes y demás partes interesadas. La organización desarrolla sus actividades bajo condiciones de trabajo seguras y controladas, orientadas a la prevención de accidentes de trabajo, enfermedades laborales y daños a la propiedad, mediante la identificación de peligros, evaluación y valoración de riesgos, así como la implementación de medidas de intervención y control que permitan eliminar o minimizar los riesgos presentes en cada uno de sus procesos.",
-      "Para ello, MEGAMOTO STORE diseña, implementa, mantiene y mejora continuamente el Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST), destinando los recursos humanos, físicos, tecnológicos y financieros necesarios para garantizar su eficacia y el cumplimiento de los requisitos legales aplicables y demás compromisos asumidos por la organización en materia de Seguridad y Salud en el Trabajo.",
+      "MOTOCENTER STORE es una organización dedicada a la comercialización de motocicletas, repuestos, accesorios y prestación de servicios asociados al sector automotriz, comprometida con la protección de la seguridad, salud y bienestar físico, mental y social de sus trabajadores, contratistas, proveedores, clientes y demás partes interesadas. La organización desarrolla sus actividades bajo condiciones de trabajo seguras y controladas, orientadas a la prevención de accidentes de trabajo, enfermedades laborales y daños a la propiedad, mediante la identificación de peligros, evaluación y valoración de riesgos, así como la implementación de medidas de intervención y control que permitan eliminar o minimizar los riesgos presentes en cada uno de sus procesos.",
+      "Para ello, MOTOCENTER STORE diseña, implementa, mantiene y mejora continuamente el Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST), destinando los recursos humanos, físicos, tecnológicos y financieros necesarios para garantizar su eficacia y el cumplimiento de los requisitos legales aplicables y demás compromisos asumidos por la organización en materia de Seguridad y Salud en el Trabajo.",
       "La organización promueve una cultura basada en el autocuidado, la prevención y la participación activa de los trabajadores, fortaleciendo ambientes de trabajo seguros, saludables y orientados al mejoramiento continuo de las condiciones laborales y la calidad de vida de todos sus colaboradores. Todos los trabajadores, contratistas y partes interesadas tienen la responsabilidad de cumplir las normas, procedimientos y lineamientos establecidos por la organización en materia de Seguridad y Salud en el Trabajo, participando activamente en las actividades de promoción, prevención y control definidas dentro del SG-SST.",
       "Para el cumplimiento de esta política, la organización establece los siguientes objetivos:",
     ],
@@ -118,7 +118,7 @@ const POLITICAS = [
     titulo: "Política de Prevención del Acoso Laboral y Sexual",
     fechaRevision: "15/04/2026",
     parrafos: [
-      "MEGAMOTO STORE S.A.S. manifiesta su firme compromiso con la promoción y protección de la dignidad humana, el respeto por los derechos fundamentales, la igualdad de oportunidades, la equidad, la inclusión y la construcción de ambientes de trabajo seguros, saludables y libres de cualquier forma de acoso, violencia, discriminación o conducta que afecte la integridad física, psicológica, moral o emocional de las personas. La organización adopta una política de cero tolerancia frente al acoso laboral, el acoso sexual en el contexto laboral, la violencia física, psicológica, verbal, sexual, económica o simbólica, las conductas de hostigamiento, intimidación, persecución, humillación, maltrato, represalias y cualquier acto de discriminación basado, entre otros, en el sexo, género, identidad o expresión de género, orientación sexual, edad, origen étnico o racial, nacionalidad, discapacidad, condición de salud, estado civil, embarazo, condición socioeconómica, religión, ideología, opinión política, afiliación sindical o cualquier otra condición protegida por la legislación colombiana.",
+      "MOTOCENTER STORE S.A.S. manifiesta su firme compromiso con la promoción y protección de la dignidad humana, el respeto por los derechos fundamentales, la igualdad de oportunidades, la equidad, la inclusión y la construcción de ambientes de trabajo seguros, saludables y libres de cualquier forma de acoso, violencia, discriminación o conducta que afecte la integridad física, psicológica, moral o emocional de las personas. La organización adopta una política de cero tolerancia frente al acoso laboral, el acoso sexual en el contexto laboral, la violencia física, psicológica, verbal, sexual, económica o simbólica, las conductas de hostigamiento, intimidación, persecución, humillación, maltrato, represalias y cualquier acto de discriminación basado, entre otros, en el sexo, género, identidad o expresión de género, orientación sexual, edad, origen étnico o racial, nacionalidad, discapacidad, condición de salud, estado civil, embarazo, condición socioeconómica, religión, ideología, opinión política, afiliación sindical o cualquier otra condición protegida por la legislación colombiana.",
       "Esta política aplica a todos los trabajadores, directivos, socios, aprendices, practicantes, contratistas, subcontratistas, proveedores, visitantes y demás partes interesadas que interactúen con la organización, independientemente del tipo de vínculo contractual o del lugar donde se desarrollen las actividades laborales, incluyendo modalidades presenciales, remotas, virtuales, en misión o durante actividades sociales, académicas o institucionales relacionadas con la empresa.",
       "Con el propósito de prevenir la ocurrencia de estas conductas, la organización implementará acciones permanentes orientadas a promover una cultura organizacional basada en el respeto, la ética, la equidad, la diversidad, la inclusión y la sana convivencia:",
     ],
@@ -129,7 +129,7 @@ const POLITICAS = [
       "Promover el liderazgo respetuoso y la gestión preventiva de los conflictos laborales, garantizando mecanismos seguros, accesibles y confidenciales para la recepción de quejas, denuncias o reportes.",
     ],
     parrafosFinal: [
-      "MEGAMOTO STORE S.A.S. prohíbe cualquier forma de represalia, intimidación, amenaza o revictimización contra las personas que, de buena fe, presenten una queja, participen como testigos o colaboren en los procesos de investigación o intervención, garantizando la protección de sus derechos durante todo el procedimiento. Como parte de su estrategia preventiva, la organización mantendrá conformado y en funcionamiento el Comité de Convivencia Laboral, el cual desarrollará las funciones preventivas y conciliatorias establecidas por la normatividad vigente.",
+      "MOTOCENTER STORE S.A.S. prohíbe cualquier forma de represalia, intimidación, amenaza o revictimización contra las personas que, de buena fe, presenten una queja, participen como testigos o colaboren en los procesos de investigación o intervención, garantizando la protección de sus derechos durante todo el procedimiento. Como parte de su estrategia preventiva, la organización mantendrá conformado y en funcionamiento el Comité de Convivencia Laboral, el cual desarrollará las funciones preventivas y conciliatorias establecidas por la normatividad vigente.",
       "Toda conducta que constituya acoso laboral, acoso sexual, violencia o discriminación será atendida mediante los procedimientos internos establecidos por la organización y podrá dar lugar a la adopción de medidas preventivas, correctivas, disciplinarias, administrativas o legales, conforme a la legislación vigente y al Reglamento Interno de Trabajo.",
       "La Alta Dirección asignará los recursos humanos, técnicos, físicos y financieros necesarios para la implementación, mantenimiento, seguimiento y mejora continua de esta política, integrándola al Sistema de Gestión de Seguridad y Salud en el Trabajo, promoviendo la participación activa de los trabajadores.",
     ],
@@ -141,8 +141,8 @@ const POLITICAS = [
     titulo: "Política de Prevención del Consumo de Alcohol, Drogas y Tabaco",
     fechaRevision: "15/04/2026",
     parrafos: [
-      "MEGAMOTO STORE S.A.S. reconoce la importancia de promover ambientes de trabajo seguros, saludables y productivos, orientados a la protección de la salud, seguridad y bienestar de todos los trabajadores, contratistas, aprendices y demás partes interesadas. La organización es consciente de que el consumo de alcohol, tabaco, sustancias psicoactivas, drogas, fármacos no prescritos o cualquier otra sustancia que genere alteraciones en las capacidades físicas, mentales o cognitivas puede afectar el desempeño laboral, incrementar la probabilidad de incidentes y accidentes de trabajo, deteriorar el ambiente laboral y comprometer la seguridad, eficiencia y productividad de las operaciones.",
-      "Por lo anterior, MEGAMOTO STORE S.A.S. establece los siguientes lineamientos: se prohíbe el consumo, posesión, distribución o comercialización de alcohol, sustancias psicoactivas, drogas ilícitas o cualquier sustancia que genere dependencia dentro de las instalaciones de la organización o durante el desarrollo de actividades laborales.",
+      "MOTOCENTER STORE S.A.S. reconoce la importancia de promover ambientes de trabajo seguros, saludables y productivos, orientados a la protección de la salud, seguridad y bienestar de todos los trabajadores, contratistas, aprendices y demás partes interesadas. La organización es consciente de que el consumo de alcohol, tabaco, sustancias psicoactivas, drogas, fármacos no prescritos o cualquier otra sustancia que genere alteraciones en las capacidades físicas, mentales o cognitivas puede afectar el desempeño laboral, incrementar la probabilidad de incidentes y accidentes de trabajo, deteriorar el ambiente laboral y comprometer la seguridad, eficiencia y productividad de las operaciones.",
+      "Por lo anterior, MOTOCENTER STORE S.A.S. establece los siguientes lineamientos: se prohíbe el consumo, posesión, distribución o comercialización de alcohol, sustancias psicoactivas, drogas ilícitas o cualquier sustancia que genere dependencia dentro de las instalaciones de la organización o durante el desarrollo de actividades laborales.",
       "Se prohíbe el ingreso o permanencia de trabajadores, contratistas o visitantes bajo efectos de alcohol, sustancias psicoactivas o cualquier sustancia que altere sus condiciones físicas o mentales y pueda poner en riesgo la seguridad propia o de terceros. La organización promoverá actividades de prevención, sensibilización y capacitación orientadas a fortalecer hábitos de vida saludable.",
       "Se fomentará la participación voluntaria de los trabajadores en programas de orientación, apoyo, rehabilitación o tratamiento cuando se identifiquen situaciones asociadas al consumo de estas sustancias.",
       "Los trabajadores que se encuentren bajo tratamiento médico con medicamentos que puedan afectar el desempeño seguro de sus funciones deberán informar oportunamente a su jefe inmediato y/o al área de Seguridad y Salud en el Trabajo, con el fin de evaluar y establecer las medidas preventivas necesarias.",
@@ -156,9 +156,9 @@ const POLITICAS = [
     titulo: "Política de Seguridad Vial",
     fechaRevision: "15/04/2026",
     parrafos: [
-      "MEGAMOTO STORE S.A.S., comprometida con la protección de la vida, la integridad y la salud de sus trabajadores, contratistas, proveedores, visitantes y demás actores viales, establece la presente Política de Seguridad Vial como parte integral del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST), con el propósito de prevenir los accidentes de tránsito, promover una cultura de movilidad segura y fortalecer el comportamiento responsable de todos los usuarios de la vía.",
+      "MOTOCENTER STORE S.A.S., comprometida con la protección de la vida, la integridad y la salud de sus trabajadores, contratistas, proveedores, visitantes y demás actores viales, establece la presente Política de Seguridad Vial como parte integral del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST), con el propósito de prevenir los accidentes de tránsito, promover una cultura de movilidad segura y fortalecer el comportamiento responsable de todos los usuarios de la vía.",
       "La organización se compromete a identificar, evaluar y controlar los riesgos asociados a los desplazamientos laborales e in itinere, promoviendo el cumplimiento de la legislación vigente y la mejora continua de su desempeño en seguridad vial.",
-      "Para el cumplimiento de esta política, MEGAMOTO STORE S.A.S. se compromete a cumplir y hacer cumplir la legislación nacional vigente en materia de tránsito, transporte y seguridad vial, entre otras acciones:",
+      "Para el cumplimiento de esta política, MOTOCENTER STORE S.A.S. se compromete a cumplir y hacer cumplir la legislación nacional vigente en materia de tránsito, transporte y seguridad vial, entre otras acciones:",
     ],
     lista: [
       "Promover comportamientos seguros y responsables en todos los actores viales: conductores, motociclistas, ciclistas y peatones.",
@@ -180,9 +180,9 @@ const POLITICAS = [
     titulo: "Política de Desconexión Laboral",
     fechaRevision: "15/04/2026",
     parrafos: [
-      "MEGAMOTO STORE S.A.S., comprometida con la protección de la salud, el bienestar físico, mental y social de sus trabajadores, reconoce el derecho a la desconexión laboral como un elemento fundamental para favorecer el equilibrio entre la vida laboral, personal y familiar, prevenir los factores de riesgo psicosocial y promover ambientes de trabajo saludables, productivos y respetuosos.",
-      "En cumplimiento de la legislación colombiana vigente y como parte integral del SG-SST, la organización garantiza el respeto por los tiempos de descanso, vacaciones, licencias, incapacidades, permisos y demás periodos de no disponibilidad laboral, promoviendo una cultura organizacional basada en la confianza, el respeto, la planeación adecuada del trabajo y el uso responsable de las tecnologías. Esta política aplica a todos los trabajadores de MEGAMOTO STORE S.A.S., cualquiera sea su modalidad de trabajo, nivel jerárquico, jornada laboral o tipo de vinculación, así como a los directivos y líderes que ejerzan funciones de supervisión.",
-      "La organización reconoce que la desconexión laboral consiste en el derecho que tiene todo trabajador a no recibir, atender ni responder llamadas telefónicas, mensajes, correos electrónicos, comunicaciones por aplicaciones de mensajería instantánea, plataformas digitales u otros requerimientos relacionados con el trabajo fuera de su jornada laboral o durante sus periodos de descanso legalmente establecidos, salvo las excepciones previstas por la legislación aplicable. Ningún trabajador será objeto de presión, discriminación, sanción, evaluación desfavorable, represalia o cualquier otro trato adverso por ejercer este derecho. Para garantizar la efectividad de esta política, MEGAMOTO STORE S.A.S. se compromete a:",
+      "MOTOCENTER STORE S.A.S., comprometida con la protección de la salud, el bienestar físico, mental y social de sus trabajadores, reconoce el derecho a la desconexión laboral como un elemento fundamental para favorecer el equilibrio entre la vida laboral, personal y familiar, prevenir los factores de riesgo psicosocial y promover ambientes de trabajo saludables, productivos y respetuosos.",
+      "En cumplimiento de la legislación colombiana vigente y como parte integral del SG-SST, la organización garantiza el respeto por los tiempos de descanso, vacaciones, licencias, incapacidades, permisos y demás periodos de no disponibilidad laboral, promoviendo una cultura organizacional basada en la confianza, el respeto, la planeación adecuada del trabajo y el uso responsable de las tecnologías. Esta política aplica a todos los trabajadores de MOTOCENTER STORE S.A.S., cualquiera sea su modalidad de trabajo, nivel jerárquico, jornada laboral o tipo de vinculación, así como a los directivos y líderes que ejerzan funciones de supervisión.",
+      "La organización reconoce que la desconexión laboral consiste en el derecho que tiene todo trabajador a no recibir, atender ni responder llamadas telefónicas, mensajes, correos electrónicos, comunicaciones por aplicaciones de mensajería instantánea, plataformas digitales u otros requerimientos relacionados con el trabajo fuera de su jornada laboral o durante sus periodos de descanso legalmente establecidos, salvo las excepciones previstas por la legislación aplicable. Ningún trabajador será objeto de presión, discriminación, sanción, evaluación desfavorable, represalia o cualquier otro trato adverso por ejercer este derecho. Para garantizar la efectividad de esta política, MOTOCENTER STORE S.A.S. se compromete a:",
     ],
     lista: [
       "Promover el respeto por los horarios de trabajo, descanso y recuperación de los trabajadores.",
@@ -205,8 +205,8 @@ const POLITICAS = [
     titulo: "Reglamento de Higiene y Seguridad Industrial",
     fechaRevision: "01/04/2026",
     parrafos: [
-      "Razón social: Mega Moto Store. NIT: 901868822-1. Actividad económica: distribución y comercialización de motocicletas, repuestos y accesorios, así como prestación de servicios técnicos y mantenimiento. Domicilio principal: Bogotá D.C., Colombia.",
-      "La empresa MEGAMOTO STORE S.A.S, en cumplimiento de lo establecido en la legislación colombiana vigente en materia de Seguridad y Salud en el Trabajo, especialmente lo dispuesto en el Código Sustantivo del Trabajo, la Ley 9 de 1979, Resolución 2400 de 1979, Decreto 1072 de 2015 y demás normas concordantes, adopta el presente Reglamento de Higiene y Seguridad Industrial, el cual tiene como finalidad establecer las normas y lineamientos orientados a la prevención de accidentes de trabajo, enfermedades laborales y la protección integral de la salud y seguridad de los trabajadores.",
+      "Razón social: MotoCenter Store. NIT: 901868822-1. Actividad económica: distribución y comercialización de motocicletas, repuestos y accesorios, así como prestación de servicios técnicos y mantenimiento. Domicilio principal: Bogotá D.C., Colombia.",
+      "La empresa MOTOCENTER STORE S.A.S, en cumplimiento de lo establecido en la legislación colombiana vigente en materia de Seguridad y Salud en el Trabajo, especialmente lo dispuesto en el Código Sustantivo del Trabajo, la Ley 9 de 1979, Resolución 2400 de 1979, Decreto 1072 de 2015 y demás normas concordantes, adopta el presente Reglamento de Higiene y Seguridad Industrial, el cual tiene como finalidad establecer las normas y lineamientos orientados a la prevención de accidentes de trabajo, enfermedades laborales y la protección integral de la salud y seguridad de los trabajadores.",
       "Artículo 1. Objetivo: garantizar condiciones de trabajo seguras y saludables para todos los trabajadores, contratistas, aprendices y demás partes interesadas que desarrollen actividades dentro de las instalaciones o en representación de la organización, mediante la implementación de medidas de prevención, control y mejora continua en Seguridad y Salud en el Trabajo.",
       "Artículo 2. Compromiso de la organización: implementar y mantener el SG-SST; identificar los peligros, evaluar y valorar los riesgos; implementar medidas de prevención y control; cumplir con la normatividad legal vigente; promover ambientes de trabajo seguros, saludables y libres de condiciones inseguras; disponer de los recursos necesarios para el funcionamiento del SG-SST.",
       "Artículo 3. Responsabilidades de los trabajadores: cumplir las normas y procedimientos establecidos en el presente reglamento; utilizar adecuadamente los elementos de protección personal suministrados; informar oportunamente condiciones inseguras, incidentes, accidentes y actos inseguros; participar en capacitaciones, simulacros y actividades de promoción y prevención; velar por el autocuidado y la seguridad propia y de sus compañeros.",
@@ -227,14 +227,14 @@ export default function AboutUs() {
       <AboutUsBanner />
 
       <div className={styles.container}>
-        <p className={styles.metaLine}>MEGA MOTO GROUP · Actualizado abril 2026</p>
+        <p className={styles.metaLine}>MOTOCENTER · Actualizado abril 2026</p>
 
         {/* Misión y Visión */}
         <div className={styles.misionVisionGrid}>
           <article className={styles.mvCard}>
             <span className={styles.mvEyebrow}>Misión</span>
             <p className={styles.mvText}>
-              En Megamoto Group nos dedicamos a la comercialización de
+              En MotoCenter nos dedicamos a la comercialización de
               motocicletas, repuestos y accesorios originales de las marcas
               Bajaj y Auteco, así como a la prestación de servicios técnicos
               especializados, ofreciendo soluciones integrales de movilidad
@@ -256,7 +256,7 @@ export default function AboutUs() {
           <article className={styles.mvCard}>
             <span className={styles.mvEyebrow}>Visión</span>
             <p className={styles.mvText}>
-              Para el año 2032, Megamoto Group será reconocida como una
+              Para el año 2032, MotoCenter será reconocida como una
               organización referente en el sector de la movilidad,
               distinguiéndose por la excelencia en la comercialización de
               motocicletas, repuestos, accesorios y la prestación de servicios

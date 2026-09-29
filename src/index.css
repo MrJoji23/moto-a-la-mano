@@ -1,32 +1,56 @@
 /* ═══════════════════════════════════════════════
-   Design Tokens - MegaMoto Group (Redesigned)
+   Design Tokens - MotoCenter (Dark Carbon)
    ═══════════════════════════════════════════════ */
+
+@import "./tailwind-theme.css";
 
 /* ── Core Color Palette ──────────────────────────── */
 :root {
-  /* ── Superficies y fondos ── */
-  --mm-bg: #0F172A;      /* Slate 950 - Fondo principal */
-  --mm-surface: #1E293B; /* Slate 800 - Superficies cards */
-  --mm-surface-2: #0F172A;
-  --mm-border: rgba(255, 255, 255, 0.08);
-  --mm-border-strong: rgba(255, 255, 255, 0.18);
+  /* ── Superficies y fondos (neutros oscuros) ── */
+  --mm-bg: #181a1b; /* Dark Carbon - Fondo principal */
+  --mm-bg-soft: #1e2023; /* Fondo alterno / secciones hundidas */
+  --mm-surface: #24282c; /* Card Surface - Tarjetas y paneles */
+  --mm-surface-2: #2e3339; /* Superficie anidada / hover */
+  --mm-surface-3: #383e45; /* Superficie elevada / input */
+  --mm-border: rgba(245, 246, 248, 0.09);
+  --mm-border-strong: rgba(245, 246, 248, 0.2);
+  --mm-border-accent: rgba(255, 159, 28, 0.35);
 
   /* ── Texto ── */
-  --mm-text: #F8FAFC;    /* Slate 100 - Texto principal */
-  --mm-text-soft: rgba(248, 250, 252, 0.6); /* Texto secundario */
-  --mm-text-muted: #98A2B3; /* Slate 400 - Texto secundario suave */
-  --mm-text-caption: #64748B; /* Slate 500 - Captions */
+  --mm-text: #f5f6f8; /* Texto principal */
+  --mm-text-soft: rgba(245, 246, 248, 0.74); /* Texto secundario */
+  --mm-text-muted: #a1a1aa; /* Texto secundario / muted */
+  --mm-text-caption: #7c7c85; /* Captions y metadatos */
+  --mm-text-inverse: #181a1b; /* Texto sobre acento claro */
 
-  /* ── Colores de marca ── */
-  --mm-accent: #CC1F25;      /* Rojo Bajaj - Primary accent */
-  --mm-accent-hover: #E0343A;/* Rojo más oscuro - Hover */
-  --mm-brand-bajaj: #CC1F25;
-  --mm-brand-auteco: #1E40A1;/* Azul Auteco - Alternative */
+  /* ── Acentos de identidad ── */
+  --mm-accent: #ff9f1c; /* Speed Amber - Acento primario */
+  --mm-accent-rgb: 255, 159, 28;
+  --mm-accent-hover: #ffb65c;
+  --mm-accent-active: #e88a00;
+  --mm-accent-ink: #241600;
+  --mm-accent-soft: rgba(255, 159, 28, 0.14);
+
+  --mm-accent-2: #00e5ff; /* Cyber Cyan - Acento secundario */
+  --mm-accent-2-rgb: 0, 229, 255;
+  --mm-accent-2-hover: #66eeff;
+  --mm-accent-2-ink: #002430;
+  --mm-accent-2-soft: rgba(0, 229, 255, 0.14);
+
+  /* ── Acentos para superficies claras ── */
+  /* En páginas claras (p. ej. About Us) el ámbar/cian claros no alcanzan
+     4.5:1 sobre blanco: se usan estas variantes profundas. */
+  --mm-accent-deep: #8a5200; /* Ámbar profundo - texto/enlaces */
+  --mm-accent-2-deep: #0b6d7a; /* Cian profundo - degradés */
+
+  --mm-brand-bajaj: #ff9f1c;
+  --mm-brand-auteco: #00e5ff;
+  --mm-brand-honda: #c77dff;
 
   /* ── Sombras ── */
-  --mm-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
-  --mm-shadow-button: 0 6px 32px rgba(204, 31, 37, 0.4);
-  --mm-shadow-small: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --mm-shadow-card: 0 4px 20px rgba(0, 0, 0, 0.45);
+  --mm-shadow-button: 0 6px 32px rgba(255, 159, 28, 0.28);
+  --mm-shadow-small: 0 2px 8px rgba(0, 0, 0, 0.35);
 
   /* ── Bordes ── */
   --mm-radius: 14px;
@@ -43,16 +67,21 @@
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* ── Estados ── */
-  --mm-success: #22C55E;
-  --mm-success-ink: #052E16;
-  --mm-warning: #F59E0B;
-  --mm-danger: #EF4444;
-  --mm-danger-soft: rgba(239, 68, 68, 0.12);
-  --mm-wa: #25D366;
-  --mm-wa-ink: #04231A;
+  --mm-success: #22c55e;
+  --mm-success-rgb: 34, 197, 94;
+  --mm-success-ink: #052e16;
+  --mm-warning: #ff9f1c;
+  --mm-warning-ink: #241600;
+  --mm-danger: #a855f7; /* Violeta neón: sin rojos en la identidad */
+  --mm-danger-rgb: 168, 85, 247;
+  --mm-danger-soft: rgba(168, 85, 247, 0.14);
+  --mm-danger-ink: #1a0930;
+  --mm-info: #00e5ff;
+  --mm-wa: #25d366;
+  --mm-wa-ink: #04231a;
 
   /* ── Foco (WCAG 2.4.11) ── */
-  --mm-focus-ring: 0 0 0 3px rgba(204, 31, 37, 0.35);
+  --mm-focus-ring: 0 0 0 3px rgba(255, 159, 28, 0.45);
 
   /* ── Animación ── */
   --mm-ease: 200ms ease-in-out;
@@ -61,21 +90,9 @@
   /* ── Alias legacy: nombres antiguos que aún usan hojas de estilo ── */
   --color-primary: var(--mm-accent);
   --color-primary-dark: var(--mm-accent-hover);
-  --color-secondary: var(--mm-accent);
+  --color-secondary: var(--mm-accent-2);
   --color-text-heading: var(--mm-text);
   --mm-text-heading: var(--mm-text);
-}
-
-/* Dark mode color adjustments */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --mm-text: #F8FAFC;
-    --mm-text-soft: rgba(248, 250, 252, 0.55);
-    --mm-text-muted: #98A2B3;
-    --mm-text-caption: #64748B;
-    --mm-border: rgba(255, 255, 255, 0.05);
-    --mm-border-strong: rgba(255, 255, 255, 0.1);
-  }
 }
 
 /* ── Base & Reset ────────────────────────────────── */
@@ -269,7 +286,7 @@ ul {
 .btn--wa:hover {
   background: #1EBE5D;
   transform: translateY(-1px);
-  box-shadow: 0 6px 32px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 6px 32px rgba(34, 197, 94, 0.35);
 }
 
 /* Sólo para lectores de pantalla */
@@ -295,7 +312,7 @@ ul {
 }
 
 .card:hover {
-  border-color: rgba(204, 31, 37, 0.3);
+  border-color: rgba(255, 159, 28, 0.3);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
@@ -305,8 +322,8 @@ ul {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: rgba(204, 31, 37, 0.15);
-  border: 1px solid rgba(204, 31, 37, 0.3);
+  background: rgba(255, 159, 28, 0.15);
+  border: 1px solid rgba(255, 159, 28, 0.3);
   border-radius: var(--mm-radius-sm);
   font-size: 12px;
   text-transform: uppercase;

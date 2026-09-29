@@ -18,7 +18,7 @@
 }
 
 .job-modal-content {
-  background: #1a1d2b;
+  background: #2E3339;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   width: 100%;
@@ -34,13 +34,13 @@
   justify-content: space-between;
   padding: 20px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(135deg, #1a1d2b 0%, #252a42 100%);
+  background: linear-gradient(135deg, #2E3339 0%, #2E3339 100%);
   border-radius: 12px 12px 0 0;
 }
 
 .job-modal-header h3 {
   font-size: 18px;
-  color: #bb0613;
+  color: #FF9F1C;
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -50,7 +50,7 @@
 .job-modal-close {
   background: none;
   border: none;
-  color: #94a3b8;
+  color: #A1A1AA;
   font-size: 28px;
   cursor: pointer;
   padding: 4px 12px;
@@ -82,16 +82,16 @@
 }
 
 .job-modal-success p {
-  color: #94a3b8;
+  color: #A1A1AA;
   font-size: 14px;
   margin: 0;
 }
 
 /* Error message */
 .job-error-message {
-  background: rgba(187, 6, 19, 0.1);
-  border: 1px solid rgba(187, 6, 19, 0.3);
-  color: #f87171;
+  background: rgba(255, 159, 28, 0.1);
+  border: 1px solid rgba(255, 159, 28, 0.3);
+  color: #C084FC;
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 13px;
@@ -117,7 +117,7 @@
 .job-form-group label {
   display: block;
   font-size: 12px;
-  color: #94a3b8;
+  color: #A1A1AA;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -129,7 +129,7 @@
 .job-form-group textarea {
   width: 100%;
   padding: 12px 14px;
-  background-color: #0d0f1a;
+  background-color: #1E2023;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: white;
@@ -143,13 +143,13 @@
 .job-form-group select:focus,
 .job-form-group textarea:focus {
   outline: none;
-  border-color: #bb0613;
-  box-shadow: 0 0 0 3px rgba(187, 6, 19, 0.15);
+  border-color: #FF9F1C;
+  box-shadow: 0 0 0 3px rgba(255, 159, 28, 0.15);
 }
 
 .job-form-group input::placeholder,
 .job-form-group textarea::placeholder {
-  color: #64748b;
+  color: #8A8A93;
 }
 
 .job-form-group input:disabled,
@@ -184,10 +184,10 @@
   align-items: center;
   gap: 10px;
   padding: 14px 16px;
-  background-color: #0d0f1a;
+  background-color: #1E2023;
   border: 2px dashed rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  color: #94a3b8;
+  color: #A1A1AA;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
@@ -195,9 +195,9 @@
 }
 
 .cv-upload-label:hover {
-  border-color: #bb0613;
+  border-color: #FF9F1C;
   color: white;
-  background-color: rgba(187, 6, 19, 0.05);
+  background-color: rgba(255, 159, 28, 0.05);
 }
 
 /* Cuando ya tiene archivo seleccionado */
@@ -210,7 +210,7 @@
 .cv-hint {
   display: block;
   font-size: 11px;
-  color: #64748b;
+  color: #8A8A93;
   margin-top: 4px;
 }
 
@@ -240,13 +240,13 @@
 }
 
 .job-btn-submit {
-  background: linear-gradient(135deg, #bb0613 0%, #9a0510 100%);
+  background: linear-gradient(135deg, #FF9F1C 0%, #FF9F1C 100%);
   color: white;
 }
 
 .job-btn-submit:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(187, 6, 19, 0.3);
+  box-shadow: 0 8px 20px rgba(255, 159, 28, 0.3);
 }
 
 .job-btn-submit:disabled {
@@ -256,7 +256,7 @@
 
 .job-btn-cancel {
   background-color: transparent;
-  color: #94a3b8;
+  color: #A1A1AA;
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -393,12 +393,12 @@
 
 .success-bg { 
   background-color: #24d366; 
-  box-shadow: 0 10px 20px rgba(36, 211, 102, 0.3);
+  box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
 }
 
 .error-bg { 
-  background-color: #ff4b4b; 
-  box-shadow: 0 10px 20px rgba(255, 75, 75, 0.3);
+  background-color: #A855F7; 
+  box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
 }
 
 .status-icon svg {
@@ -413,20 +413,20 @@
 }
 
 .status-description {
-  color: #a0a0a0;
+  color: #A1A1AA;
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 20px;
 }
 
 .retry-btn {
-  background-color: #333;
+  background-color: #2E3339;
   padding: 10px 25px;
   font-size: 0.9rem;
 }
 
 .retry-btn:hover {
-  background-color: #444;
+  background-color: #3A4048;
 }
 
 @keyframes slideUp {

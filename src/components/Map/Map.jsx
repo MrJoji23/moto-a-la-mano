@@ -16,7 +16,7 @@ const CENTER = [4.6595, -74.08];
 // Función para crear iconos de moto personalizados
 const createCustomIcon = (name) => {
   const isAuteco = name.toUpperCase().includes("AUTECO");
-  const color = isAuteco ? "#1B3A5E" : "#CC1F25";
+  const color = isAuteco ? "#2E3339" : "#FF9F1C";
 
   const iconMarkup = renderToStaticMarkup(
     <div
@@ -244,7 +244,7 @@ const Map = () => {
                             }
                             className="popup-link popup-link-directions"
                             style={{
-                              background: "#33ccff",
+                              background: "#00E5FF",
                               border: "none",
                               cursor: "pointer",
                               display: "flex",
@@ -253,10 +253,10 @@ const Map = () => {
                               gap: "8px",
                             }}
                             onMouseEnter={(e) =>
-                              (e.target.style.background = "#29b3e6")
+                              (e.target.style.background = "#00E5FF")
                             }
                             onMouseLeave={(e) =>
-                              (e.target.style.background = "#33ccff")
+                              (e.target.style.background = "#00E5FF")
                             }
                           >
                             <SiWaze /> Waze

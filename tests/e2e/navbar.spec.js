@@ -6,7 +6,7 @@ test.describe('Navbar', () => {
 
     const nav = page.getByRole('navigation', { name: 'Navegación principal' })
     await expect(nav).toBeVisible()
-    await expect(nav.getByRole('link', { name: /Mega Moto Group/i })).toBeVisible()
+    await expect(nav.getByRole('link', { name: /MotoCenter/i })).toBeVisible()
     await expect(nav.getByRole('link', { name: 'Inicio' })).toBeVisible()
     await expect(nav.getByRole('link', { name: 'Financiamiento' })).toBeVisible()
     await expect(nav.getByRole('link', { name: 'Nosotros' })).toBeVisible()

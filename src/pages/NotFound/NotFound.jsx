@@ -5,7 +5,7 @@ import "./NotFound.css";
 const NotFound = () => (
   <main className="not-found" aria-label="Página no encontrada">
     <Helmet>
-      <title>Página no encontrada – Mega Moto</title>
+      <title>Página no encontrada – MotoCenter</title>
       <meta name="robots" content="noindex, nofollow" />
     </Helmet>
 

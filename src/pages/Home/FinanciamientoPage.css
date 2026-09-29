@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   FinanciamientoPage.css – MegaMoto Group (Rediseñado)
+   FinanciamientoPage.css – MotoCenter Group (Rediseñado)
    ═══════════════════════════════════════════════ */
 
 .financiamiento-page {
@@ -83,7 +83,7 @@
 }
 
 .fin-card:hover {
-  border-color: rgba(204, 31, 37, 0.3);
+  border-color: rgba(255, 159, 28, 0.3);
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }

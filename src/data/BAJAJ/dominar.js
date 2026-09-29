@@ -17,7 +17,7 @@ export const DOMINAR_MOTOS = [
         tanque: '13 L',
         transmision: '6 velocidades',
         img: dominar_400_touring,
-        color: '#B8860B',
+        color: '#FF9F1C',
         descripcion: 'La Dominar 400 Touring es la bestia del asfalto. Equipada con ABS de dos canales, suspensión USD y luces LED full, está lista para cualquier aventura de larga distancia.',
     colores: [
       {
@@ -30,7 +30,7 @@ export const DOMINAR_MOTOS = [
         nombre: 'Rojo Eclipse',
         imagen: '/assets/motos-bajaj/colores/rojo_eclipse.webp',
         estatica: '/assets/motos-bajaj/dominar-400-touring/estaticas/azul.webp',
-        hex: '#800080',
+        hex: '#A855F7',
       }
     ],
     visor360:[
@@ -57,7 +57,7 @@ export const DOMINAR_MOTOS = [
         tanque: '13 L',
         transmision: '6 velocidades',
         img: dominar_400_volcano,
-        color: '#B8860B',
+        color: '#FF9F1C',
         descripcion: 'Edición especial Volcano de la Dominar 400. Con coloración exclusiva y todas las prestaciones de la versión Touring, esta moto es para quienes quieren destacar en las rutas más exigentes.',
       colores: [
       {
@@ -81,7 +81,7 @@ export const DOMINAR_MOTOS = [
         tanque: '13 L',
         transmision: '6 velocidades',
         img: dominar_250,
-        color: '#B8860B',
+        color: '#FF9F1C',
         descripcion: 'La Dominar 250 es para los aventureros que quieren explorar sin límites. Con motor líquido y doble árbol de levas, entrega potencia suave y constante ideal para viajes de larga distancia.',
     }*/
 ]
