@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-import hondaLogo from '../../assets/images/logohonda.webp'; // ajusta la ruta real
+import hondaLogo from '../../assets/images/logohonda.webp';
 import './HondaTeaserCard.css';
 
-// ── Fecha de lanzamiento ──────────────────────────
-// Ajusta el día/hora exactos apenas los confirmen (zona horaria Bogotá -05:00)
 const LAUNCH_DATE = new Date('2026-10-01T00:00:00-05:00');
 
 const getTimeLeft = () => {
@@ -55,8 +53,13 @@ const HondaTeaserCard = () => {
           </p>
         </div>
 
-        <div className="honda-tile__countdown" aria-live="polite">
-          <div className="honda-tile__countdown-inner">
+        <div className="honda-tile__countdown">
+          <span className="sr-only">
+            {tiempo.terminado
+              ? 'Honda ya está disponible en nuestro portafolio.'
+              : `Lanzamiento previsto el 1 de octubre de 2026. Faltan ${tiempo.dias} días.`}
+          </span>
+          <div className="honda-tile__countdown-inner" aria-hidden="true">
             {tiempo.terminado ? (
               <span className="honda-tile__live">¡Ya está aquí!</span>
             ) : (

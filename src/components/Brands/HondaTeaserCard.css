@@ -4,30 +4,20 @@
   cursor: default;
 }
 
-.honda-tile:hover {
-  transform: translateY(-4px);
-}
-
-/* Cuerpo centrado (logo, tagline, nombre, descripción) */
-.honda-tile .brand-tile__body {
-  align-items: center;
-  text-align: center;
-}
-
 /* Badge pulsante "Próximamente" */
 .honda-tile__badge {
   position: absolute;
-  top: 1.1rem;
-  right: 1.1rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 2;
+  padding: 5px 12px;
   background: var(--brand-color);
   color: #fff;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 5px 12px;
   border-radius: 20px;
   animation: honda-pulse 2.2s ease-in-out infinite;
 }
@@ -44,33 +34,32 @@
 
 /* Logo centrado */
 .honda-tile__logo-wrap {
-  height: 70px;
+  height: 56px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .honda-tile__logo {
   max-height: 100%;
   width: auto;
   object-fit: contain;
-  /* si el logo de Honda viene en negro sobre fondo transparente y quieres
-     que se vea blanco/tenue como el wordmark anterior, descomenta: */
-  /* filter: brightness(0) invert(1); opacity: 0.85; */
 }
 
-/* ── Countdown: caja sesgada roja, números en rojo, labels en blanco ── */
+/* ── Countdown: caja sesgada, números en rojo, labels en blanco ── */
 .honda-tile__countdown {
-  margin-top: 0.25rem;
   display: inline-flex;
+  margin-top: auto;
 }
 
 .honda-tile__countdown-inner {
   display: flex;
   align-items: center;
-  border: 2px solid var(--brand-color);
+  padding: 0.7rem 1.1rem;
   background: rgba(226, 0, 26, 0.1);
-  padding: 0.7rem 1.3rem;
+  border: 2px solid var(--brand-color);
   transform: skewX(-12deg);
 }
 
@@ -78,7 +67,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 0.7rem;
+  padding: 0 0.55rem;
   transform: skewX(12deg);
 }
 
@@ -87,40 +76,42 @@
 }
 
 .honda-tile__unit-num {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
   color: var(--brand-color);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
 .honda-tile__unit-lbl {
+  margin-top: 3px;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(226, 0, 26, 0.75);
-  margin-top: 3px;
+  color: var(--mm-text-soft);
 }
 
 .honda-tile__live {
   display: inline-block;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--brand-color);
   transform: skewX(12deg);
 }
 
 @media (max-width: 480px) {
   .honda-tile__countdown-inner {
-    padding: 0.55rem 0.9rem;
+    padding: 0.55rem 0.8rem;
   }
+
   .honda-tile__unit {
-    padding: 0 0.45rem;
+    padding: 0 0.4rem;
   }
+
   .honda-tile__unit-num {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 }

@@ -1,139 +1,111 @@
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LazyMotion, domAnimation, m, useInView } from 'framer-motion';
 import { BRANDS } from '../../data/brandsData';
 import './Brands.css';
 import SectionDivider from '../main-page/SectionDivider';
 import HondaTeaserCard from './HondaTeaserCard';
 
-// Importar imágenes locales
-import bajajLogo from '../../assets/images/bajaj.jpg';
-import autecoLogo from '../../assets/images/auteco.jpg';
-
-// Agregar logos a las marcas
-const BRANDS_WITH_LOGOS = BRANDS.map((brand) => ({
-  ...brand,
-  logo: brand.id === 'bajaj' ? bajajLogo : autecoLogo,
-}));
-
-
-
-// ── Animaciones ────────────────────────────────
+/* ── Animaciones ── */
 const containerVariants = {
-  hidden : {},
-  visible: { transition: { staggerChildren: 0.15 } },
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const cardVariants = {
-  hidden : { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] } },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] } },
 };
 
 const titleVariants = {
-  hidden : { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-
-
-// ── Componente ─────────────────────────────────
+/* ── Componente ── */
 const Brands = () => {
-  const ref    = useRef(null);
+  const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-  const navigate = useNavigate();
-
-  const handleBrandClick = (brandId) => {
-    navigate(`/${brandId}`);
-  };
 
   return (
     <LazyMotion features={domAnimation}>
       <section id="marcas" className="brands" ref={ref}>
+        {/* ── Vista principal ── */}
+        <m.div key="grid">
+          <m.div
+            className="brands__header"
+            variants={titleVariants}
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
+          >
+            <span className="brands__eyebrow">Distribuidores Oficiales</span>
+            <h2 className="brands__title">
+              Nuestras <span className="brands__title-accent">Marcas</span>
+            </h2>
+            <p className="brands__desc">
+              Trabajamos con las marcas líderes del mercado para ofrecerte la mejor relación calidad-precio.
+            </p>
+          </m.div>
 
-          {/* ── Vista principal ── */}
-          <m.div key="grid">
-
-              <m.div
-                className="brands__header"
-                variants={titleVariants}
-                initial="hidden"
-                animate={inView ? 'visible' : 'hidden'}
+          <m.div
+            className="brands__grid"
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
+          >
+            {BRANDS.map((brand) => (
+              <Link
+                key={brand.id}
+                to={`/${brand.id}`}
+                className="brand-tile"
+                style={{ '--brand-color': brand.color }}
               >
-                <span className="brands__eyebrow">Distribuidores Oficiales</span>
-                <h2 className="brands__title">
-                  Nuestras <span className="brands__title-accent">Marcas</span>
-                </h2>
-                <p className="brands__desc">
-                  Trabajamos con las marcas líderes del mercado para ofrecerte la mejor relación calidad-precio.
-                </p>
-              </m.div>
+                <m.div
+                  className="brand-tile__inner"
+                  variants={cardVariants}
+                >
+                  <span className="brand-tile__glow" aria-hidden="true" />
 
-              <m.div
-                className="brands__grid"
-                variants={containerVariants}
-                initial="hidden"
-                animate={inView ? 'visible' : 'hidden'}
-              >
-                {BRANDS_WITH_LOGOS.map((brand) => (
-                  <m.button
-                    key={brand.id}
-                    className="brand-tile"
-                    variants={cardVariants}
-                    style={{
-                      '--brand-color': brand.color,
-                      '--brand-glow':  brand.bgGlow,
-                    }}
-                    whileHover="hover"
-                    onClick={() => handleBrandClick(brand.id)}
-                  >
-                    <m.div
-                      className="brand-tile__glow"
-                      initial={{ opacity: 0 }}
-                      variants={{ hover: { opacity: 1 } }}
-                      transition={{ duration: 0.3 }}
-                    />
+                  <span className="brand-tile__bar" aria-hidden="true" />
 
-                    <div className="brand-tile__bar" />
+                  <span className="brand-tile__body">
+                    <span className="brand-tile__logo-wrap">
+                      <img src={brand.logo} alt="" className="brand-tile__logo" />
+                    </span>
 
-                    <div className="brand-tile__body">
-                      <div className="brand-tile__logo-wrap">
-                        <img src={brand.logo} alt={brand.name} className="brand-tile__logo" />
-                      </div>
+                    <span className="brand-tile__info">
+                      <span className="brand-tile__tagline">{brand.tagline}</span>
+                      <span className="brand-tile__name">{brand.name}</span>
+                      <span className="brand-tile__desc">{brand.description}</span>
 
-                      <div className="brand-tile__info">
-                        <p className="brand-tile__tagline">{brand.tagline}</p>
-                        <h3 className="brand-tile__name">{brand.name}</h3>
-                        <p className="brand-tile__desc">{brand.description}</p>
+                      <span className="brand-tile__models">
+                        {brand.models.map((modelo) => (
+                          <span key={modelo} className="brand-tile__model-tag">
+                            {modelo}
+                          </span>
+                        ))}
+                      </span>
+                    </span>
 
-                        <ul className="brand-tile__models">
-                          {brand.models.map((m) => (
-                            <li key={m} className="brand-tile__model-tag">{m}</li>
-                          ))}
-                        </ul>
-                      </div>
+                    <span className="brand-tile__stat">
+                      <span className="brand-tile__stat-num">{brand.stat.num}</span>
+                      <span className="brand-tile__stat-label">{brand.stat.label}</span>
+                    </span>
 
-                      <div className="brand-tile__stat">
-                        <span className="brand-tile__stat-num">{brand.stat.num}</span>
-                        <span className="brand-tile__stat-label">{brand.stat.label}</span>
-                      </div>
-                    </div>
-
-                    <m.div
-                      className="brand-tile__arrow"
-                      variants={{ hover: { x: 6 } }}
-                      transition={{ duration: 0.2 }}
-                    >
+                    <span className="brand-tile__arrow" aria-hidden="true">
                       →
-                    </m.div>
-                  </m.button>
-                ))}
+                    </span>
+                  </span>
+                </m.div>
+              </Link>
+            ))}
 
-                {/* ── Teaser Honda: se retira cuando la marca quede activa ── */}
-                <HondaTeaserCard />
-              </m.div>
+            {/* ── Teaser Honda ── */}
+            <HondaTeaserCard />
+          </m.div>
+        </m.div>
 
-            </m.div>
-            <SectionDivider/>
+        <SectionDivider />
       </section>
     </LazyMotion>
   );

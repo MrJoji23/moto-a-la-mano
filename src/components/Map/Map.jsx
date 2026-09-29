@@ -130,7 +130,7 @@ const Map = () => {
         <div className="map-wrapper">
           <div className="map-sidebar-wrapper">
             <button
-              className="sidebar-arrow sidebar-arrow--left"
+              className="sidebar-arrow"
               onClick={() => scrollSidebar(-1)}
               aria-label="Anterior"
             >
@@ -162,7 +162,7 @@ const Map = () => {
             </div>
 
             <button
-              className="sidebar-arrow sidebar-arrow--right"
+              className="sidebar-arrow"
               onClick={() => scrollSidebar(1)}
               aria-label="Siguiente"
             >

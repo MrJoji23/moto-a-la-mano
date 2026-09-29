@@ -10,7 +10,7 @@ const AutecoPage = () => {
   const [marcaSeleccionada, setMarcaSeleccionada] = useState(null);
 
   return (
-    <div className="auteco-page">
+    <main className="auteco-page">
       <Helmet>
         <title>Motos Auteco en Bogotá | TVS, Victory, Kymco, Ceronte, Eléctricos – Mega Moto Mobility</title>
         <meta
@@ -42,7 +42,7 @@ const AutecoPage = () => {
       {marcaSeleccionada !== "electricos" && (
         <AutecoMotosGrid marcaSeleccionada={marcaSeleccionada} />
       )}
-    </div>
+    </main>
   );
 };
 

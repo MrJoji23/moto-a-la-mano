@@ -1,53 +1,36 @@
-import { useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { LazyMotion, domAnimation } from 'framer-motion';
-import './AutecoHero.css';
-import banner from '../../assets/images/logos-auteco/banner-auteco.webp';
-import bannerMobil from '../../assets/images/logos-auteco/auteco_banner_mobi.webp';
+import { FaWhatsapp } from "react-icons/fa";
+import "./AutecoHero.css";
+
+const WA_URL =
+  "https://api.whatsapp.com/send?phone=573054300302&text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20las%20motos%20Auteco.";
 
 const AutecoHero = () => {
-  const heroRef = useRef(null);
-
   return (
-    <LazyMotion features={domAnimation}>
-      <Helmet>
-        
-        <link
-          rel="preload"
-          as="image"
-          href={banner}
-          media="(min-width: 769px)"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href={bannerMobil}
-          media="(max-width: 768px)"
-          fetchPriority="high"
-        />
-      </Helmet>
-      
-      <div
-        className="auteco-hero px-3 px-sm-4 px-md-5 py-5"
-        ref={heroRef}
-        style={{
-          '--auteco-hero-bg-desktop': `url(${banner})`,
-          '--auteco-hero-bg-mobile': `url(${bannerMobil})`,
-        }}
-      >
-        <div className="auteco-hero__scroll-indicator" aria-hidden="true">
-          <span className="auteco-hero__scroll-label">scroll</span>
-          <div className="auteco-hero__chevrons">
-            <svg width="24" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <polyline className="chev chev--1" points="4,4 12,11 20,4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <polyline className="chev chev--2" points="4,13 12,20 20,13" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              <polyline className="chev chev--3" points="4,22 12,29 20,22" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-            </svg>
-          </div>
+    <section className="auteco-hero" aria-labelledby="auteco-hero-title">
+      <div className="auteco-hero__inner">
+        <h1 id="auteco-hero-title" className="auteco-hero__title">
+          <span>Motos Auteco</span> en Bogotá
+        </h1>
+        <p className="auteco-hero__subtitle">
+          TVS, Victory, Kymco, Ceronte y motos eléctricas. Financiamiento
+          disponible.
+        </p>
+        <div className="auteco-hero__actions">
+          <a href="#auteco-catalogo" className="btn btn--primary">
+            Ver todo el portafolio
+          </a>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn--wa"
+          >
+            <FaWhatsapp size={16} aria-hidden="true" />
+            Hablar con un asesor
+          </a>
         </div>
       </div>
-    </LazyMotion>
+    </section>
   );
 };
 

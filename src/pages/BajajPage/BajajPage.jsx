@@ -9,7 +9,7 @@ const BajajPage = () => {
   const [marcaSeleccionada, setMarcaSeleccionada] = useState(null);
 
   return (
-    <div className="bajaj-page">
+    <main className="bajaj-page">
       <Helmet>
         <title>Motos Bajaj en Bogotá y Soacha | Pulsar, Boxer, Dominar, Discover – Mega Moto Store</title>
         <meta
@@ -38,7 +38,7 @@ const BajajPage = () => {
         onMarcaSelect={setMarcaSeleccionada}
       />
       <BajajMotosGrid marcaSeleccionada={marcaSeleccionada} />
-    </div>
+    </main>
   );
 };
 

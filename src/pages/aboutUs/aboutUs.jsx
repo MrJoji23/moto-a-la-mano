@@ -223,7 +223,7 @@ const POLITICAS = [
 
 export default function AboutUs() {
   return (
-    <section className={styles.aboutUs}>
+    <main className={styles.aboutUs}>
       <AboutUsBanner />
 
       <div className={styles.container}>
@@ -360,6 +360,6 @@ export default function AboutUs() {
           ))}
         </div>
       </div>
-    </section>
+    </main>
   );
 }

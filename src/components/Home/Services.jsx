@@ -3,7 +3,7 @@ import { FaMotorcycle, FaTools, FaWrench, FaWallet } from 'react-icons/fa';
 import './Services.css';
 import SectionDivider from '../main-page/SectionDivider';
 
-// ── Datos ──────────────────────────────────────
+/* ── Datos ────────────────────────────────────── */
 const SERVICES = [
   {
     id: 1,
@@ -60,10 +60,10 @@ export default function Services() {
             <m.li
               key={service.id}
               className="service-card"
-              custom={i}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              custom={i}
               variants={fadeUp}
             >
               <span className="service-card__icon" aria-hidden="true">

@@ -79,7 +79,32 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
   margin-bottom: 0.75rem;
+}
+
+/* Precio destacado bajo el nombre */
+.moto-modal__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.moto-modal__desde {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--mm-text-muted);
+}
+
+.moto-modal__price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--mc, #CC1F25);
+  line-height: 1;
 }
 
 .moto-modal__tipo {
@@ -115,7 +140,7 @@
 }
 
 .moto-modal__quick-price-value {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 800;
   color: #fff;
@@ -123,7 +148,7 @@
 
 /* Nombre de la moto */
 .moto-modal__name {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   font-weight: 900;
   text-transform: uppercase;
@@ -165,7 +190,7 @@
 }
 
 .moto-modal__quick-spec-value {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 800;
   color: #fff;
@@ -307,7 +332,7 @@
 }
 
 .moto-modal__spec-val {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 900;
   color: #fff;

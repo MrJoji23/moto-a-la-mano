@@ -11,7 +11,7 @@ const WA_URL =
 const STATS = [
   { value: String(STORES.length), label: 'Puntos de venta' },
   { value: '+60', label: 'Modelos' },
-  { value: '10', label: 'Financieras' }, // verifica este dato
+  { value: '10', label: 'Financieras' },
 ];
 
 export default function HeroCopy() {
@@ -43,17 +43,17 @@ export default function HeroCopy() {
           </m.p>
 
           <m.div className="hero-copy__actions" {...item(3)}>
-            <Link to="/bajaj" className="hero-btn hero-btn--primary">
+            <Link to="/bajaj" className="btn btn--primary">
               Ver motos Bajaj <FaArrowRight size={12} aria-hidden="true" />
             </Link>
-            <Link to="/auteco" className="hero-btn hero-btn--ghost">
+            <Link to="/auteco" className="btn btn--ghost">
               Ver motos Auteco
             </Link>
             <a
               href={WA_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-btn hero-btn--wa"
+              className="btn btn--wa"
             >
               <FaWhatsapp size={16} aria-hidden="true" /> Hablar con un asesor
             </a>

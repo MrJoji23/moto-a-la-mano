@@ -1,22 +1,16 @@
-/* ════════════════════════════════════════════════
-   BajajPage.css  –  MegaMoto Group
-   ════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   BajajPage.css – MegaMoto Group (Rediseñado)
+   ═══════════════════════════════════════════════ */
 
 .bajaj-page {
   width: 100%;
-  color: #fff;
-  padding: 0 2rem;
+  color: var(--mm-text);
+  padding: 0 calc(var(--mm-section-x) * 0.5);
   box-sizing: border-box;
 }
 
-.bajaj-page > *:not(.bajaj-hero) {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .bajaj-page {
-    padding: 0 1rem;
+    padding: 0 calc(var(--mm-section-x));
   }
 }

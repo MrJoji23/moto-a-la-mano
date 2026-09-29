@@ -1,64 +1,59 @@
 .services {
-  background: var(--mm-bg);
-  padding: var(--mm-section-y) 1.25rem;
-}
-
-.services__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-  max-width: 72rem;
-  margin: 0 auto;
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+  }
 }
 
 .service-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.1rem;
   background: var(--mm-surface);
   border: 1px solid var(--mm-border);
   border-radius: var(--mm-radius);
-  transition: border-color var(--mm-ease), transform var(--mm-ease);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.service-card:hover { border-color: rgba(204, 31, 37, 0.45); }
+.service-card:hover {
+  border-color: rgba(204, 31, 37, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
 
 .service-card__icon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  font-size: 1.3rem;
-  color: #ff6b70;
-  background: rgba(204, 31, 37, 0.1);
-  border: 1px solid rgba(204, 31, 37, 0.22);
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 1.25rem;
+  color: var(--mm-accent);
+  font-size: 1.5rem;
 }
 
 .service-card h3 {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   color: var(--mm-text);
-  margin-bottom: 0.3rem;
+  margin: 0 0 0.5rem;
 }
 
 .service-card p {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
   color: var(--mm-text-soft);
+  line-height: 1.5;
 }
 
-@media (min-width: 640px) {
-  .services__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-}
+/* Responsive */
+@media (max-width: 768px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 
-@media (min-width: 992px) {
-  .services__grid { grid-template-columns: repeat(4, 1fr); }
-  .service-card { flex-direction: column; padding: 1.75rem; }
-  .service-card:hover { transform: translateY(-4px); }
+  .service-card {
+    padding: 1.5rem 1rem;
+  }
 }

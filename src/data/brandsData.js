@@ -1,9 +1,12 @@
 // ── Datos de marcas principales ─────────────────
-// Nota: Las imágenes se importan directamente en Brands.jsx
+import bajajLogo from '../assets/images/bajaj.jpg';
+import autecoLogo from '../assets/images/auteco.jpg';
+
 export const BRANDS = [
   {
     id: 'bajaj',
     name: 'Bajaj',
+    logo: bajajLogo,
     tagline: 'La marca #1 en Colombia',
     description: 'Compañia India, mayor fabricante de motocicletas y motocarros del mundo',
     color: '#CC1F25',
@@ -14,6 +17,7 @@ export const BRANDS = [
   {
     id: 'auteco',
     name: 'Auteco',
+    logo: autecoLogo,
     tagline: 'La marca #1 en Colombia',
     description: 'Tecnología India con el mejor precio del mercado. Motos urbanas, deportivas y de trabajo.',
     color: '#1B3A5E',

@@ -48,6 +48,10 @@
   object-fit: contain;
 }
 
+.company-info {
+  margin-top: 0.75rem;
+}
+
 .company-name {
   font-size: 15px;
   letter-spacing: 0.10em;
@@ -169,9 +173,15 @@
   font-family: inherit;
 }
 
-.footer-links button:hover {
+.footer-links button:hover,
+.footer-links button:focus-visible {
   color: white;
   text-decoration: underline;
+}
+
+/* Contraste AA sobre el fondo del footer */
+.footer-link-button {
+  color: #cbd5e1;
 }
 
 /* ===== MAPA ===== */

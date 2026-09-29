@@ -1,183 +1,282 @@
-import { useRef, useState } from 'react';
-import { LazyMotion, domAnimation, m, useInView, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { BAJAJ_MOTOS, BAJAJ_BRANDS } from '../../data/BAJAJ/bajajData';
+import { useMemo, useRef, useState } from 'react';
+import { LazyMotion, domAnimation, m, useInView, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { FaWhatsapp } from 'react-icons/fa';
+import { BAJAJ_MOTOS, BAJAJ_BRANDS, BAJAJ_TIPOS } from '../../data/BAJAJ/bajajData';
 import Visor360 from './Visor360';
 import MotoInfoModal from './MotoInfoModal';
+import GridFilters from '../main-page/GridFilters/GridFilters';
 import './BajajMotosGrid.css';
 
-/* ── Numero de Whatsapp ───────────────────────── */
-const WA_NUMBER = '573160404047'; 
+/* ── WhatsApp comercial ─────────────────────────── */
+const WA_NUMBER = '573160404047';
 
 const CONTAINER_VARIANTS = {
-  hidden : {},
+  hidden: {},
   visible: { transition: { staggerChildren: 0.05 } },
 };
- 
+
 const CARD_VARIANTS = {
-  hidden : { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.4, ease: [0.22, 0.61, 0.36, 1] },
   },
 };
- 
-const HOVER_ANIM  = { y: -5 };
-const HOVER_TRANS = { duration: 0.22 };
-const NO_HOVER    = {};
 
-/* ─── Modal 360 variants ── */
-const OVERLAY_VARIANTS = {
-  hidden : { opacity: 0 },
-  visible: { opacity: 1 },
-};
-const MODAL_VARIANTS = {
-  hidden : { scale: 0.92, opacity: 0 },
-  visible: { scale: 1,    opacity: 1 },
-  exit   : { scale: 0.92, opacity: 0 },
-};
+const HOVER_ANIM = { y: -5 };
+const HOVER_TRANS = { duration: 0.22 };
+const NO_HOVER = {};
+
+const FILTROS_INICIALES = { tipo: "", submarca: "" };
+
+const filterMotos = (motos, filtros) =>
+  motos.filter(
+    (moto) =>
+      (!filtros.tipo || moto.tipoSlug === filtros.tipo) &&
+      (!filtros.submarca || moto.marca === filtros.submarca),
+  );
 
 const BajajMotosGrid = ({ marcaSeleccionada }) => {
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' });
   const shouldReduce = useReducedMotion();
 
+  const [filtros, setFiltros] = useState(FILTROS_INICIALES);
   const [moto360Seleccionada, setMoto360Seleccionada] = useState(null);
   const [motoInfoSeleccionada, setMotoInfoSeleccionada] = useState(null);
 
-  const filteredMotos = marcaSeleccionada
-    ? BAJAJ_MOTOS.filter(moto => moto.marca === marcaSeleccionada)
-    : BAJAJ_MOTOS;
+  /* La marca viene del selector superior de la página; al cambiarla,
+     los filtros locales que ya no apliquen se limpian. */
+  const motoActiva = !marcaSeleccionada || marcaSeleccionada === "todas";
 
-  const tituloMarca = marcaSeleccionada
-    ? BAJAJ_BRANDS.find(b => b.id === marcaSeleccionada)?.name
-    : null;
+  const motos = useMemo(() => {
+    const base = motoActiva
+      ? BAJAJ_MOTOS
+      : BAJAJ_MOTOS.filter((moto) => moto.marca === marcaSeleccionada);
+
+    return filterMotos(base, filtros);
+  }, [marcaSeleccionada, motoActiva, filtros]);
+
+  const marcaActual = BAJAJ_BRANDS.find((b) => b.id === marcaSeleccionada);
+  const subtitulo = marcaActual
+    ? marcaActual.tagline
+    : "Street, naked, full fairing y adventure con el mejor precio del mercado.";
+
+  const campos = useMemo(
+    () => [
+      {
+        name: "tipo",
+        label: "Segmento",
+        todos: "Todos los segmentos",
+        opciones: BAJAJ_TIPOS.filter((tipo) =>
+          BAJAJ_MOTOS.some((moto) => moto.tipoSlug === tipo.slug),
+        ).map((tipo) => ({ value: tipo.slug, label: tipo.label })),
+      },
+      {
+        name: "submarca",
+        label: "Línea",
+        todos: "Todas las líneas",
+        opciones: BAJAJ_BRANDS.map((marca) => ({
+          value: marca.id,
+          label: marca.name,
+        })),
+      },
+    ],
+    [],
+  );
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFiltros((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleReset = () => setFiltros(FILTROS_INICIALES);
 
   const handleCotizar = (moto, e) => {
     e.stopPropagation();
     const texto = encodeURIComponent(
-      `Hola! Estoy interesado en cotizar la *${moto.name}* (${moto.cc}) - Precio desde ${moto.precio}. ¿Me pueden dar más información?`
+      `Hola! Estoy interesado en cotizar la *${moto.name}* (${moto.cc}) - Precio desde ${moto.precio}. ¿Me pueden dar más información?`,
     );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${texto}`, '_blank');
+    window.open(`https://wa.me/${WA_NUMBER}?text=${texto}`, "_blank", "noopener");
   };
 
   return (
     <LazyMotion features={domAnimation}>
-      <>
+      <section
+        id="bajaj-catalogo"
+        className="bajaj-motos-grid"
+        aria-labelledby="bajaj-grid-title"
+      >
+        <m.h2
+          id="bajaj-grid-title"
+          className="bajaj-grid__title"
+          initial={{ opacity: 0, x: -20 }}
+          animate={gridInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          {marcaActual ? (
+            <>
+              Modelos <span>{marcaActual.name}</span>
+            </>
+          ) : (
+            <>
+              Línea de <span>Modelos</span>
+            </>
+          )}
+        </m.h2>
+
+        <p className="bajaj-grid__subtitle">{subtitulo}</p>
+
+        <GridFilters
+          resultado={motos.length}
+          filtros={filtros}
+          campos={campos}
+          onChange={handleFilterChange}
+          onReset={handleReset}
+        />
+
         <div ref={gridRef}>
-          <m.h2
-            className="bajaj-grid__title"
-            initial={{ opacity: 0, x: -20 }}
-            animate={gridInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: .5 }}
-          >
-            {tituloMarca ? (
-              <> Modelos <span>{tituloMarca}</span> </>
-            ) : (
-              <> Línea de <span>Modelos</span> </>
-            )}
-          </m.h2>
-
-          <m.div
-            className="bajaj-grid"
-            initial="hidden"
-            animate={gridInView ? 'visible' : 'hidden'}
-            variants={CONTAINER_VARIANTS}
-          >
-            {filteredMotos.map((moto) => (
-              <m.div
-                key={moto.id}
-                className={`bajaj-card${moto.destacado ? ' bajaj-card--featured' : ''}`}
-                style={{ '--bc': moto.color }}
-                variants={CARD_VARIANTS}
-                whileHover={shouldReduce ? NO_HOVER : HOVER_ANIM}
-                transition={HOVER_TRANS}
-                onClick={() => setMotoInfoSeleccionada(moto)}
+          {motos.length === 0 ? (
+            <div className="motos-empty">
+              <h3 className="motos-empty__title">Sin resultados</h3>
+              <p className="motos-empty__text">
+                No hay motos que cumplan con esa combinación. Prueba a quitar
+                algún filtro.
+              </p>
+              <button
+                type="button"
+                className="btn btn--secondary"
+                onClick={handleReset}
               >
-                {moto.destacado && (
-                  <span className="bajaj-card__featured-badge">Nuevo Lanzamientro</span>
-                )}
+                Limpiar filtros
+              </button>
+            </div>
+          ) : (
+            <m.ul
+              className="bajaj-grid"
+              initial="hidden"
+              animate={gridInView ? "visible" : "hidden"}
+              variants={CONTAINER_VARIANTS}
+            >
+              {motos.map((moto) => (
+                <m.li
+                  key={moto.id}
+                  className={`bajaj-card${moto.destacado ? " bajaj-card--featured" : ""}`}
+                  style={{ "--bc": moto.color }}
+                  variants={CARD_VARIANTS}
+                  whileHover={shouldReduce ? NO_HOVER : HOVER_ANIM}
+                  transition={HOVER_TRANS}
+                >
+                  <button
+                    type="button"
+                    className="bajaj-card__hit"
+                    onClick={() => setMotoInfoSeleccionada(moto)}
+                    aria-label={`Ver ficha de la ${moto.name}`}
+                  />
 
-                <div className="bajaj-card__img-wrap">
-                  <img src={moto.img} alt={moto.name} className="bajaj-card__img" loading="lazy" decoding="async"/>
-                  <div className="bajaj-card__img-overlay" />
-                  <span className="bajaj-card__tipo-badge">{moto.tipo}</span>
-
-                  {/* Badge de colores disponibles */}
-                  {moto.colores && (
-                    <div className="bajaj-card__color-dots">
-                      {moto.colores.slice(0, 4).map(c => (
-                        <span
-                          key={c.nombre}
-                          className="bajaj-card__color-dot"
-                          style={{ background: c.hex }}
-                          title={c.nombre}
-                        />
-                      ))}
-                    </div>
+                  {moto.destacado && (
+                    <span className="bajaj-card__featured-badge">Nuevo lanzamiento</span>
                   )}
-                </div>
 
-                <div className="bajaj-card__body">
-                  <div className="bajaj-card__header">
+                  <div className="bajaj-card__img-wrap">
+                    <img
+                      src={moto.img}
+                      alt={moto.name}
+                      className="bajaj-card__img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="bajaj-card__img-overlay" />
+                    <span className="bajaj-card__tipo-badge">{moto.tipoLabel}</span>
+
+                    {moto.colores?.length > 0 && (
+                      <div
+                        className="bajaj-card__color-dots"
+                        role="img"
+                        aria-label={`${moto.colores.length} colores disponibles`}
+                      >
+                        {moto.colores.slice(0, 4).map((color) => (
+                          <span
+                            key={color.nombre}
+                            className="bajaj-card__color-dot"
+                            style={{ background: color.hex }}
+                            title={color.nombre}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="bajaj-card__body">
                     <h3 className="bajaj-card__name">{moto.name}</h3>
-                  </div>
 
-                  <div className="bajaj-card__specs">
-                    <div className="bajaj-card__spec">
-                      <span className="bajaj-card__spec-val">{moto.hp}</span>
-                      <span className="bajaj-card__spec-lbl">Potencia</span>
+                    <div className="bajaj-card__specs">
+                      <div className="bajaj-card__spec">
+                        <span className="bajaj-card__spec-val">{moto.hp}</span>
+                        <span className="bajaj-card__spec-lbl">Potencia</span>
+                      </div>
+                      <div className="bajaj-card__spec-divider" />
+                      <div className="bajaj-card__spec">
+                        <span className="bajaj-card__spec-val">{moto.cc}</span>
+                        <span className="bajaj-card__spec-lbl">Cilindrada</span>
+                      </div>
                     </div>
-                    <div className="bajaj-card__spec-divider" />
-                    <div className="bajaj-card__spec">
-                      <span className="bajaj-card__spec-val">{moto.cc}</span>
-                      <span className="bajaj-card__spec-lbl">Cilindrada</span>
-                    </div>
-                  </div>
 
-                  <div className="bajaj-card__footer">
-                    <div>
-                      <span className="bajaj-card__desde">Desde</span>
-                      <span className="bajaj-card__precio">{moto.precio}</span>
+                    <div className="bajaj-card__footer">
+                      <div className="bajaj-card__price">
+                        <span className="bajaj-card__desde">Desde</span>
+                        <span className="bajaj-card__precio">{moto.precio}</span>
+                      </div>
                     </div>
+
                     <div className="bajaj-card__actions">
-                      {/* Botón 360 — solo si tiene visor360 y NO se abrirá en modal de info */}
                       {moto.visor360 && !moto.colores && (
                         <button
+                          type="button"
                           className="bajaj-card__btn-360"
-                          onClick={e => { e.stopPropagation(); setMoto360Seleccionada(moto); }}
-                          aria-label="Ver en 360°"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setMoto360Seleccionada(moto);
+                          }}
                         >
-                          <span className="bajaj-card__btn-360-icon">↻</span>
+                          <span className="bajaj-card__btn-360-icon" aria-hidden="true">
+                            ↻
+                          </span>
                           360°
                         </button>
                       )}
+
                       <button
+                        type="button"
                         className="bajaj-card__btn-outline"
-                        onClick={e => { e.stopPropagation(); setMotoInfoSeleccionada(moto); }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setMotoInfoSeleccionada(moto);
+                        }}
                       >
                         Info
                       </button>
+
                       <button
-                        className="bajaj-card__btn-solid bajaj-card__btn-solid--wa"
-                        onClick={e => handleCotizar(moto, e)}
+                        type="button"
+                        className="bajaj-card__btn-solid"
+                        onClick={(e) => handleCotizar(moto, e)}
                       >
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style={{ flexShrink: 0 }}>
-                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.124 1.532 5.858L.067 23.491a.5.5 0 00.625.583l5.852-1.532A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
-                        </svg>
-                        Cotizar
+                        <FaWhatsapp size={13} aria-hidden="true" />
+                        <span>Cotizar</span>
                       </button>
                     </div>
                   </div>
-                </div>
 
-                <div className="bajaj-card__bar" />
-              </m.div>
-            ))}
-          </m.div>
+                  <span className="bajaj-card__bar" aria-hidden="true" />
+                </m.li>
+              ))}
+            </m.ul>
+          )}
         </div>
 
-        {/* ── Modal 360 standalone (motos sin colores) ── */}
+        {/* Modal 360° */}
         <AnimatePresence>
           {moto360Seleccionada && (
             <m.div
@@ -189,25 +288,37 @@ const BajajMotosGrid = ({ marcaSeleccionada }) => {
             >
               <m.div
                 className="bajaj-modal-360__content"
+                role="dialog"
+                aria-modal="true"
+                aria-label={`Vista 360 de la ${moto360Seleccionada.name}`}
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                onClick={e => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
               >
                 <button
+                  type="button"
                   className="bajaj-modal-360__close"
                   onClick={() => setMoto360Seleccionada(null)}
                   aria-label="Cerrar"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24">
-                    <path d="M18 6L6 18M6 6l12 12" />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    width="20"
+                    height="20"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 6 6 18M6 6l12 12" />
                   </svg>
                 </button>
                 <h3 className="bajaj-modal-360__title">{moto360Seleccionada.name}</h3>
                 <Visor360
                   images={moto360Seleccionada.visor360}
                   name={moto360Seleccionada.name}
-                  autoPlay={true}
+                  autoPlay
                   speed={200}
                 />
               </m.div>
@@ -215,7 +326,7 @@ const BajajMotosGrid = ({ marcaSeleccionada }) => {
           )}
         </AnimatePresence>
 
-        {/* ── Modal Info completo ── */}
+        {/* Ficha completa */}
         <AnimatePresence>
           {motoInfoSeleccionada && (
             <MotoInfoModal
@@ -224,7 +335,7 @@ const BajajMotosGrid = ({ marcaSeleccionada }) => {
             />
           )}
         </AnimatePresence>
-      </>
+      </section>
     </LazyMotion>
   );
 };

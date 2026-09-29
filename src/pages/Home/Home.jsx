@@ -16,7 +16,7 @@ const Home = () => {
   const mapInView = useInView(mapWrapperRef, { once: true, margin: '300px' });
 
   return (
-    <main className="home">
+    <main>
       <Helmet>
         <title>Mega Moto Group | Concesionario Bajaj y Auteco en Bogotá</title>
         <meta

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import "./NotFound.css";
 
 const NotFound = () => (
-  <main className="not-found">
+  <main className="not-found" aria-label="Página no encontrada">
     <Helmet>
       <title>Página no encontrada – Mega Moto</title>
       <meta name="robots" content="noindex, nofollow" />
     </Helmet>
 
-    <div className="not-found__glow" />
+    <div className="not-found__glow" aria-hidden="true" />
 
     <p className="not-found__code">404</p>
 

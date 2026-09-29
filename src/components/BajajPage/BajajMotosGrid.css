@@ -1,96 +1,178 @@
 /* ════════════════════════════════════════════════
-   BajajMotosGrid.css  –  MegaMoto Group
+   BajajMotosGrid — catálogo Bajaj
    ════════════════════════════════════════════════ */
 
-/* ── Grid título ──────────────────────────────── */
-.bajaj-grid__title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #fff;
-  margin: 0 0 1.75rem;
-  letter-spacing: -0.5px;
+.bajaj-motos-grid {
+  padding: var(--mm-section-y) 0;
 }
 
-.bajaj-grid__title span { color: var(--color-secondary); }
+/* ── Encabezado ─────────────────────────────────── */
+.bajaj-grid__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--mm-text);
+  margin: 0 0 0.5rem;
+}
 
-/* ── Grid ─────────────────────────────────────── */
+.bajaj-grid__title span {
+  color: var(--mm-accent);
+}
+
+.bajaj-grid__subtitle {
+  max-width: 60ch;
+  margin: 0 0 2rem;
+  color: var(--mm-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ── Grilla ─────────────────────────────────────── */
 .bajaj-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 6rem;
-  padding: 0 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* ── Tarjeta Bajaj ────────────────────────────── */
+/* ── Estado vacío (compartido con Auteco) ───────── */
+.motos-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  background: var(--mm-surface);
+  border: 1px dashed var(--mm-border-strong);
+  border-radius: var(--mm-radius-lg);
+}
+
+.motos-empty__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--mm-text);
+}
+
+.motos-empty__text {
+  margin: 0 0 0.5rem;
+  max-width: 44ch;
+  color: var(--mm-text-muted);
+  font-size: 0.95rem;
+}
+
+/* ── Tarjeta ────────────────────────────────────── */
 .bajaj-card {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 16px;
-  overflow: hidden;
   position: relative;
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  background: var(--mm-surface);
+  border: 1px solid var(--mm-border);
+  border-radius: var(--mm-radius);
+  overflow: hidden;
   transform: translateZ(0);
-  cursor: pointer;
-  transition: box-shadow .3s, border-color .3s, transform .3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
-.bajaj-card:hover {
-  border-color: rgba(204,31,37,.5);
-  box-shadow: 0 12px 50px rgba(0,0,0,.5), 0 0 0 1px rgba(204,31,37,.2);
-  will-change: transform;
+.bajaj-card:hover,
+.bajaj-card:focus-within {
+  border-color: color-mix(in srgb, var(--bc) 50%, transparent);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
 }
 
 .bajaj-card--featured {
-  border-color: rgba(204,31,37,.3);
-  box-shadow: 0 0 0 1px rgba(204,31,37,.2);
+  border-color: color-mix(in srgb, var(--bc) 30%, transparent);
+}
+
+/* Capa clicable que cubre la tarjeta sin bloquear los botones */
+.bajaj-card__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.bajaj-card__hit:focus-visible {
+  outline: 2px solid var(--mm-accent);
+  outline-offset: -4px;
 }
 
 .bajaj-card__featured-badge {
-  position: absolute; top: 0; left: 0; right: 0;
-  background: var(--color-secondary);
-  text-align: center; font-size: 9px; font-weight: 800;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: #fff; padding: 5px 0; z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  background: var(--bc, var(--mm-accent));
+  text-align: center;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 5px 0;
 }
 
 .bajaj-card__img-wrap {
   position: relative;
-  height: 200px; overflow: hidden;
-  background: #fff;
+  height: 200px;
+  background: var(--mm-surface-2);
+  overflow: hidden;
 }
 
-.bajaj-card--featured .bajaj-card__img-wrap { height: 220px; }
+.bajaj-card--featured .bajaj-card__img-wrap {
+  height: 220px;
+}
 
 .bajaj-card__img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .5s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.bajaj-card:hover .bajaj-card__img { transform: scale(1.07); }
+.bajaj-card:hover .bajaj-card__img {
+  transform: scale(1.06);
+}
 
 .bajaj-card__img-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.75) 100%);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 45%, rgba(2, 6, 23, 0.85) 100%);
+  pointer-events: none;
 }
 
 .bajaj-card__tipo-badge {
-  position: absolute; bottom: .75rem; left: .75rem;
-  background: rgba(0,0,0,.6);
-  border: 1px solid rgba(255,255,255,.15);
-  color: rgba(255,255,255,.8);
-  font-size: 9px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 3px 9px; border-radius: 3px;
-}
-
-/* ── Color dots en la card ────────────────────── */
-.bajaj-card__color-dots {
   position: absolute;
   bottom: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  background: rgba(2, 6, 23, 0.7);
+  border: 1px solid var(--mm-border-strong);
+  color: var(--mm-text);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  backdrop-filter: blur(4px);
+}
+
+.bajaj-card__color-dots {
+  position: absolute;
   right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
   display: flex;
   gap: 4px;
   align-items: center;
@@ -99,9 +181,9 @@
 .bajaj-card__color-dot {
   width: 11px;
   height: 11px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
   flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
   transition: transform 0.2s;
 }
 
@@ -109,261 +191,304 @@
   transform: scale(1.15);
 }
 
-/* Body */
-.bajaj-card__body { padding: 1.1rem 1.2rem 1.4rem; }
-
-.bajaj-card__header {
-  display: flex; align-items: baseline;
-  justify-content: space-between; gap: .5rem;
-  margin-bottom: .75rem;
+/* ── Cuerpo ─────────────────────────────────────── */
+.bajaj-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.1rem 1.2rem 1.4rem;
 }
 
 .bajaj-card__name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.45rem; font-weight: 700;
-  text-transform: uppercase; color: #fff;
-  letter-spacing: .5px; margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--mm-text);
+  margin: 0 0 0.85rem;
 }
 
-/* Specs */
 .bajaj-card__specs {
-  display: flex; align-items: center; gap: 0;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 6px; overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--mm-border);
+  border-radius: var(--mm-radius-sm);
+  overflow: hidden;
   margin-bottom: 1rem;
 }
 
 .bajaj-card__spec {
-  flex: 1; padding: .6rem .75rem;
-  display: flex; flex-direction: column; align-items: center;
+  flex: 1;
+  padding: 0.6rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .bajaj-card__spec-divider {
-  width: 1px; height: 30px;
-  background: rgba(255,255,255,.07); flex-shrink: 0;
+  width: 1px;
+  background: var(--mm-border);
+  flex-shrink: 0;
 }
 
 .bajaj-card__spec-val {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.1rem; font-weight: 700;
-  color: #fff; line-height: 1;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--mm-text);
+  line-height: 1.1;
 }
 
 .bajaj-card__spec-lbl {
-  font-size: 9px; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  color: rgba(255,255,255,.35); margin-top: .2rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--mm-text-caption);
+  margin-top: 0.2rem;
 }
 
-/* Footer */
+/* ── Precio y acciones ──────────────────────────── */
 .bajaj-card__footer {
-  display: flex; align-items: flex-end;
-  justify-content: space-between; gap: .5rem;
+  margin-top: auto;
+}
+
+.bajaj-card__price {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.85rem;
 }
 
 .bajaj-card__desde {
-  display: block;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  color: rgba(255,255,255,.35); margin-bottom: .15rem;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--mm-text-caption);
 }
 
 .bajaj-card__precio {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.3rem; font-weight: 700; color: #fff;
-  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--mm-text);
 }
 
-.bajaj-card__actions { display: flex; gap: .5rem; align-items: center; }
+.bajaj-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.bajaj-card__actions > * {
+  position: relative;
+  z-index: 2;
+}
+
+.bajaj-card__btn-outline,
+.bajaj-card__btn-solid,
+.bajaj-card__btn-360 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--mm-radius-sm);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
+}
 
 .bajaj-card__btn-outline {
   background: transparent;
-  border: 1px solid rgba(255,255,255,.3);
-  color: rgba(255,255,255,.8);
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: .55rem 1rem; border-radius: 6px;
-  cursor: pointer;
-  transition: border-color .2s, color .2s, background .2s;
+  border: 1px solid var(--mm-border-strong);
+  color: var(--mm-text-soft);
 }
 
-.bajaj-card__btn-outline:hover {
-  border-color: rgba(255,255,255,.6); color: #fff;
-  background: rgba(255,255,255,.05);
+.bajaj-card__btn-outline:hover,
+.bajaj-card__btn-outline:focus-visible {
+  border-color: var(--mm-text-soft);
+  color: var(--mm-text);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-/* ── Botón Cotizar (WhatsApp) ─────────────────── */
 .bajaj-card__btn-solid {
-  background: var(--color-secondary);
-  border: none; color: #fff;
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: .55rem 1.1rem; border-radius: 6px;
-  cursor: pointer;
-  transition: opacity .2s, transform .15s, box-shadow .2s;
-  box-shadow: 0 4px 15px rgba(204, 31, 37, .3);
-}
-
-.bajaj-card__btn-solid:hover {
-  opacity: .9;
-  box-shadow: 0 6px 20px rgba(204, 31, 37, .4);
-}
-
-/* Variante WhatsApp */
-.bajaj-card__btn-solid--wa {
-  background: #25D366;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, .3);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.bajaj-card__btn-solid--wa:hover {
-  background: #1ebe5d;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, .45);
-  opacity: 1;
-}
-
-.bajaj-card__bar {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 3px; background: var(--color-secondary); opacity: .5;
-  transition: opacity .3s;
-}
-
-.bajaj-card:hover .bajaj-card__bar { opacity: 1; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .bajaj-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 0 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .bajaj-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .bajaj-card__specs {
-    flex-wrap: wrap;
-  }
-  .bajaj-card__spec {
-    min-width: 50%;
-  }
-  .bajaj-card__spec-divider {
-    display: none;
-  }
-  .bajaj-card__actions {
-    gap: .35rem;
-  }
-  .bajaj-card__btn-solid--wa span:not(svg) {
-    display: none;
-  }
-}
-
-/* ── Botón 360 ────────────────────────────────── */
-.bajaj-card__btn-360 {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: linear-gradient(135deg, #CC1F25 0%, #ff4757 100%);
-  border: none;
+  flex: 1;
+  background: var(--mm-accent);
+  border: 1px solid var(--mm-accent);
   color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: .55rem .8rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all .3s ease;
-  box-shadow: 0 4px 15px rgba(204, 31, 37, .3);
 }
 
-.bajaj-card__btn-360:hover {
-  box-shadow: 0 6px 20px rgba(204, 31, 37, .5);
+.bajaj-card__btn-solid:hover,
+.bajaj-card__btn-solid:focus-visible {
+  background: var(--mm-accent-hover);
+  border-color: var(--mm-accent-hover);
+  box-shadow: 0 6px 20px rgba(204, 31, 37, 0.4);
+}
+
+.bajaj-card__btn-360 {
+  background: transparent;
+  border: 1px solid var(--mm-border-strong);
+  color: var(--mm-text-soft);
+}
+
+.bajaj-card__btn-360:hover,
+.bajaj-card__btn-360:focus-visible {
+  color: var(--mm-text);
+  border-color: var(--mm-text-soft);
 }
 
 .bajaj-card__btn-360-icon {
+  display: inline-block;
   font-size: 14px;
-  animation: rotate-360-icon 2s linear infinite;
+  animation: rotate-360-icon 2.4s linear infinite;
 }
 
 @keyframes rotate-360-icon {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-/* ── Modal Visor 360 ──────────────────────────── */
+.bajaj-card__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bc, var(--mm-accent));
+  opacity: 0.55;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.bajaj-card:hover .bajaj-card__bar {
+  opacity: 1;
+}
+
+/* ── Modal 360° ─────────────────────────────────── */
 .bajaj-modal-360 {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
   padding: 2rem;
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(10px);
 }
 
 .bajaj-modal-360__content {
   position: relative;
   width: 100%;
   max-width: 700px;
-  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
-  border-radius: 24px;
   padding: 2rem;
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+  background: var(--mm-surface);
+  border: 1px solid var(--mm-border);
+  border-radius: var(--mm-radius-lg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
 .bajaj-modal-360__close {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 10;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.7);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all .3s ease;
-  z-index: 10;
+  background: transparent;
+  border: 1px solid var(--mm-border);
+  border-radius: 50%;
+  color: var(--mm-text-soft);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
 }
 
 .bajaj-modal-360__close:hover {
-  border-color: #CC1F25;
-  color: #CC1F25;
-  background: rgba(204, 31, 37, 0.1);
+  color: var(--mm-accent);
+  border-color: var(--mm-accent);
+  background: var(--mm-danger-soft);
 }
 
 .bajaj-modal-360__title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.8rem;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--mm-text);
   margin: 0 0 1.5rem;
-  letter-spacing: 0.5px;
   text-align: center;
+  padding-right: 3rem;
 }
 
+/* ── Responsive ─────────────────────────────────── */
 @media (max-width: 768px) {
-  .bajaj-modal-360 { padding: 1rem; }
-  .bajaj-modal-360__content { padding: 1.5rem; border-radius: 20px; }
-  .bajaj-modal-360__title { font-size: 1.4rem; margin-bottom: 1rem; }
+  .bajaj-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .bajaj-card__img-wrap,
+  .bajaj-card--featured .bajaj-card__img-wrap {
+    height: 150px;
+  }
+
+  .bajaj-card__actions {
+    flex-wrap: wrap;
+  }
+
+  .bajaj-card__btn-solid {
+    flex: 1 0 100%;
+  }
 }
 
 @media (max-width: 480px) {
-  .bajaj-modal-360__content { padding: 1rem; border-radius: 16px; }
-  .bajaj-modal-360__title { font-size: 1.2rem; }
+  .bajaj-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bajaj-card__img-wrap,
+  .bajaj-card--featured .bajaj-card__img-wrap {
+    height: 190px;
+  }
+
+  .bajaj-card__specs {
+    flex-wrap: wrap;
+  }
+
+  .bajaj-card__spec {
+    min-width: 50%;
+  }
+
+  .bajaj-card__spec-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .bajaj-modal-360 {
+    padding: 1rem;
+  }
+
+  .bajaj-modal-360__content {
+    padding: 1.5rem;
+  }
 }

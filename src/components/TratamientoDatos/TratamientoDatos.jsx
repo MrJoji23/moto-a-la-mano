@@ -1,12 +1,11 @@
-import React from 'react';
 import './TratamientoDatos.css';
 
 const TratamientoDatos = () => {
   return (
-    <div className="td-wrapper">
+    <main className="td-wrapper">
       <div className="td-document">
 
-        <div className="td-doc-header mt-5">
+        <div className="td-doc-header">
           <h1 className="td-doc-title">Política de Tratamiento de Datos Personales</h1>
           <p className="td-doc-meta">MEGA MOTO GROUP · Actualizado enero 2025</p>
         </div>
@@ -42,7 +41,7 @@ const TratamientoDatos = () => {
           <p>
             <strong>MEGA MOTO GROUP</strong> recolecta, almacena y dispone la información de sus
             clientes y en general el público interesado en nuestro portafolio de productos y
-            servicios de acuerdo con la normatividad legal vigente, por lo cual recibimos datos que
+            servicios de acuerdo con la normatividad legal vigente, por lo cual recibe datos que
             se reciben y tratan al interior de la empresa para un uso apropiado de esta información.
             Para el manejo de la información nuestras bases de datos cumplen parámetros legales de
             uso privativo de las empresas que forman parte de nuestro conglomerado sin derecho a ser
@@ -173,7 +172,7 @@ const TratamientoDatos = () => {
           <h2>Derechos de los Titulares de los Datos</h2>
           <p>
             Conocer, acceder, actualizar, rectificar, suprimir y consultar los datos personales en
-            cualquier momento respecto a los datos que considere parciales, inexactos, incompletos,
+            cualquier momento respecto a los datos que consideren parciales, inexactos, incompletos,
             fraccionados, aquellos que induzcan a error o aquellos cuyo acceso esté expresamente
             prohibido o no haya sido autorizado.
           </p>
@@ -266,7 +265,7 @@ const TratamientoDatos = () => {
             autorización previa del tercero, de acuerdo a los fines establecidos en la presente
             política de privacidad. Dicha información puede tener manejo interno, es decir, dentro
             de <strong>MEGA MOTO GROUP</strong>, o por externos, como con proveedores o terceros. La
-            información personal contenida en estas bases de datos es custodiada mientras dura la
+            información personal contenida en estas bases de datos es custodiada mientras dure la
             relación comercial.
           </p>
 
@@ -355,7 +354,7 @@ const TratamientoDatos = () => {
 
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

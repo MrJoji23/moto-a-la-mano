@@ -1,4 +1,4 @@
-import {LazyMotion, domAnimation, m} from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 import './WhyUs.css';
 
 const WHY_US = [
@@ -31,11 +31,12 @@ const fadeUp = {
   }),
 };
 
-  export default function WhyUs(){
-  return(
+export default function WhyUs() {
+  return (
     <LazyMotion features={domAnimation}>
-      <section className="section why-us">
+      <section className="section why-us" aria-labelledby="why-us-title">
         <m.h2
+          id="why-us-title"
           className="section__title"
           initial="hidden"
           whileInView="visible"
@@ -50,13 +51,18 @@ const fadeUp = {
             <m.div
               key={item.title}
               className="why-card"
-              custom={i}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              custom={i}
               variants={fadeUp}
             >
-              <span className="why-card__icon">{item.icon}</span>
+              <span className="why-card__icon" aria-hidden="true">
+                {item.icon}
+              </span>
+              <span className="why-card__number" aria-hidden="true">
+                {item.number}
+              </span>
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
             </m.div>
@@ -65,5 +71,4 @@ const fadeUp = {
       </section>
     </LazyMotion>
   );
-}    
-      
+}

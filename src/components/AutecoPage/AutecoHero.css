@@ -1,97 +1,60 @@
-/* ════════════════════════════════════════════════
-   AutecoHero.css  –  MegaMoto Group
-   ════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════
+   AutecoHero.css – MegaMoto Group (Rediseñado)
+   ═══════════════════════════════════════════════ */
 
-/* ── Hero ─────────────────────────────────────── */
 .auteco-hero {
   position: relative;
-  width: calc(100% + 4rem);
-  margin-left: -2rem;
-  margin-right: -2rem;
-  height: 100dvh;
-  min-height: 560px;
-  background-image: var(--auteco-hero-bg-desktop);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  display: flex; 
-  margin-bottom: 3rem;
+  padding: clamp(8rem, 12vw, 13rem) 1.5rem 6rem;
+  background: var(--mm-bg);
   overflow: hidden;
-  filter: brightness(1.15);
-}
-
-.auteco-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0) 25%,
-    rgba(0, 0, 0, 0) 60%,
-    rgba(0, 0, 0, 0.55) 100%
-  );
-  pointer-events: none;
   z-index: 1;
 }
-.auteco-hero__scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+
+.auteco-hero__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.auteco-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--mm-text);
+  margin: 0 0 0.75rem;
+}
+
+.auteco-hero__title span {
+  color: var(--mm-brand-auteco);
+  font-style: italic;
+}
+
+.auteco-hero__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--mm-text-soft);
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+.auteco-hero__actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  z-index: 3;
-  pointer-events: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.auteco-hero__scroll-label {
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 15px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-family: 'Barlow Condensed', sans-serif;
-  animation: scrollFade 1.5s ease-in-out infinite;
-}
-
-.auteco-hero__chevrons .chev {
-  stroke: rgba(255, 255, 255, 0.85);
-}
-
-.chev--1 { animation: scrollFade 1.5s ease-in-out infinite 0s; }
-.chev--2 { animation: scrollFade 1.5s ease-in-out infinite 0.2s; }
-.chev--3 { animation: scrollFade 1.5s ease-in-out infinite 0.4s; }
-
-@keyframes scrollFade {
-  0%, 100% { opacity: 0.25; }
-  50%       { opacity: 1; }
-}
-
+/* Responsive */
 @media (max-width: 768px) {
   .auteco-hero {
-    background-image: var(--auteco-hero-bg-mobile);
-    background-position: 50% top;
-    background-attachment: scroll;
-    background-size: cover;
-    width: calc(100% + 2rem); 
-    margin-left: -1rem; 
-    margin-right: -1rem;
-    justify-content: flex-end;
-    padding-bottom: 2rem !important;
-    padding-top: 0rem !important;
+    padding: clamp(5rem, 8vw, 8rem) 1rem 4rem;
   }
 
-  .auteco-hero::before {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.15) 40%,
-      rgba(0, 0, 0, 0.15) 55%,
-      rgba(0, 0, 0, 0.30) 80%,  
-      rgba(0, 0, 0, 0.90) 100%
-    );
+  .auteco-hero__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
   }
 
+  .auteco-hero__subtitle {
+    font-size: 1rem;
+  }
 }

@@ -6,7 +6,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', '.kilo/worktrees/**', 'playwright-report', 'test-results']),
   {
     files: ['**/*.{js,jsx}'],
     plugins: {
@@ -29,6 +29,21 @@ export default defineConfig([
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]|motion' }],
       'react/jsx-uses-vars': 'error',
+    },
+  },
+  {
+    files: ['tests/**/*.js'],
+    languageOptions: {
+      globals: { ...globals.node },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+  {
+    files: ['api/**/*.js', '*.config.js', 'vite.config.js'],
+    languageOptions: {
+      globals: { ...globals.node },
     },
   },
 ])

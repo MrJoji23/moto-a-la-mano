@@ -1,77 +1,70 @@
-import { useState, useEffect, useRef, useReducer} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef, useReducer } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import logo from "../../assets/images/iconomotos.webp";
 import ContactModal from "../ContactModal/ContactModal";
 import "./Navbar.css";
 
-// ── Scroll suave a sección (solo si ya estás en "/") ──
-const scrollToSection = (id) => {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-};
-
 const NAV_LINKS = [
-  { label: "Inicio", to: "/", isScrollToTop: true },
+  { label: "Inicio", to: "/" },
   {
     label: "Marcas",
     isDropdown: true,
     dropdownItems: [
-      { label: "Bajaj", to: "/bajaj" },
-      { label: "Auteco", to: "/auteco" },
+      { label: "Bajaj", to: "/bajaj", color: "#CC1F25" },
+      { label: "Auteco", to: "/auteco", color: "#1E40A1" },
     ],
   },
   { label: "Financiamiento", to: "/financiamiento" },
-  { label: "ENCUÉNTRANOS", to: "/#mapa", sectionId: "mapa" },
-  { label: "NOSOTROS", to: "/sobre-nosotros" },
+  { label: "Encuéntranos", to: "/#mapa", isHash: true },
+  { label: "Nosotros", to: "/sobre-nosotros" },
   { label: "PQRSF", to: "/pqrs" },
 ];
 
-const HOVER_COLORS = ["#CC1F25", "#1B3A5E"];
+const DESKTOP_BREAKPOINT = 992;
 
 const mobileMenuVariants = {
-  hidden: { opacity: 0, height: 0 },
+  hidden: { opacity: 0, x: "100%" },
   visible: {
     opacity: 1,
-    height: "auto",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    x: 0,
+    transition: { duration: 0.3, ease: [0.22, 0.61, 0.36, 1] },
   },
-  exit: { opacity: 0, height: 0, transition: { duration: 0.2 } },
+  exit: {
+    opacity: 0,
+    x: "100%",
+    transition: { duration: 0.2, ease: "easeIn" },
+  },
 };
 
 const initUiState = () => ({
   mobileOpen: false,
   windowWidth: typeof window !== "undefined" ? window.innerWidth : 0,
 });
- 
 
 const uiReducer = (state, action) => {
   switch (action.type) {
-
     case "RESIZE":
       return {
         ...state,
         windowWidth: action.payload,
-        mobileOpen: action.payload >= 992 ? false : state.mobileOpen,
+        mobileOpen: action.payload >= DESKTOP_BREAKPOINT ? false : state.mobileOpen,
       };
- 
-    // Abre o cierra el menú hamburguesa
+
     case "TOGGLE_MOBILE":
       return { ...state, mobileOpen: !state.mobileOpen };
- 
-    // Cierra el menú hamburguesa 
+
     case "CLOSE_MOBILE":
       return { ...state, mobileOpen: false };
- 
+
     default:
       return state;
   }
 };
 
 const Navbar = () => {
-  const [{mobileOpen, windowWidth}, dispatch] = useReducer(
+  const { pathname } = useLocation();
+  const [{ mobileOpen, windowWidth }, dispatch] = useReducer(
     uiReducer,
     null,
     initUiState
@@ -79,16 +72,23 @@ const Navbar = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
- 
+  const [rutaPrevia, setRutaPrevia] = useState(pathname);
   const dropdownRef = useRef(null);
-  const navigate = useNavigate();
 
-  // Detectar scroll y resize de ventana
+  /* Cierra el desplegable y el menú móvil al cambiar de ruta (incluido
+     el botón "atrás" del navegador). Se ajusta durante el render en lugar
+     de en un efecto para evitar renders en cascada. */
+  if (rutaPrevia !== pathname) {
+    setRutaPrevia(pathname);
+    if (dropdownOpen) setDropdownOpen(false);
+    dispatch({ type: "CLOSE_MOBILE" });
+  }
+
+  /* Detectar scroll y resize */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
-    const onResize = () => {
-      dispatch({ type: "RESIZE", payload: window.innerWidth});
-    };
+    const onResize = () =>
+      dispatch({ type: "RESIZE", payload: window.innerWidth });
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
@@ -99,294 +99,258 @@ const Navbar = () => {
     };
   }, []);
 
+  /* Cerrar el desplegable al hacer click fuera o al pulsar Escape */
   useEffect(() => {
+    if (!dropdownOpen) return undefined;
+
     const onClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdownOpen(false);
       }
     };
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setDropdownOpen(false);
+    };
+
     document.addEventListener("mousedown", onClickOutside);
-    return () => document.removeEventListener("mousedown", onClickOutside);
-  }, []);
-
-  // Cerrar menú móvil al hacer click fuera
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (mobileOpen && !e.target.closest(".mm-navbar")) {
-        dispatch({type: "CLOSE_MOBILE"});
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [mobileOpen]);
-
-  // Prevenir scroll del body cuando el menú móvil está abierto
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.addEventListener("keydown", onKeyDown);
     return () => {
-      document.body.style.overflow = "unset";
+      document.removeEventListener("mousedown", onClickOutside);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [dropdownOpen]);
+
+  /* Bloquear el scroll del body mientras el menú móvil está abierto */
+  useEffect(() => {
+    if (!mobileOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
     };
   }, [mobileOpen]);
 
-  // ── Manejador central para links con sección ──
-  const handleNavClick = (e, { sectionId, isScrollToTop }) => {
-    if (isScrollToTop) {
-      e.preventDefault();
-      navigate("/");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-
-    if (sectionId) {
-      e.preventDefault();
-      if (window.location.pathname === "/") {
-        scrollToSection(sectionId);
-      } else {
-        navigate("/");
-        setTimeout(() => scrollToSection(sectionId), 100);
-      }
-    }
+  const closeAll = () => {
+    setDropdownOpen(false);
+    dispatch({ type: "CLOSE_MOBILE" });
   };
 
-// antes de navegar/scrollear, evitando que el layout shift cancele el scroll
-  const handleMobileNavClick = (e, link) => {
-    e.preventDefault();
-    dispatch({type: "CLOSE_MOBILE"});
-    setTimeout(() => {
-      if (link.isScrollToTop) {
-        navigate("/");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else if (link.sectionId) {
-        if (window.location.pathname === "/") {
-          scrollToSection(link.sectionId);
-        } else {
-          navigate("/");
-          setTimeout(() => scrollToSection(link.sectionId), 100);
-        }
-      } else {
-        navigate(link.to);
-      }
-    }, 350);
-  };
-
-  const isMobile = windowWidth < 992;
+  const isMobile = windowWidth < DESKTOP_BREAKPOINT;
+  const linkClass = ({ isActive }) =>
+    `mm-nav-link${isActive ? " mm-nav-link--active" : ""}`;
 
   return (
     <LazyMotion features={domAnimation}>
-      <>
-        <nav
-          className={`mm-navbar ${scrolled ? "mm-navbar--scrolled" : "mm-navbar--top"}`}
-        >
-          {/* Logo */}
-          <Link
-            to="/"
-            className="mm-nav-logo"
-            onClick={(e) => {
-              e.preventDefault();
-              navigate("/");
-              window.scrollTo({ top: 0, behavior: "smooth" });
-              dispatch({type: "CLOSE_MOBILE"});
-            }}
-          >
-            <img src={logo} alt="MegaMoto Group" />
-          </Link>
+      <a className="mm-skip-link" href="#contenido">
+        Saltar al contenido
+      </a>
 
-          {/* ── Links desktop ── */}
-          {!isMobile && (
-            <ul className="mm-nav-links">
-              {NAV_LINKS.map((link, i) => {
-                // Dropdown "Marcas"
-                if (link.isDropdown) {
-                  return (
-                    <li
-                      key={link.label}
-                      className="mm-nav-item--dropdown"
-                      ref={dropdownRef}
+      <nav
+        className={`mm-navbar ${
+          scrolled ? "mm-navbar--scrolled" : "mm-navbar--top"
+        }`}
+        aria-label="Navegación principal"
+      >
+        <Link to="/" className="mm-nav-logo" aria-label="Mega Moto Group — Inicio">
+          <img src={logo} alt="Mega Moto Group" height="52" width="auto" />
+        </Link>
+
+        {/* Links desktop */}
+        {!isMobile && (
+          <ul className="mm-nav-links">
+            {NAV_LINKS.map((link) => {
+              if (link.isDropdown) {
+                return (
+                  <li key={link.label} className="mm-nav-item--dropdown" ref={dropdownRef}>
+                    <button
+                      type="button"
+                      className={`mm-nav-link mm-nav-link--dropdown-toggle${
+                        dropdownOpen ? " is-open" : ""
+                      }`}
+                      aria-expanded={dropdownOpen}
+                      aria-haspopup="true"
+                      aria-controls="marcas-menu"
+                      onClick={() => setDropdownOpen((v) => !v)}
                     >
-                      <button
-                        className={`mm-nav-link mm-nav-link--dropdown-toggle ${dropdownOpen ? "is-open" : ""}`}
-                        onClick={() => setDropdownOpen((v) => !v)}
-                        style={{
-                          "--hover-color": HOVER_COLORS[i % HOVER_COLORS.length],
-                        }}
-                        aria-expanded={dropdownOpen}
-                      >
-                        {link.label}
-                        <span className="mm-nav-link__arrow" aria-hidden="true" />
-                      </button>
-                      <AnimatePresence>
-                        {dropdownOpen && (
-                          <m.ul
-                            className="mm-nav-dropdown"
-                            initial={{ opacity: 0, y: -8, scaleY: 0.92 }}
-                            animate={{ opacity: 1, y: 0, scaleY: 1 }}
-                            exit={{ opacity: 0, y: -6, scaleY: 0.94 }}
-                            transition={{ duration: 0.18, ease: "easeOut" }}
-                            style={{ transformOrigin: "top center" }}
-                          >
-                            {link.dropdownItems.map((item) => (
-                              <li key={item.label}>
-                                <Link
-                                  to={item.to}
-                                  className="mm-nav-dropdown__item"
-                                  onClick={(e) => {
-                                    setDropdownOpen(false);
-                                    handleNavClick(e, item);
-                                  }}
-                                  style={{
-                                    "--hover-color":
-                                      item.label.toLowerCase() === "bajaj"
-                                        ? HOVER_COLORS[0]
-                                        : HOVER_COLORS[1],
-                                  }}
-                                >
-                                  <span className="mm-nav-dropdown__item-bar" />
-                                  {item.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </m.ul>
-                        )}
-                      </AnimatePresence>
-                    </li>
-                  );
-                }
+                      {link.label}
+                      <span className="mm-nav-link__arrow" aria-hidden="true" />
+                    </button>
 
-                // Link normal
+                    <AnimatePresence>
+                      {dropdownOpen && (
+                        <m.ul
+                          id="marcas-menu"
+                          className="mm-nav-dropdown"
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -6 }}
+                          transition={{ duration: 0.18, ease: "easeOut" }}
+                        >
+                          {link.dropdownItems.map((item) => (
+                            <li key={item.label}>
+                              <Link
+                                to={item.to}
+                                className="mm-nav-dropdown__item"
+                                style={{ "--brand-color": item.color }}
+                                onClick={closeAll}
+                              >
+                                <span
+                                  className="mm-nav-dropdown__item-bar"
+                                  aria-hidden="true"
+                                />
+                                {item.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </m.ul>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                );
+              }
+
+              /* Los enlaces con ancla (#) no deben marcarse como
+                 "página activa": use Link para no duplicar el estado
+                 activo de "Inicio". */
+              if (link.isHash) {
                 return (
                   <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="mm-nav-link"
-                      style={{
-                        "--hover-color": HOVER_COLORS[i % HOVER_COLORS.length],
-                      }}
-                      onClick={(e) => handleNavClick(e, link)}
-                    >
+                    <Link to={link.to} className="mm-nav-link" onClick={closeAll}>
                       {link.label}
                     </Link>
                   </li>
                 );
-              })}
-            </ul>
-          )}
+              }
 
-          {/* CTA Desktop */}
-          {!isMobile && (
-            <m.button
-              className="mm-nav-cta"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => setContactModalOpen(true)}
-            >
-              Contáctanos
-            </m.button>
-          )}
+              return (
+                <li key={link.label}>
+                  <NavLink to={link.to} className={linkClass} end={link.to === "/"}>
+                    {link.label}
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        )}
 
-          {/* ── Hamburger (móvil) ── */}
+        {/* CTA desktop */}
+        {!isMobile && (
           <button
-            className={`mm-nav-hamburger ${mobileOpen ? "open" : ""}`}
-            onClick={() => dispatch({type: "TOGGLE_MOBILE"})}
-            aria-label="Menú"
+            type="button"
+            className="mm-nav-cta"
+            onClick={() => setContactModalOpen(true)}
           >
-            <span />
-            <span />
-            <span />
+            Contáctanos
           </button>
-        </nav>
+        )}
 
-        {/* ── Overlay y menú móvil (fuera del nav para evitar clipping) ── */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <>
-              {/* Overlay oscuro detrás del menú */}
-              <m.div
-                className="mm-nav-overlay"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => dispatch({type: "CLOSE_MOBILE"})}
-              />
+        {/* Hamburger (móvil) */}
+        <button
+          type="button"
+          className={`mm-nav-hamburger${mobileOpen ? " open" : ""}`}
+          onClick={() => dispatch({ type: "TOGGLE_MOBILE" })}
+          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+        >
+          <span className="mm-nav-hamburger__bar" />
+          <span className="mm-nav-hamburger__bar" />
+          <span className="mm-nav-hamburger__bar" />
+        </button>
+      </nav>
 
-              <m.div
-                className="mm-nav-mobile"
-                variants={mobileMenuVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                <div className="mm-nav-mobile__container">
-                  {/* Botón de cerrar */}
-                  <button
-                    className="mm-nav-mobile__close"
-                    onClick={() => dispatch({type: "CLOSE_MOBILE"})}
-                    aria-label="Cerrar menú"
+      {/* Overlay + menú móvil */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <m.div
+              className="mm-nav-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => dispatch({ type: "CLOSE_MOBILE" })}
+            />
+
+            <m.div
+              id="mobile-menu"
+              className="mm-nav-mobile"
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <div className="mm-nav-mobile__container">
+                <button
+                  type="button"
+                  className="mm-nav-mobile__close"
+                  onClick={() => dispatch({ type: "CLOSE_MOBILE" })}
+                  aria-label="Cerrar menú"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    width="20"
+                    height="20"
+                    aria-hidden="true"
                   >
-                    <span>×</span>
-                  </button>
+                    <path d="M18 6 6 18M6 6l12 12" />
+                  </svg>
+                </button>
 
-                  {NAV_LINKS.map((link, i) => {
-                    // Si es dropdown, renderizar cada item por separado
-                    if (link.isDropdown) {
-                      return link.dropdownItems.map((item, j) => (
-                        <Link
-                          key={item.label}
-                          to={item.to}
-                          className="mm-nav-mobile__link"
-                          style={{
-                            "--hover-color":
-                              HOVER_COLORS[(i + j) % HOVER_COLORS.length],
-                          }}
-                          onClick={(e) => {
-                            handleMobileNavClick(e, item);
-                          }}
-                        >
-                          {item.label}
-                        </Link>
-                      ));
-                    }
+                <ul className="mm-nav-mobile__list">
+                  {NAV_LINKS.flatMap((link) =>
+                    link.isDropdown
+                      ? link.dropdownItems.map((item) => (
+                          <li key={item.label}>
+                            <Link
+                              to={item.to}
+                              className="mm-nav-mobile__link"
+                              onClick={closeAll}
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))
+                      : [
+                          <li key={link.label}>
+                            <Link
+                              to={link.to}
+                              className="mm-nav-mobile__link"
+                              onClick={closeAll}
+                            >
+                              {link.label}
+                            </Link>
+                          </li>,
+                        ]
+                  )}
+                </ul>
 
-                    // Link normal
-                    return (
-                      <Link
-                        key={link.label}
-                        to={link.to}
-                        className="mm-nav-mobile__link"
-                        style={{
-                          "--hover-color": HOVER_COLORS[i % HOVER_COLORS.length],
-                        }}
-                        onClick={(e) => {
-                          handleMobileNavClick(e, link);
-                        }}
-                      >
-                        {link.label}
-                      </Link>
-                    );
-                  })}
+                <div className="mm-nav-mobile__footer">
                   <button
+                    type="button"
                     className="mm-nav-mobile__link mm-nav-mobile__link--cta"
                     onClick={() => {
-                      dispatch({type: "CLOSE_MOBILE"});
+                      closeAll();
                       setContactModalOpen(true);
                     }}
                   >
                     Contáctanos
                   </button>
                 </div>
-              </m.div>
-            </>
-          )}
-        </AnimatePresence>
+              </div>
+            </m.div>
+          </>
+        )}
+      </AnimatePresence>
 
-        <ContactModal
-          isOpen={contactModalOpen}
-          onClose={() => setContactModalOpen(false)}
-        />
-      </>
+      <ContactModal
+        isOpen={contactModalOpen}
+        onClose={() => setContactModalOpen(false)}
+      />
     </LazyMotion>
   );
 };
