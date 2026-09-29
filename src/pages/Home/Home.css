@@ -1,29 +1,44 @@
 /* ── Section base ───────────────────────────────── */
 .section {
-  padding: 5rem 1.5rem;
+  padding: var(--mm-section-y) 1.25rem;
+}
+
+.section__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--mm-text);
+  margin-bottom: clamp(1.75rem, 5vw, 3rem);
+}
+
+.section__title span {
+  color: var(--mm-accent-hover);
+}
+
+.map-slot {
+  min-height: 600px;
 }
 
 .map-skeleton {
   width: 100%;
   height: 600px;
-  background: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    var(--mm-surface) 25%,
+    var(--mm-surface-2) 50%,
+    var(--mm-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: mm-shimmer 1.4s linear infinite;
 }
 
-.section__title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-transform: uppercase;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.section__title span {
-  color: #CC1F25;
+@keyframes mm-shimmer {
+  to {
+    background-position: -200% 0;
+  }
 }
 
 /* ── Hero Copy ──────────────────────────────── */
@@ -208,7 +223,5 @@
 
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 768px) {
-  .section {
-    padding: 3.5rem 1.25rem;
-  }
+  /* La regla .section usa padding dinámico por variables CSS */
 }

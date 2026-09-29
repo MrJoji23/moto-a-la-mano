@@ -1,23 +1,19 @@
-import { Helmet } from "react-helmet-async";
-import { lazy, Suspense, useRef } from "react";
-import { useInView } from "framer-motion";
-import Carousel from "../../components/Carousel/Carousel";
-import Brands from "../../components/Brands/Brands";
-import HeroCopy from "../../components/Home/HeroCopy";
-import "./Home.css";
-import Services from "../../components/Home/Services";
-import WhyUs from "../../components/Home/WhyUs";
-import MotoMetodo from "../../components/MotoMetodo/MotoMetodo";
+import { Helmet } from 'react-helmet-async';
+import { lazy, Suspense, useRef } from 'react';
+import { useInView } from 'framer-motion';
+import Carousel from '../../components/Carousel/Carousel';
+import HeroCopy from '../../components/Home/HeroCopy';
+import Brands from '../../components/Brands/Brands';
+import MotoMetodo from '../../components/MotoMetodo/MotoMetodo';
+import Services from '../../components/Home/Services';
+import WhyUs from '../../components/Home/WhyUs';
+import './Home.css';
 
-
-const Map = lazy(() => import("../../components/Map/Map"));
+const Map = lazy(() => import('../../components/Map/Map'));
 
 const Home = () => {
   const mapWrapperRef = useRef(null);
-  const mapInView = useInView(mapWrapperRef, {
-    once: true, 
-    margin: "300px",
-  });
+  const mapInView = useInView(mapWrapperRef, { once: true, margin: '300px' });
 
   return (
     <main className="home">
@@ -28,13 +24,10 @@ const Home = () => {
           content="Mega Moto Group: concesionario oficial Bajaj y Auteco en Bogotá y Soacha. Pulsar, Boxer, Dominar, Discover, TVS, Kymco y más al mejor precio. Financiamiento fácil, recibimos tu moto como parte de pago, garantía y servicio técnico. ¡Cotiza hoy!"
         />
         <link rel="canonical" href="https://mega-moto.com/" />
-        <meta
-          property="og:title"
-          content="Mega Moto Group | Concesionario Bajaj y Auteco en Bogotá"
-        />
+        <meta property="og:title" content="Mega Moto Group | Concesionario Bajaj y Auteco en Bogotá" />
         <meta
           property="og:description"
-          content="Concesionario oficial Bajaj y Auteco en Bogotá y Soacha. Pulsar, Boxer, Dominar, Discover, TVS, Kymco y más. Financiamiento fácil y servicio técnico. ¡Tu próxima moto te espera!"
+          content="Concesionario oficial Bajaj y Auteco en Bogotá y Soacha. Financiamiento fácil y servicio técnico. ¡Tu próxima moto te espera!"
         />
         <meta property="og:url" content="https://mega-moto.com/" />
         <meta property="og:image" content="https://mega-moto.com/og-image.jpg" />
@@ -43,15 +36,14 @@ const Home = () => {
 
       <Carousel />
       <HeroCopy />
-      <MotoMetodo />
       <Brands />
+      <MotoMetodo />
       <Services />
       <WhyUs />
 
-      {/* Wrapper observado; minHeight evita layout shift antes de montar el mapa */}
-      <div ref={mapWrapperRef} id="mapa" style={{ minHeight: "600px" }}>
+      <div ref={mapWrapperRef} id="mapa" className="map-slot">
         {mapInView && (
-          <Suspense fallback={<div className="map-skeleton" />}>
+          <Suspense fallback={<div className="map-skeleton" role="status" aria-label="Cargando mapa" />}>
             <Map />
           </Suspense>
         )}

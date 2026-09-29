@@ -11,17 +11,11 @@ function useEffectEvent(fn) {
   return useCallback((...args) => ref.current(...args), []);
 }
 
-// ── Animaciones (moto y texto siguen animándose con Framer Motion) ──
+// ── Animaciones ──
 const contentVariants = {
   enter: { x: 50, opacity: 0 },
   center: { x: 0, opacity: 1, transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] } },
   exit: { x: -30, opacity: 0, transition: { duration: 0.4 } },
-};
-
-const motoVariants = {
-  enter: { x: 80, opacity: 0 },
-  center: { x: 0, opacity: 1, transition: { duration: 0.7, ease: [0.22, 0.61, 0.36, 1], delay: 0.1 } },
-  exit: { x: -50, opacity: 0, transition: { duration: 0.35 } },
 };
 
 const Carousel = () => {
@@ -73,12 +67,11 @@ const Carousel = () => {
     touchStartX.current = null;
   };
 
+  // ── Precarga de imágenes del siguiente slide ──
   useEffect(() => {
-    const nextIndex = (current + 1) % SLIDES.length;
-    const nextSlide = SLIDES[nextIndex];
-
-    [nextSlide.motoImage, nextSlide.specsImage].forEach((src) => {
-      if (!preloadedImages.current[src]) {
+    const nextSlide = SLIDES[(current + 1) % SLIDES.length];
+    [nextSlide.bgImage, nextSlide.bgImageMobile, nextSlide.specsImage].forEach((src) => {
+      if (src && !preloadedImages.current[src]) {
         const img = new Image();
         img.src = src;
         preloadedImages.current[src] = img;
@@ -97,7 +90,6 @@ const Carousel = () => {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-
         <div className="carousel__bg">
           {SLIDES.map((s, i) => (
             <picture
@@ -121,25 +113,6 @@ const Carousel = () => {
 
         {/* Contenido */}
         <div className="carousel__inner">
-          {/* Moto */}
-          <AnimatePresence mode="wait">
-            <m.div
-              key={`moto-${slide.id}`}
-              className="carousel__moto"
-              variants={motoVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-            >
-              <img
-                src={slide.motoImage}
-                alt=""
-                loading={isFirstSlide ? 'eager' : 'lazy'}
-                fetchPriority={isFirstSlide ? 'high' : 'auto'}
-              />
-            </m.div>
-          </AnimatePresence>
-
           {/* Texto */}
           <AnimatePresence mode="wait">
             <m.div

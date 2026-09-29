@@ -43,8 +43,9 @@ const fadeUp = {
 export default function Services() {
   return (
     <LazyMotion features={domAnimation}>
-      <section className="section services">
+      <section className="section services" aria-labelledby="services-title">
         <m.h2
+          id="services-title"
           className="section__title"
           initial="hidden"
           whileInView="visible"
@@ -54,28 +55,29 @@ export default function Services() {
           Nuestros <span>Servicios</span>
         </m.h2>
 
-        <div className="row g-4">
+        <ul className="services__grid">
           {SERVICES.map((service, i) => (
-            <div className="col-12 col-sm-6 col-lg-3" key={service.id}>
-              <m.div
-                className="service-card"
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-              >
-                <span className="service-card__icon">{service.icon}</span>
-                <div>
-                  <h3>{service.title}</h3>
-                  <p>{service.desc}</p>
-                </div>
-              </m.div>
-            </div>
+            <m.li
+              key={service.id}
+              className="service-card"
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <span className="service-card__icon" aria-hidden="true">
+                {service.icon}
+              </span>
+              <div>
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
+              </div>
+            </m.li>
           ))}
-        </div>
-        <SectionDivider/>
+        </ul>
+
+        <SectionDivider />
       </section>
     </LazyMotion>
   );
