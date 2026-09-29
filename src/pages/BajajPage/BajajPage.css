@@ -1,0 +1,22 @@
+/* ════════════════════════════════════════════════
+   BajajPage.css  –  MegaMoto Group
+   ════════════════════════════════════════════════ */
+
+.bajaj-page {
+  width: 100%;
+  color: #fff;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.bajaj-page > *:not(.bajaj-hero) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (max-width: 768px) {
+  .bajaj-page {
+    padding: 0 1rem;
+  }
+}

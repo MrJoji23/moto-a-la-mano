@@ -1,0 +1,354 @@
+.pqrs {
+  --mm-dark: #0f1b2d;
+  --mm-dark-2: #16263d;
+  --mm-accent: #e63946;
+  --mm-accent-2: #ff6b6b;
+  --mm-light: #151a2e;
+  --mm-text: #f2f3f7;
+  --mm-text-muted: #a7adc0;
+
+  background: #0A0D1A;
+  color: var(--mm-text);
+}
+
+/* ---------- Banner (igual estructura que About Us) ---------- */
+
+.banner {
+  position: relative;
+  min-height: 62vh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(15, 27, 45, 0.7) 0%,
+    rgba(15, 27, 45, 0.45) 38%,
+    rgba(15, 27, 45, 0.15) 68%,
+    rgba(15, 27, 45, 0) 100%
+  );
+}
+
+.bannerContent {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 5vw 4rem;
+  max-width: 900px;
+}
+
+.bannerTitle {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.bannerSubtitle {
+  margin: 0.9rem 0 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  max-width: 640px;
+}
+
+@media (max-width: 640px) {
+  .banner {
+    min-height: 40vh;
+  }
+  .bannerContent {
+    padding: 2rem 6vw 2rem;
+  }
+}
+
+/* ---------- Layout general ---------- */
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 5vw 5rem;
+}
+
+.metaLine {
+  margin: 0 0 2.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mm-text-muted);
+}
+
+.eyebrow {
+  display: inline-block;
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mm-accent);
+  padding-bottom: 0.6rem;
+}
+
+.eyebrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--mm-accent), var(--mm-accent-2));
+  border-radius: 3px;
+  transform: skewX(-20deg);
+}
+
+.introHeader {
+  margin-bottom: 2rem;
+}
+
+.introText {
+  margin: 1rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--mm-text-muted);
+}
+
+/* ---------- Tarjeta del formulario ----------
+   Sobre el fondo oscuro de la página, la tarjeta usa un tono
+   ligeramente más claro para diferenciarse (equivalente oscuro
+   del "blanco más oscurito" que usábamos en el tema claro). */
+
+.formCard {
+  background: var(--mm-light);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2.4rem 2.4rem 2.6rem;
+  box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 640px) {
+  .formCard {
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+}
+
+.form {
+  position: relative;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formGroup {
+  margin-bottom: 1.3rem;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--mm-text-muted);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: #0A0D1A;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: var(--mm-text);
+  font-size: 0.95rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: rgba(167, 173, 192, 0.5);
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--mm-accent);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.formGroup select {
+  cursor: pointer;
+}
+
+/* Las opciones del <select> heredan fondo del sistema operativo/navegador;
+   forzamos color oscuro de texto para que no queden blancas sobre blanco. */
+.formGroup select option {
+  color: var(--mm-text); /* blanco/claro */
+  background-color: #0A0D1A;
+}
+
+@media (max-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Adjuntar archivo ---------- */
+
+.uploadArea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  background-color: #0A0D1A;
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: var(--mm-text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.uploadLabel:hover {
+  border-color: var(--mm-accent);
+  color: var(--mm-text);
+  background-color: rgba(230, 57, 70, 0.06);
+}
+
+.uploadLabelSelected {
+  border-color: rgba(74, 222, 148, 0.5);
+  color: #86efac;
+  background-color: rgba(34, 160, 94, 0.08);
+}
+
+.uploadIcon {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
+
+.hint {
+  font-size: 0.72rem;
+  color: rgba(167, 173, 192, 0.7);
+}
+
+/* ---------- Botón ---------- */
+
+.btnSubmit {
+  width: 100%;
+  padding: 0.95rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--mm-accent), var(--mm-accent-2));
+  color: #fff;
+}
+
+.btnSubmit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -8px rgba(230, 57, 70, 0.45);
+}
+
+.btnSubmit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Estados de éxito / error / límite ---------- */
+
+.statusWrap {
+  text-align: center;
+  max-width: 340px;
+  margin: 1rem auto;
+  padding: 1rem 0 0.5rem;
+}
+
+.statusIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+  color: #fff;
+}
+
+.successBg {
+  background-color: #22a05e;
+  box-shadow: 0 10px 20px rgba(34, 160, 94, 0.3);
+}
+
+.errorBg {
+  background: linear-gradient(135deg, var(--mm-accent), var(--mm-accent-2));
+  box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+}
+
+.statusIcon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.statusTitle {
+  color: var(--mm-text);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.statusDescription {
+  color: var(--mm-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+/* ---------- Accesibilidad ---------- */
+
+.uploadLabel:focus-visible,
+.btnSubmit:focus-visible {
+  outline: 2px solid var(--mm-accent-2);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

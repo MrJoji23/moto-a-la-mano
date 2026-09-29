@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,900;1,6..12,400&display=swap');
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════
+   Variables Globales - MegaMoto Group
+   ════════════════════════════════════════════════ */
+
+:root {
+  /* Colores principales */
+  --color-primary: #CC1F25;
+  --color-primary-dark: #A01519;
+  --color-secondary: #3b82f6;
+  --color-bg-dark: #0D0F1A;
+  --color-bg-card: rgba(255, 255, 255, 0.03);
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-hover: rgba(204, 31, 37, 0.5);
+
+  /* Colores de texto */
+  --color-text: rgba(255, 255, 255, 0.6);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-text-heading: #fff;
+
+  /* Colores de marcas */
+  --color-brand-bajaj: #CC1F25;
+  --color-brand-auteco: #1B3A5E;
+
+  /* ── Tipografías ── */
+  --font-display: 'Bebas Neue', sans-serif;
+  /* Títulos, headings */
+  --font-body: 'Nunito Sans', sans-serif;
+  /* Cuerpo, labels, botones */
+
+  /* Sombras */
+  --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --shadow-button: 0 6px 24px rgba(37, 211, 102, 0.45);
+
+  /* Bordes */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #9ca3af;
+    --color-text-muted: #6b7280;
+    --color-text-heading: #f3f4f6;
+    --color-bg-dark: #16171d;
+    --color-border: #2e303a;
+  }
+}
+
+/* ── Base ──────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Headings ─────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-heading);
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: var(--font-body);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ── Reset ────────────────────────────────────── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+/* ── Scrollbar (Webkit) ───────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0F1A;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(204, 31, 37, 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #CC1F25;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

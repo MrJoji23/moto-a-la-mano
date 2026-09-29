@@ -1,0 +1,341 @@
+.elec-section {
+  position: relative;
+  background: #020f2e;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 1rem;
+  border: 1px solid rgba(0, 180, 255, 0.12);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  box-sizing: border-box
+}
+
+.elec-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(ellipse 70% 50% at 50% 20%, rgba(0, 207, 255, 0.12) 0%, transparent 70%),
+    linear-gradient(rgba(0, 180, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 255, 0.04) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.elec-inner {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 3rem 6rem;
+}
+
+.elec-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.elec-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #00CFFF;
+  margin-bottom: 0.75rem;
+}
+
+.elec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 0.95;
+  margin: 0 0 1rem;
+  letter-spacing: -1px;
+}
+
+.elec-title--glow {
+  color: #00CFFF;
+  text-shadow: 0 0 30px rgba(0, 207, 255, 0.8), 0 0 80px rgba(0, 207, 255, 0.4),
+    0 0 140px rgba(0, 207, 255, 0.2);
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 30px rgba(0, 207, 255, 0.8), 0 0 80px rgba(0, 207, 255, 0.4),
+      0 0 140px rgba(0, 207, 255, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(0, 207, 255, 1), 0 0 50px rgba(0, 207, 255, 0.7),
+      0 0 100px rgba(0, 207, 255, 0.35);
+  }
+}
+
+.elec-desc {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 15px;
+  max-width: 460px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+}
+
+.elec-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.elec-card {
+  width: 300px;
+  flex-shrink: 0;
+  background: rgba(0, 20, 50, 0.7);
+  border: 1px solid rgba(0, 207, 255, 0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.elec-card:hover {
+  border-color: rgba(0, 207, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 207, 255, 0.15), 0 8px 40px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+}
+
+.elec-card__img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.elec-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1) saturate(0.7) hue-rotate(195deg);
+  transition: transform 0.5s ease, filter 0.4s;
+}
+
+.elec-card:hover .elec-card__img {
+  transform: scale(1.06);
+  filter: brightness(0.75) saturate(1) hue-rotate(195deg);
+}
+
+.elec-card__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, .75) 100%);
+}
+
+.elec-card__featured {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #00CFFF;
+  color: #020816;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+
+.elec-card__body {
+  padding: 1.1rem 1.2rem 1.4rem;
+}
+
+.elec-card__tipo {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #00CFFF;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.elec-card__name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.elec-card__specs {
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(0, 207, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.elec-card__spec {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  background: rgba(0, 207, 255, 0.05);
+  border-right: 1px solid rgba(0, 207, 255, 0.1);
+  gap: 0.2rem;
+}
+
+.elec-card__spec:last-child {
+  border-right: none;
+}
+
+
+.elec-card__spec-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.elec-card__spec-lbl {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.elec-card__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.elec-card__precio {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00CFFF;
+}
+
+.elec-card__btn {
+  background: var(--bc);
+  border: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    opacity 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--bc) 30%, transparent);
+}
+
+.elec-card__btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--bc) 40%, transparent);
+}
+
+/* ── Variante WhatsApp ────────────────────────── */
+.elec-card__btn--wa {
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.elec-card__btn--wa:hover {
+  background: #1ebe5d;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.elec-card__glow-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00CFFF, transparent);
+  opacity: 0.6;
+  animation: none;
+}
+
+/* ── Acciones del footer (Info + Cotizar) ── */
+.elec-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* ── Botón Info (outline neutro) ── */
+.elec-card__btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.elec-card__btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/*Responsive*/
+@keyframes slide-bar {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@media (max-width: 768px) {
+  .elec-section {
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .elec-inner {
+    padding: 3rem 1.25rem;
+  }
+  .elec-grid {
+    grid-template-columns: 1fr;
+  }
+  .elec-stats {
+    flex-wrap: wrap;
+  }
+  .elec-stat {
+    min-width: 120px;
+  }
+}

@@ -1,0 +1,274 @@
+/* ── Visor360 Container ─────────────────────────── */
+.visor360 {
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Header ───────────────────────────────────── */
+.visor360__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.visor360__title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visor360__icon {
+  font-size: 24px;
+  color: #CC1F25;
+  animation: rotate-hint 2s ease-in-out infinite;
+}
+
+@keyframes rotate-hint {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+.visor360__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.visor360__autoplay-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.visor360__autoplay-btn:hover {
+  border-color: #CC1F25;
+  color: #CC1F25;
+  background: rgba(204, 31, 37, 0.1);
+  transform: scale(1.05);
+}
+
+.visor360__autoplay-btn--active {
+  border-color: #CC1F25;
+  color: #CC1F25;
+  background: rgba(204, 31, 37, 0.15);
+  box-shadow: 0 0 20px rgba(204, 31, 37, 0.3);
+}
+
+/* ── Image Container ──────────────────────────── */
+.visor360__container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: grab;
+  background: #ffffff;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.visor360__container--dragging {
+  cursor: grabbing;
+}
+
+.visor360__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+}
+
+/* ── Hint Overlay ─────────────────────────────── */
+.visor360__hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.visor360__hint-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  animation: pulse-hint 1.5s ease-in-out infinite;
+}
+
+.visor360__hint-content svg {
+  animation: swipe-hint 1.5s ease-in-out infinite;
+}
+
+.visor360__hint-content span {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes pulse-hint {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes swipe-hint {
+  0%, 100% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+}
+
+/* ── Navigation Arrows ────────────────────────── */
+.visor360__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.visor360__container:hover .visor360__nav {
+  opacity: 1;
+}
+
+.visor360__nav:hover {
+  background: #CC1F25;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.visor360__nav--prev {
+  left: 12px;
+}
+
+.visor360__nav--next {
+  right: 12px;
+}
+
+/* ── Progress Section ─────────────────────────── */
+.visor360__progress {
+  margin-top: 16px;
+}
+
+.visor360__progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.visor360__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #CC1F25, #ff4757);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(204, 31, 37, 0.5);
+}
+
+.visor360__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.visor360__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.visor360__dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.2);
+}
+
+.visor360__dot--active {
+  background: #CC1F25;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(204, 31, 37, 0.6);
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 768px) {
+  .visor360 {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .visor360__title {
+    font-size: 16px;
+  }
+
+  .visor360__nav {
+    width: 36px;
+    height: 36px;
+    opacity: 1;
+  }
+
+  .visor360__nav svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .visor360__autoplay-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visor360 {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .visor360__container {
+    border-radius: 10px;
+  }
+
+  .visor360__nav {
+    width: 32px;
+    height: 32px;
+  }
+
+  .visor360__hint-content span {
+    font-size: 12px;
+  }
+}

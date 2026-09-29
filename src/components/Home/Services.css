@@ -1,0 +1,191 @@
+.services {
+  background: #0A0D1A;
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 2.5rem;
+}
+
+.services::before {
+  content: 'SERVICIOS';
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 15vw, 16rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.04);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+
+.section__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.05em;
+}
+
+.section__title span {
+  color: #CC1F25;
+}
+
+/* ── Grid ── */
+.services__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .services__grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Card ── */
+.service-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  transition: border-color 0.3s, transform 0.3s, background 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  height: 100%; /* Make cards equal height */
+}
+
+.service-card:hover {
+  border-color: rgba(204, 31, 37, 0.3);
+  background: rgba(204, 31, 37, 0.04);
+  transform: translateY(-5px);
+}
+
+/* ── Icon ── */
+.service-card__icon {
+  font-size: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(204, 31, 37, 0.1);
+  border-radius: 12px;
+  color: #CC1F25;
+  border: 1px solid rgba(204, 31, 37, 0.2);
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
+/* ── Typography ── */
+.service-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.service-card p {
+  font-family: 'Nunito Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin: 0;
+  flex-grow: 1; /* Push icon to top */
+}
+
+/* Responsive adjustments for smaller screens - using Bootstrap breakpoints */
+@media (max-width: 991.98px) { /* lg breakpoint */
+  .services {
+    padding: 4rem 2rem;
+  }
+  
+  .service-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 767.98px) { /* md breakpoint */
+  .services {
+    padding: 3.5rem 1.5rem;
+  }
+  
+  .service-card {
+    padding: 1.75rem 1.25rem;
+  }
+  
+  .service-card h3 {
+    font-size: 1.6rem;
+  }
+  
+  .service-card p {
+    font-size: 0.85rem;
+  }
+  
+  .service-card__icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.75rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 575.98px) { /* sm breakpoint */
+  .services {
+    padding: 3rem 1rem;
+  }
+  
+  .section__title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 2rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem;
+    margin-bottom: 0; /* gap handles spacing */
+  }
+  
+  .service-card h3 {
+    font-size: 1.4rem;
+  }
+  
+  .service-card p {
+    font-size: 0.8rem;
+  }
+  
+  .service-card__icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    border-radius: 8px;
+  }
+}
+
+/* Underline effect on hover */
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #CC1F25, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}

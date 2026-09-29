@@ -1,0 +1,383 @@
+/*
+  Paleta: ajusta estas variables a los colores exactos de mega-moto.com
+  (por ejemplo si ya tienes variables globales tipo --primary / --accent,
+  reemplaza los valores de abajo por var(--tu-variable)).
+  Referencia usada aquí: azul oscuro corporativo + rojo Bajaj como acento.
+*/
+.aboutUs {
+  --mm-dark: #0f1b2d;
+  --mm-dark-2: #16263d;
+  --mm-accent: #e63946;
+  --mm-accent-2: #ff6b6b;
+  --mm-light: #f5f6f8;
+  --mm-text: #1c2530;
+  --mm-text-muted: #0f1b2d;
+
+  background: var(--mm-light);
+  color: var(--mm-text);
+}
+
+/* ---------- Banner ---------- */
+
+.banner {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  /* Corte diagonal en la parte inferior: revela el fondo claro
+     de la sección siguiente, igual que en el banner de referencia. */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+}
+
+.bannerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(15, 27, 45, 0.7) 0%,
+    rgba(15, 27, 45, 0.45) 38%,
+    rgba(15, 27, 45, 0.15) 68%,
+    rgba(15, 27, 45, 0) 100%
+  );
+}
+
+/* Línea de acento sobre la imagen, guiño al mundo de las motos. */
+.bannerSpeedLine {
+  position: absolute;
+  left: -10%;
+  bottom: 26%;
+  width: 60%;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--mm-accent) 40%,
+    var(--mm-accent-2) 100%
+  );
+  transform: skewY(-4deg);
+  border-radius: 4px;
+}
+
+.bannerContent {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 5vw 4.5rem;
+  max-width: 900px;
+}
+
+.bannerTitle {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.bannerSubtitle {
+  margin: 0.9rem 0 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  max-width: 640px;
+}
+
+@media (max-width: 640px) {
+  .banner {
+    min-height: 46vh;
+  }
+  .bannerContent {
+    padding: 2rem 6vw 2.2rem;
+  }
+}
+
+/* ---------- Layout general ---------- */
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 5vw 5rem;
+}
+
+.mvEyebrow {
+  display: inline-block;
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mm-accent);
+  padding-bottom: 0.6rem;
+}
+
+.mvEyebrow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--mm-accent), var(--mm-accent-2));
+  border-radius: 3px;
+  transform: skewX(-20deg);
+}
+
+.metaLine {
+  margin: 0 0 2.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(15, 27, 45, 0.1);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mm-text-muted);
+}
+
+/* ---------- Misión / Visión ---------- */
+
+.misionVisionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 4.5rem;
+}
+
+.mvCard {
+  background: #fff;
+  border: 1px solid rgba(15, 27, 45, 0.08);
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 12px 30px -18px rgba(15, 27, 45, 0.25);
+}
+
+.mvText {
+  margin: 1rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--mm-text-muted);
+}
+
+@media (max-width: 860px) {
+  .misionVisionGrid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* ---------- Valores ---------- */
+
+.valoresHeader {
+  margin-bottom: 2rem;
+}
+
+.valoresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 4.5rem;
+}
+
+.valorCard {
+  background: #fff;
+  border: 1px solid rgba(15, 27, 45, 0.08);
+  border-radius: 14px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 12px 30px -18px rgba(15, 27, 45, 0.25);
+  color: var(--mm-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.valorIconWrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--mm-accent), var(--mm-accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.1rem;
+}
+
+.valorIcon {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.valorTitulo {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--mm-text);
+}
+
+.valorDescripcion {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--mm-text-muted);
+}
+
+.valorDetails {
+  margin-top: 1.1rem;
+  border-top: 1px solid rgba(15, 27, 45, 0.1);
+  padding-top: 0.8rem;
+}
+
+.valorSummary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mm-accent);
+  list-style: none;
+}
+
+.valorSummary::-webkit-details-marker {
+  display: none;
+}
+
+.valorSummary::before {
+  content: "+ ";
+}
+
+.valorDetails[open] .valorSummary::before {
+  content: "− ";
+}
+
+.valorLista {
+  margin: 0.7rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--mm-text-muted);
+}
+
+.valorLista li {
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- Accesibilidad ---------- */
+
+.valorSummary:focus-visible,
+.mvCard:focus-visible {
+  outline: 2px solid var(--mm-accent-2);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ---------- Políticas SST (columna con acordeón) ---------- */
+
+.politicasColumna {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.politicaItem {
+  background: #fff;
+  border: 1px solid rgba(15, 27, 45, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px -18px rgba(15, 27, 45, 0.25);
+  overflow: hidden;
+}
+
+.politicaSummary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+}
+
+.politicaSummary::-webkit-details-marker {
+  display: none;
+}
+
+.politicaSummaryText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.politicaCodigo {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--mm-accent);
+  text-transform: uppercase;
+}
+
+.politicaTitulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mm-text);
+}
+
+.politicaChevron {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--mm-text-muted);
+  border-bottom: 2px solid var(--mm-text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.politicaItem[open] .politicaChevron {
+  transform: rotate(-135deg);
+}
+
+.politicaItem[open] .politicaSummary {
+  border-bottom: 1px solid rgba(15, 27, 45, 0.08);
+}
+
+.politicaContenido {
+  padding: 1.3rem 1.4rem 1.6rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--mm-text-muted);
+}
+
+.politicaContenido p {
+  margin: 0 0 1rem;
+}
+
+.politicaContenido ul {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.politicaContenido li {
+  margin-bottom: 0.5rem;
+}
+
+.politicaFirma {
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(15, 27, 45, 0.08);
+}
+
+.politicaFecha {
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+.politicaFirmante {
+  font-weight: 700;
+  color: var(--mm-text);
+}
+
+.politicaFirmante span {
+  font-weight: 500;
+  color: var(--mm-text-muted);
+}

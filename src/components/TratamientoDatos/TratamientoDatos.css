@@ -1,0 +1,117 @@
+/* ─── Wrapper ────────────────────────────────────────────────── */
+.td-wrapper {
+  min-height: 100vh;
+  background: #0f1520;
+  padding: 48px 20px 80px;
+}
+
+/* ─── Document container ─────────────────────────────────────── */
+.td-document {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+/* ─── Doc Header ─────────────────────────────────────────────── */
+.td-doc-header {
+  text-align: center;
+  margin-bottom: 52px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #1e2d45;
+}
+
+.td-doc-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 400;
+  color: #f0f4f8;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.td-doc-meta {
+  font-size: 0.78rem;
+  color: #aec2e4;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+/* ─── Content body ───────────────────────────────────────────── */
+.td-content {
+  color: #b8c4d8;
+  font-size: 0.935rem;
+  line-height: 1.85;
+}
+
+.td-content h2 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #e8edf5;
+  margin: 40px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1a2740;
+  letter-spacing: -0.01em;
+}
+
+.td-content h2:first-child {
+  margin-top: 0;
+}
+
+.td-content p {
+  margin: 0 0 14px;
+  color: #b8c4d8;
+}
+
+.td-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.td-content strong {
+  color: #dde5f0;
+  font-weight: 600;
+}
+
+.td-content a {
+  color: #5b9bd5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(91, 155, 213, 0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.td-content a:hover {
+  color: #93c5fd;
+  border-bottom-color: #93c5fd;
+}
+
+/* ─── Footer info block ──────────────────────────────────────── */
+.td-footer-info {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid #1e2d45;
+  font-size: 0.82rem;
+  color: #4a5e80;
+}
+
+.td-footer-info p {
+  margin: 0 0 6px;
+  color: #4a5e80 !important;
+}
+
+.td-footer-info strong {
+  color: #6b7fa3 !important;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .td-wrapper {
+    padding: 28px 16px 60px;
+  }
+
+  .td-content {
+    font-size: 0.9rem;
+  }
+
+  .td-content h2 {
+    font-size: 1.05rem;
+  }
+}

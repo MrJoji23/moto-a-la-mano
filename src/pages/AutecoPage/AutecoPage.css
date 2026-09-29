@@ -1,0 +1,22 @@
+/* ════════════════════════════════════════════════
+   AutecoPage.css  –  MegaMoto Group
+   ════════════════════════════════════════════════ */
+
+.auteco-page {
+  width: 100%;
+  color: #fff;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.auteco-page > *:not(.auteco-hero):not(.elec-section) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (max-width: 768px) {
+  .auteco-page {
+    padding: 0 1rem;
+  }
+}

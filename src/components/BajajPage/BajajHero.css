@@ -1,0 +1,98 @@
+/* ════════════════════════════════════════════════
+   BajajHero.css  –  MegaMoto Group
+   ════════════════════════════════════════════════ */
+
+/* ── Hero ─────────────────────────────────────── */
+.bajaj-hero {
+  position: relative;
+  width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  height: 100dvh;
+  min-height: 560px;
+  background-image: var(--bajaj-hero-bg-desktop);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  filter: brightness(1.15);
+}
+
+.bajaj-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0) 25%,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.bajaj-hero__scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bajaj-hero__scroll-label {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: 'Barlow Condensed', sans-serif;
+  animation: scrollFade 1.5s ease-in-out infinite;
+}
+
+.bajaj-hero__chevrons .chev {
+  stroke: rgba(255, 255, 255, 0.85);
+}
+
+.chev--1 { animation: scrollFade 1.5s ease-in-out infinite 0s; }
+.chev--2 { animation: scrollFade 1.5s ease-in-out infinite 0.2s; }
+.chev--3 { animation: scrollFade 1.5s ease-in-out infinite 0.4s; }
+
+@keyframes scrollFade {
+  0%, 100% { opacity: 0.25; }
+  50%       { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bajaj-hero { 
+    background-image: var(--bajaj-hero-bg-mobile);
+    background-position: 50% top;
+    background-attachment: scroll;
+    background-size: cover;
+    width: calc(100% + 2rem); 
+    margin-left: -1rem; 
+    margin-right: -1rem;
+    justify-content: flex-end;
+    padding-bottom: 2rem !important;
+    padding-top: 0rem !important;
+  }
+
+    .bajaj-hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.15) 40%,
+      rgba(0, 0, 0, 0.15) 55%,
+      rgba(0, 0, 0, 0.30) 80%,  
+      rgba(0, 0, 0, 0.90) 100%
+    );
+  }
+
+}

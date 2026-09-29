@@ -1,0 +1,342 @@
+/* ── Grid título ──────────────────────────────── */
+.auteco-grid__title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 1.75rem;
+  letter-spacing: -0.5px;
+}
+
+.auteco-grid__title span {
+  color: var(--color-secondary);
+}
+
+/* ── Grid ─────────────────────────────────────── */
+.auteco-motos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 6rem;
+  padding: 0 1rem;
+}
+
+/* ── Tarjeta ──────────────────────────────────── */
+.auteco-mcard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition:
+    box-shadow 0.3s,
+    border-color 0.3s,
+}
+
+.auteco-mcard:hover {
+  border-color: rgba(var(--bc-rgb, 204, 31, 37), 0.5);
+  box-shadow:
+    0 12px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(var(--bc-rgb, 204, 31, 37), 0.2);
+    will-change: transform;
+}
+
+.auteco-mcard--featured {
+  border-color: color-mix(in srgb, var(--bc) 30%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bc) 20%, transparent);
+}
+
+.auteco-mcard__badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--bc);
+  text-align: center;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 5px 0;
+  z-index: 5;
+}
+
+.auteco-mcard__img-wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.auteco-mcard--featured .auteco-mcard__img-wrap {
+  height: 220px;
+}
+
+.auteco-mcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.auteco-mcard:hover .auteco-mcard__img {
+  transform: scale(1.07);
+}
+
+.auteco-mcard__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.auteco-mcard__tipo {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+
+/* ── Badge de colores disponibles ─────────────── */
+.auteco-mcard__color-dots {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.auteco-mcard__color-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.auteco-mcard:hover .auteco-mcard__color-dot {
+  transform: scale(1.15);
+}
+
+/* Body */
+.auteco-mcard__body {
+  padding: 1.1rem 1.2rem 1.4rem;
+}
+
+.auteco-mcard__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.auteco-mcard__name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Specs */
+.auteco-mcard__specs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.auteco-mcard__spec {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auteco-mcard__spec-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+.auteco-mcard__spec-val {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.auteco-mcard__spec-lbl {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 0.2rem;
+}
+
+/* Footer */
+.auteco-mcard__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.auteco-mcard__desde {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.15rem;
+}
+
+.auteco-mcard__precio {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+
+.auteco-mcard__actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.auteco-mcard__btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s;
+}
+
+.auteco-mcard__btn-outline:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.auteco-mcard__btn-solid {
+  background: var(--bc);
+  border: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    opacity 0.2s,
+    transform 0.15s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--bc) 30%, transparent);
+}
+
+.auteco-mcard__btn-solid:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--bc) 40%, transparent);
+}
+
+/* ── Variante WhatsApp ────────────────────────── */
+.auteco-mcard__btn-solid--wa {
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.auteco-mcard__btn-solid--wa:hover {
+  background: #1ebe5d;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.auteco-mcard__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bc);
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.auteco-mcard:hover .auteco-mcard__bar {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .auteco-motos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auteco-motos-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .auteco-mcard__specs {
+    flex-wrap: wrap;
+  }
+  .auteco-mcard__spec {
+    min-width: 50%;
+  }
+  .auteco-mcard__spec-divider {
+    display: none;
+  }
+  .auteco-mcard__actions {
+    gap: 0.35rem;
+  }
+  .auteco-mcard__btn-solid--wa span:not(svg) {
+    display: none;
+  }
+}

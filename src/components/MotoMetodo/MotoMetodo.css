@@ -1,0 +1,206 @@
+.tradein {
+  background: #0A0D1A;
+  padding: 5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  
+}
+
+.tradein::before {
+  content: '';
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 15vw, 16rem);
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.04);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #CC1F25 50%, transparent 100%);
+  transform-origin: center;
+  margin-top: 4rem;
+}
+
+.tradein__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 0 20px;
+}
+
+/* ── Texto ── */
+.tradein__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tradein__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #CC1F25;
+}
+
+.tradein__text h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.tradein__text h2 .accent-red {
+  color: #CC1F25;
+}
+
+.tradein__sub {
+  font-size: 1rem;
+  color: #a0aab4;
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ── CTA ── */
+.tradein__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #CC1F25;
+  color: #fff;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 6px;
+}
+
+/* ── Visual ── */
+.tradein__visual {
+  flex-shrink: 0;
+}
+
+.tradein__icon-wrap {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(204, 31, 37, 0.08);
+  border: 2px solid rgba(204, 31, 37, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tradein__moto-icon {
+  font-size: 5rem;
+  color: #CC1F25;
+  opacity: 0.85;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .tradein {
+    padding: 60px 32px;
+  }
+
+  .tradein__inner {
+    gap: 40px;
+  }
+
+  .tradein__icon-wrap {
+    width: 160px;
+    height: 160px;
+  }
+
+  .tradein__moto-icon {
+    font-size: 4rem;
+  }
+}
+
+/* ── Móvil ── */
+@media (max-width: 768px) {
+
+  .tradein {
+    padding: 50px 20px;
+  }
+
+  .tradein__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .tradein__text {
+    gap: 14px;
+    width: 100%;
+  }
+
+  .tradein__sub {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .tradein__cta {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+
+  .tradein__visual {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .tradein__icon-wrap {
+    width: 120px;
+    height: 120px;
+  }
+
+  .tradein__moto-icon {
+    font-size: 3rem;
+  }
+}
+
+/* ── Móvil pequeño ── */
+@media (max-width: 400px) {
+  .tradein {
+    padding: 40px 16px;
+  }
+
+  .tradein__text h2 {
+    font-size: 1.4rem;
+  }
+
+  .tradein__sub {
+    font-size: 0.88rem;
+  }
+  
+    .tradein__icon-wrap {
+    width: 90px;
+    height: 90px;
+  }
+
+  .tradein__moto-icon {
+    font-size: 2.2rem;
+  }
+}
