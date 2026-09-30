@@ -41,11 +41,11 @@
 }
 
 .footer-logo-img {
-  height: 75px;
+  height: 48px;            /* Reduce el tamaño para que encaje bien con el texto */
   width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  max-width: 100%;
   object-fit: contain;
+  opacity: 0.9;
 }
 
 .company-info {

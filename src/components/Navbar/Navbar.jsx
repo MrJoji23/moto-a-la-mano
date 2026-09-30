@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useReducer } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
-import logo from "../../assets/images/iconomotos.webp";
+import logo from "../../assets/images/icono_center.webp";
 import ContactModal from "../ContactModal/ContactModal";
 import "./Navbar.css";
 
@@ -152,7 +152,7 @@ const Navbar = () => {
         aria-label="Navegación principal"
       >
         <Link to="/" className="mm-nav-logo" aria-label="MotoCenter — Inicio">
-          <img src={logo} alt="MotoCenter" height="52" width="auto" />
+          <img src={logo} alt="MotoCenter" width="30" height="30" />
         </Link>
 
         {/* Links desktop */}
@@ -296,7 +296,7 @@ const Navbar = () => {
                     width="20"
                     height="20"
                     aria-hidden="true"
-                  >
+                  > 
                     <path d="M18 6 6 18M6 6l12 12" />
                   </svg>
                 </button>

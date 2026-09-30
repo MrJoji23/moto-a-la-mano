@@ -72,17 +72,22 @@
 /* ── Logo ───────────────────────────────────────── */
 .mm-nav-logo {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 .mm-nav-logo img {
-  height: 48px;
+  height: 36px;
   width: auto;
+  max-width: 100%;
   display: block;
+  /* El navbar es oscuro (transparente sobre el carrusel o sólido al hacer
+     scroll): se fuerza a blanco igual que en el footer para mantener contraste. */
 }
 
 @media (min-width: 768px) {
   .mm-nav-logo img {
-    height: 55px;
+    height: 48px;
   }
 }
 

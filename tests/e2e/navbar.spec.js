@@ -14,6 +14,20 @@ test.describe('Navbar', () => {
     await expect(nav.getByRole('button', { name: 'Contáctanos' })).toBeVisible()
   })
 
+  test('el logo del navbar y el del footer usan el mismo icono de marca', async ({ page }) => {
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+
+    const srcDe = (sel) => page.locator(sel).first().getAttribute('src')
+    const archivo = (src) => (src || '').split('/').pop()
+
+    const nav = await srcDe('.mm-nav-logo img')
+    const foot = await srcDe('.footer-logo-img')
+
+    expect(archivo(nav), 'logo del navbar').toBe('icono_center.webp')
+    expect(archivo(foot), 'logo del footer').toBe('icono_center.webp')
+  })
+
   test('el logo no apunta a un recurso inexistente', async ({ page }) => {
     const failed = []
     page.on('response', (res) => {

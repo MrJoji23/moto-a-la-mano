@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/images/iconomotos.webp';
+import logo from '../../assets/images/icono_center.webp';
 import { FaInstagram, FaFacebookF, FaTiktok, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 import './Footer.css';
 import JobApplicationModal from './JobApplicationModal';
@@ -38,11 +38,7 @@ const Footer = () => {
           <div className="footer-section section-left">
             <h4 className="footer-label">Contacto</h4>
             <p className="footer-main-text">
-              <FaPhoneAlt size={11} className="icon-red" />
-               Servicio Tecnico: 316 0404047
-            </p>
-            <p className="footer-main-text">
-              <FaPhoneAlt size={9} className="icon-red" /> Comercial: 305 4300302
+              <FaPhoneAlt size={9} className="icon-red" /> Comercial: **
             </p>
             <div className="footer-socials">
               <a href="https://www.instagram.com/motocenter/" className="social-box" aria-label="Instagram">
@@ -82,8 +78,8 @@ const Footer = () => {
           <div className="footer-section section-right">
             <h4 className="footer-label">Encuéntranos en</h4>
             <p className="footer-main-text">Bogotá, Colombia</p>
-            <p className="footer-sub-text">Av. Calle 63 #110-10</p>
-            <p className="footer-sub-text">Barrio Villa Gladys</p>
+            <p className="footer-sub-text">EN MI CASA PADREE</p>
+            <p className="footer-sub-text">Barrio fruti</p>
             <Link to="/#mapa" className="map-link">
               <FaMapMarkerAlt size={11} aria-hidden="true" /> Ver en mapa →
             </Link>
