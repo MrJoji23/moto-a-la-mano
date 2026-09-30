@@ -243,6 +243,11 @@ p {
 
 ul {
   list-style: none;
+  /* Sin el padding/margen por defecto del navegador: las grillas de tarjetas
+     quedaban desplazadas ~40px a la derecha en móvil. Las listas que sí
+     necesitan sangría la declaran con su propia clase (gana por especificidad). */
+  margin: 0;
+  padding: 0;
 }
 
 /* ── Utilidades ──────────────────────────────────── */

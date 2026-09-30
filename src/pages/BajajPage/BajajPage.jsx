@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import BajajHero from "../../components/BajajPage/BajajHero";
-import BajajBrandsSection from "../../components/BajajPage/BajajBrandsSection";
 import BajajMotosGrid from "../../components/BajajPage/BajajMotosGrid";
 import "./BajajPage.css";
 
@@ -33,10 +32,6 @@ const BajajPage = () => {
         <meta property="og:type" content="website" />
       </Helmet>
       <BajajHero />
-      <BajajBrandsSection
-        marcaSeleccionada={marcaSeleccionada}
-        onMarcaSelect={setMarcaSeleccionada}
-      />
       <BajajMotosGrid
         marcaSeleccionada={marcaSeleccionada}
         onMarcaSelect={setMarcaSeleccionada}

@@ -118,6 +118,57 @@ test.describe('Home', () => {
     expect(borde).not.toBe('rgb(59, 130, 246)')
   })
 
+  test('las tarjetas de marca normalizan el logo y ponen el nombre debajo', async ({ page }) => {
+    await page.goto('/')
+
+    const marcas = page.locator('#marcas')
+    await marcas.scrollIntoViewIfNeeded()
+
+    // Sólo Bajaj y Auteco (el teaser Honda usa otro wrap y queda intacto)
+    const placas = marcas.locator('a.brand-tile .brand-tile__logo-wrap')
+    await expect(placas).toHaveCount(2)
+
+    const medidas = await placas.evaluateAll((nodos) =>
+      nodos.map((el) => {
+        const caja = el.getBoundingClientRect()
+        return { w: Math.round(caja.width), h: Math.round(caja.height) }
+      }),
+    )
+    for (const m of medidas) {
+      expect(m.w).toBe(medidas[0].w)
+      expect(m.h).toBe(medidas[0].h)
+      // Placa cuadrada, no una caja arbitraria
+      expect(Math.abs(m.w - m.h)).toBeLessThanOrEqual(1)
+    }
+
+    // Ningún logo se deforma ni se recorta (contain, tamaño intrínseco)
+    const distort = await marcas
+      .locator('a.brand-tile .brand-tile__logo')
+      .evaluateAll((nodos) =>
+        nodos.map((img) => {
+          const natural = img.naturalWidth / img.naturalHeight
+          const caja = img.getBoundingClientRect()
+          const render = caja.width / caja.height
+          return Math.abs(natural - render)
+        }),
+      )
+    for (const d of distort) expect(d).toBeLessThanOrEqual(0.05)
+
+    // El nombre es el primer elemento de texto bajo la placa
+    for (const nombre of ['Bajaj', 'Auteco']) {
+      const tile = marcas.locator('a.brand-tile').filter({ hasText: nombre })
+      const heading = tile.locator('.brand-tile__name')
+      await expect(heading).toHaveText(nombre)
+
+      const orden = await tile.evaluate((el) => {
+        const placa = el.querySelector('.brand-tile__logo-wrap').getBoundingClientRect()
+        const h3 = el.querySelector('.brand-tile__name').getBoundingClientRect()
+        return h3.top >= placa.bottom - 1
+      })
+      expect(orden, `«${nombre}» debe quedar debajo de su logo`).toBe(true)
+    }
+  })
+
   test('el botón flotante de WhatsApp es visible y persistente', async ({ page }) => {
     await page.goto('/')
 
@@ -205,5 +256,35 @@ test.describe('Home', () => {
       () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
     )
     expect(desborde).toBeLessThanOrEqual(1)
+  })
+
+  test('"Nuestros Servicios" está centrado en móvil, sin desplazamiento a la derecha', async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 800 })
+    await page.goto('/')
+
+    const grid = page.locator('section.services .services__grid')
+    await grid.scrollIntoViewIfNeeded()
+
+    // El <ul> no arrastra el padding por defecto del navegador
+    const padding = await grid.evaluate(
+      (el) => parseFloat(getComputedStyle(el).paddingLeft),
+    )
+    expect(padding, 'padding izquierdo residual de <ul>').toBe(0)
+
+    // En móvil, una sola columna
+    const columnas = await grid.evaluate(
+      (el) => getComputedStyle(el).gridTemplateColumns.split(' ').filter(Boolean).length,
+    )
+    expect(columnas).toBe(1)
+
+    // El espacio a la izquierda y a la derecha del grid es simétrico
+    const simetria = await grid.evaluate((el) => {
+      const caja = el.getBoundingClientRect()
+      return {
+        izquierda: caja.left,
+        derecha: document.documentElement.clientWidth - caja.right,
+      }
+    })
+    expect(Math.abs(simetria.izquierda - simetria.derecha)).toBeLessThanOrEqual(2)
   })
 })

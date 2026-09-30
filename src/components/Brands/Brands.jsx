@@ -63,24 +63,24 @@ const Brands = () => {
                   className="brand-tile__inner"
                   variants={cardVariants}
                 >
-                  <span className="brand-tile__body">
+                  <div className="brand-tile__body">
                     <span className="brand-tile__logo-wrap">
                       <img src={brand.logo} alt="" className="brand-tile__logo" />
                     </span>
 
-                    <span className="brand-tile__info">
+                    <div className="brand-tile__info">
+                      <h3 className="brand-tile__name">{brand.name}</h3>
                       <span className="brand-tile__tagline">{brand.tagline}</span>
-                      <span className="brand-tile__name">{brand.name}</span>
                       <span className="brand-tile__desc">{brand.description}</span>
 
-                      <span className="brand-tile__models">
+                      <ul className="brand-tile__models">
                         {brand.models.map((modelo) => (
-                          <span key={modelo} className="brand-tile__model-tag">
+                          <li key={modelo} className="brand-tile__model-tag">
                             {modelo}
-                          </span>
+                          </li>
                         ))}
-                      </span>
-                    </span>
+                      </ul>
+                    </div>
 
                     <span className="brand-tile__stat">
                       <span className="brand-tile__stat-num">{brand.stat.num}</span>
@@ -90,7 +90,7 @@ const Brands = () => {
                     <span className="brand-tile__arrow" aria-hidden="true">
                       →
                     </span>
-                  </span>
+                  </div>
                 </m.div>
               </Link>
             ))}

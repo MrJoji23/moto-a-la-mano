@@ -96,13 +96,6 @@ const Footer = () => {
           <div className="footer-developers">
             <span className="footer-developers-label">Desarrollado por:</span>
             <div className="footer-developers-links">
-              <a href="https://github.com/daniielbb" target="_blank" rel="noopener noreferrer">
-                <u> Daniel Barros </u>
-              </a>
-              <span className="footer-developers-divider">|</span>
-              <a href="https://github.com/SebasYe05" target="_blank" rel="noopener noreferrer">
-                <u> Sebastian Sotomayor </u>
-              </a>
               <span className="footer-developers-divider">|</span>
               <a href="https://github.com/MrJoji23" target="_blank" rel="noopener noreferrer">
                 <u> Juan Marin </u>

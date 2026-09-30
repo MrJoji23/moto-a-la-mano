@@ -191,26 +191,30 @@ test.describe('Catálogo y filtros', () => {
     })
   }
 
-  test('bajaj: la tarjeta de línea acota el catálogo y se sincroniza con el desplegable', async ({ page }) => {
+  test('bajaj: ya no hay cards de líneas y el desplegable acota el catálogo', async ({ page }) => {
     await page.goto('/bajaj')
 
-    const tarjeta = page.getByRole('button', { name: /pulsar/i }).first()
-    await tarjeta.scrollIntoViewIfNeeded()
-    await tarjeta.click()
-    await expect(tarjeta).toHaveAttribute('aria-pressed', 'true')
+    // La fila de cards horizontales de líneas se eliminó del JSX
+    await expect(page.locator('.lineas')).toHaveCount(0)
+    await expect(page.getByRole('button', { name: /pulsar/i })).toHaveCount(0)
 
     const grid = page.locator('#bajaj-catalogo')
+    await grid.scrollIntoViewIfNeeded()
     await expect(grid).toBeVisible()
+
+    // El filtrado por línea sigue disponible en el desplegable de filtros
+    const totalTodas = await grid.locator('.bajaj-card').count()
+    expect(totalTodas).toBeGreaterThan(0)
+
+    await grid.getByLabel('Línea').selectOption('pulsar')
+    const totalPulsar = await grid.locator('.bajaj-card').count()
+    expect(totalPulsar).toBeGreaterThan(0)
+    expect(totalPulsar).toBeLessThan(totalTodas)
     await expect(grid.getByRole('heading', { level: 2 })).toContainText(/Pulsar/i)
 
-    // La tarjeta y el desplegable "Línea" comparten estado
-    await expect(grid.getByLabel('Línea')).not.toHaveValue('')
-
-    // Volver a pulsar la línea activa restaura el catálogo completo
-    const totalLinea = await grid.locator('.bajaj-card').count()
-    await tarjeta.click()
-    await expect(grid.getByLabel('Línea')).toHaveValue('')
-    expect(await grid.locator('.bajaj-card').count()).toBeGreaterThan(totalLinea)
+    // Volver a "todas" restaura el catálogo completo
+    await grid.getByLabel('Línea').selectOption('')
+    expect(await grid.locator('.bajaj-card').count()).toBe(totalTodas)
   })
 
   test('abre el detalle de una moto y lo cierra con Escape', async ({ page }) => {
@@ -245,15 +249,24 @@ test.describe('Catálogo y filtros', () => {
     expect(decodeURIComponent(url.searchParams.get('text'))).toContain(nombre)
   })
 
-  test('auteco: la sección de eléctricas es alcanzable', async ({ page }) => {
+  test('auteco: las eléctricas siguen en el catálogo general y no hay cards de líneas', async ({ page }) => {
     await page.goto('/auteco')
 
-    const tarjeta = page.getByRole('button', { name: /eléctric/i }).first()
-    await tarjeta.scrollIntoViewIfNeeded()
-    await tarjeta.click()
+    await expect(page.locator('.lineas')).toHaveCount(0)
 
-    await expect(page.locator('.honda-tile__countdown')).toHaveCount(0)
-    await expect(page.getByText(/eléctric/i).first()).toBeVisible()
+    const grid = page.locator('#auteco-catalogo')
+    await grid.scrollIntoViewIfNeeded()
+    await expect(grid).toBeVisible()
+
+    // Sin cards de líneas, el grid nunca se desmonta
+    expect(await grid.locator('.auteco-mcard').count()).toBeGreaterThan(0)
+
+    // Las eléctricas continúan catalogadas en el grid general
+    const electricas = await grid
+      .locator('.auteco-mcard')
+      .filter({ has: page.getByText(/starker|minca/i) })
+      .count()
+    expect(electricas).toBeGreaterThan(0)
   })
 
   test('no hay scroll horizontal en móvil', async ({ page }) => {

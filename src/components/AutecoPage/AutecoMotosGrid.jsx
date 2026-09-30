@@ -33,8 +33,9 @@ const HOVER_ANIM = { y: -5 };
 const HOVER_TRANS = { duration: 0.22 };
 const NO_HOVER = {};
 
-/* La línea "Eléctricos" tiene su propia sección (ElectricSection) y no se
-   ofrece en el desplegable: elegirla sacaría el grid de la vista. */
+/* La línea "Eléctricos" no aparece en el desplegable: sus motos no tienen
+   cilindrada, así que no encajan en los rangos de cc del filtro. Siguen
+   estando en el catálogo general (AUTECO_MOTOS las incluye). */
 const LINEAS_CON_GRID = AUTECO_BRANDS.filter((marca) => marca.id !== 'electricos');
 
 const AutecoMotosGrid = ({ marcaSeleccionada, onMarcaSelect }) => {

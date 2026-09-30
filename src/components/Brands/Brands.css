@@ -108,9 +108,19 @@
   text-align: center;
 }
 
+/* Placa uniforme: mismo marco para logos de proporción distinta
+   (Bajaj 360x203 ≈ 1.77 vs Auteco 1080x1080 = 1.0). El logo se escala
+   dentro de la placa con `contain` para que ninguno se recorte ni domine. */
 .brand-tile__logo-wrap {
-  width: 72px;
-  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  background: var(--mm-surface-2);
+  border: var(--mm-border-card);
+  border-radius: var(--mm-radius-lg);
   margin: 0 auto 1.25rem;
   transition: transform var(--mm-ease);
 }
@@ -120,9 +130,18 @@
 }
 
 .brand-tile__logo {
-  width: 100%;
-  height: 100%;
+  max-width: 78%;
+  max-height: 68%;
+  width: auto;
+  height: auto;
   object-fit: contain;
+}
+
+.brand-tile__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .brand-tile__tagline {
@@ -241,8 +260,9 @@
   }
 
   .brand-tile__logo-wrap {
-    width: 56px;
-    height: 56px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
   }
 }
 

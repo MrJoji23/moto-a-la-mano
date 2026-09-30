@@ -1,8 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import AutecoHero from "../../components/AutecoPage/AutecoHero";
-import AutecoBrandsSection from "../../components/AutecoPage/AutecoBrandsSection";
-import ElectricSection from "../../components/AutecoPage/ElectricSection";
 import AutecoMotosGrid from "../../components/AutecoPage/AutecoMotosGrid";
 import "./AutecoPage.css";
 
@@ -34,17 +32,10 @@ const AutecoPage = () => {
         <meta property="og:type" content="website" />
       </Helmet>
       <AutecoHero />
-      <AutecoBrandsSection
+      <AutecoMotosGrid
         marcaSeleccionada={marcaSeleccionada}
         onMarcaSelect={setMarcaSeleccionada}
       />
-      {marcaSeleccionada === "electricos" && <ElectricSection />}
-      {marcaSeleccionada !== "electricos" && (
-        <AutecoMotosGrid
-          marcaSeleccionada={marcaSeleccionada}
-          onMarcaSelect={setMarcaSeleccionada}
-        />
-      )}
     </main>
   );
 };
