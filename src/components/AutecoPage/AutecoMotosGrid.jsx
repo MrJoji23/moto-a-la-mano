@@ -10,10 +10,8 @@ import {
 } from '../../data/catalogFilters';
 import MotoInfoModal from '../BajajPage/MotoInfoModal';
 import GridFilters from '../main-page/GridFilters/GridFilters';
+import { abrirWhatsApp } from '../../data/contacto';
 import './AutecoMotosGrid.css';
-
-/* ── WhatsApp comercial ─────────────────────────── */
-const WA_NUMBER = '573160404047';
 
 const CONTAINER_VARIANTS = {
   hidden: {},
@@ -84,7 +82,7 @@ const AutecoMotosGrid = ({ marcaSeleccionada, onMarcaSelect }) => {
     const texto = encodeURIComponent(
       `Hola! Estoy interesado en cotizar la *${moto.name}* (${moto.cc}) - Precio desde ${moto.precio}. ¿Me pueden dar más información?`,
     );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${texto}`, "_blank", "noopener");
+    abrirWhatsApp(texto);
   };
 
   return (

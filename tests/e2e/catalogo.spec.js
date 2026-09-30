@@ -246,6 +246,7 @@ test.describe('Catálogo y filtros', () => {
 
     const url = new URL(popup.url())
     expect(url.hostname).toBe('wa.me')
+    expect(url.pathname).toBe('/300000000')
     expect(decodeURIComponent(url.searchParams.get('text'))).toContain(nombre)
   })
 

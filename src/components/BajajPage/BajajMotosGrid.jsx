@@ -11,10 +11,8 @@ import {
 import Visor360 from './Visor360';
 import MotoInfoModal from './MotoInfoModal';
 import GridFilters from '../main-page/GridFilters/GridFilters';
+import { abrirWhatsApp } from '../../data/contacto';
 import './BajajMotosGrid.css';
-
-/* ── WhatsApp comercial ─────────────────────────── */
-const WA_NUMBER = '573160404047';
 
 const CONTAINER_VARIANTS = {
   hidden: {},
@@ -86,7 +84,7 @@ const BajajMotosGrid = ({ marcaSeleccionada, onMarcaSelect }) => {
     const texto = encodeURIComponent(
       `Hola! Estoy interesado en cotizar la *${moto.name}* (${moto.cc}) - Precio desde ${moto.precio}. ¿Me pueden dar más información?`,
     );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${texto}`, "_blank", "noopener");
+    abrirWhatsApp(texto);
   };
 
   return (

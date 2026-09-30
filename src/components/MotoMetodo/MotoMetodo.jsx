@@ -2,8 +2,7 @@ import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
 import './MotoMetodo.css';
 import SectionDivider from '../main-page/SectionDivider';
-
-const WA_NUMBER = '573160404047';
+import { abrirWhatsApp } from '../../data/contacto';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -20,10 +19,9 @@ const fadeUp = {
  */
 export default function MotoMetodo() {
   const handleWhatsApp = () => {
-    const texto = encodeURIComponent(
-      'Hola! Tengo una moto usada y me gustaría saber más información sobre cómo usarla como parte de pago para adquirir una nueva. ¿Me pueden ayudar?'
-    );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${texto}`, '_blank');
+    const texto =
+      'Hola! Tengo una moto usada y me gustaría saber más información sobre cómo usarla como parte de pago para adquirir una nueva. ¿Me pueden ayudar?';
+    abrirWhatsApp(texto);
   };
 
   return (

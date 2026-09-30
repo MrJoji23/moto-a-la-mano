@@ -1,8 +1,10 @@
 import { FaWhatsapp } from "react-icons/fa";
+import { enlaceWhatsApp } from "../../data/contacto";
 import "./AutecoHero.css";
 
-const WA_URL =
-  "https://api.whatsapp.com/send?phone=573054300302&text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20las%20motos%20Auteco.";
+const WA_URL = enlaceWhatsApp(
+  "Hola, me gustaría información sobre las motos Auteco.",
+);
 
 const AutecoHero = () => {
   return (

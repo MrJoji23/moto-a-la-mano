@@ -4,8 +4,7 @@ import { ELECTRICOS } from '../../data/AUTECO/autecoData';
 import LightningCanvas from './LightningCanvas';
 import './ElectricSection.css';
 import MotoInfoModal from '../BajajPage/MotoInfoModal';
-
-const WA_NUMBER = '573160404047';
+import { abrirWhatsApp } from '../../data/contacto';
 
 const CONTAINER_VARIANTS = {
   hidden : {},
@@ -33,10 +32,9 @@ const ElectricSection = () => {
 
   const handleCotizar = (moto, e) => {
     e.stopPropagation();
-    const texto = encodeURIComponent(
-      `Hola! Estoy interesado en cotizar la *${moto.name}* - Precio desde ${moto.precio}. ¿Me pueden dar más información?`
-    );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${texto}`, '_blank');
+    const texto =
+      `Hola! Estoy interesado en cotizar la *${moto.name}* - Precio desde ${moto.precio}. ¿Me pueden dar más información?`;
+    abrirWhatsApp(texto);
   };
 
   return (

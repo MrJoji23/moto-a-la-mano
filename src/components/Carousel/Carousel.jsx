@@ -2,11 +2,11 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { LazyMotion, domAnimation, m, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { SLIDES, DELAY } from '../../data/carouselData';
+import { enlaceWhatsApp } from '../../data/contacto';
 import './Carousel.css';
 
 /* WhatsApp comercial (§10: CTA siempre visible) */
-const WA_URL =
-  'https://api.whatsapp.com/send?phone=573054300302&text=Hola%2C%20quiero%20asesor%C3%ADa%20para%20elegir%20mi%20moto.';
+const WA_URL = enlaceWhatsApp('Hola, quiero asesoría para elegir mi moto.');
 
 /* ── Animaciones (200–300ms, ease-out) ── */
 const contentVariants = {

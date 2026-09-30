@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-const WA_COMERCIAL = '573054300302'
+const WA_COMERCIAL = '300000000'
 
 test.describe('Home', () => {
   test('sin scroll horizontal en móvil', async ({ page }) => {
@@ -180,6 +180,25 @@ test.describe('Home', () => {
     )
   })
 
+  test('todos los enlaces de WhatsApp apuntan al mismo número de ejemplo', async ({ page }) => {
+    for (const ruta of ['/', '/bajaj', '/auteco', '/financiamiento']) {
+      await page.goto(ruta)
+
+      const numeros = await page.evaluate(() => {
+        const selectores = [
+          'a[href*="api.whatsapp.com/send?phone="]',
+          'a[href*="wa.me/"]',
+        ]
+        return [...document.querySelectorAll(selectores.join(','))]
+          .map((a) => new URL(a.href).searchParams.get('phone') || new URL(a.href).pathname)
+          .map((valor) => (valor || '').replace(/^\//, ''))
+      })
+
+      expect(numeros.length, `enlaces de WhatsApp en ${ruta}`).toBeGreaterThan(0)
+      for (const n of numeros) expect(n).toBe(WA_COMERCIAL)
+    }
+  })
+
   test('el formulario de financiamiento expone sus campos', async ({ page }) => {
     await page.goto('/financiamiento')
 
@@ -234,7 +253,7 @@ test.describe('Home', () => {
 
     const url = new URL(popup.url())
     expect(url.hostname).toBe('wa.me')
-    expect(url.pathname).toBe('/573160404047')
+    expect(url.pathname).toBe(`/${WA_COMERCIAL}`)
     expect(decodeURIComponent(url.searchParams.get('text'))).toMatch(
       /tengo una moto usada/i,
     )

@@ -8,10 +8,8 @@ import {
 } from "react-icons/io5";
 import { FaWhatsapp } from "react-icons/fa";
 import Visor360 from "./Visor360";
+import { abrirWhatsApp } from "../../data/contacto";
 import "./MotoInfoModal.css";
-
-/* ── Número de WhatsApp de la empresa ── */
-const WA_NUMBER = "573160404047";
 
 const MotoInfoModal = ({ moto, onClose }) => {
   const [tab, setTab] = useState("info"); // 'info' | '360' | 'colores'
@@ -29,12 +27,11 @@ const MotoInfoModal = ({ moto, onClose }) => {
   const esElectrica = moto.marca === "electricos";
 
   const handleCotizar = () => {
-    const texto = encodeURIComponent(
+    const texto =
       esElectrica
       ?`Hola! Estoy interesado en cotizar la *${moto.name}* - Precio desde ${moto.precio}. ¿Me pueden dar más información?`
-      :`Hola! Estoy interesado en cotizar la *${moto.name}* (${moto.cc}) - Precio desde ${moto.precio}. ¿Me pueden dar más información?`,
-    );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${texto}`, "_blank");
+      :`Hola! Estoy interesado en cotizar la *${moto.name}* (${moto.cc}) - Precio desde ${moto.precio}. ¿Me pueden dar más información?`;
+    abrirWhatsApp(texto);
   };
 
   const tabs = [

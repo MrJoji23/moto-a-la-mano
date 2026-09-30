@@ -10,10 +10,12 @@ import sistecreditoLogo from '../../assets/images/logos-financiamientos/sistecre
 import vantiLogo from '../../assets/images/logos-financiamientos/vanti.webp';
 import progreserLogo from '../../assets/images/logos-financiamientos/progreser.webp';
 import crediorbeLogo from '../../assets/images/logos-financiamientos/crediorbe.webp';
+import { enlaceWhatsApp } from '../../data/contacto';
 
 
-const WA_URL =
-  "https://api.whatsapp.com/send?phone=573054300302&text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20los%20m%C3%A9todos%20de%20financiamiento%20disponibles.";
+const WA_URL = enlaceWhatsApp(
+  'Hola, me gustaría recibir información sobre los métodos de financiamiento disponibles.',
+);
 
 const financieras = [
   {
