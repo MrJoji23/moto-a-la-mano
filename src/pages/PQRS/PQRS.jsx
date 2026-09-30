@@ -20,7 +20,6 @@ function PqrsBanner() {
 }
 
 export default function PqrsPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState("idle");
   const [formData, setFormData] = useState({
     tipoSolicitud: "",
@@ -47,42 +46,10 @@ export default function PqrsPage() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setStatus("idle");
-
-    const data = new FormData();
-    data.append("tipoSolicitud", formData.tipoSolicitud);
-    data.append("nombre", formData.nombre);
-    data.append("documento", formData.documento);
-    data.append("celular", formData.celular);
-    data.append("correo", formData.correo);
-    data.append("descripcion", formData.descripcion);
-    data.append("website", formData.website);
-
-    if (formData.adjunto) {
-      data.append("adjunto", formData.adjunto);
-    }
-
-    try {
-      const response = await fetch("/api/send-pqrs", {
-        method: "POST",
-        body: data,
-      });
-
-      if (response.ok) {
-        setStatus("success");
-      } else if (response.status === 429) {
-        setStatus("limite");
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Envío desactivado temporalmente: el botón es sólo de vista,
+    // no dispara ninguna petición ni front ni back.
   };
 
   const resetForm = () => {
@@ -300,9 +267,9 @@ export default function PqrsPage() {
               <button
                 type="submit"
                 className="pqrs-page__btnSubmit"
-                disabled={isSubmitting}
+                disabled
               >
-                {isSubmitting ? "Enviando..." : "Enviar Solicitud"}
+                Enviar Solicitud
               </button>
             </form>
           )}

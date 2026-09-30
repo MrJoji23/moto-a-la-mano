@@ -143,7 +143,7 @@
 .contact-modal__submit {
   margin-top: 1.25rem;
   background: linear-gradient(135deg, var(--mm-accent) 0%, var(--mm-accent-hover) 100%);
-  color: var(--mm-text);
+  color: var(--mm-accent-ink);
   border: none;
   padding: 1rem 1.5rem;
   font-family: var(--font-display);

@@ -328,7 +328,7 @@
   flex: 1;
   background: var(--mm-accent);
   border: 1px solid var(--mm-accent);
-  color: var(--mm-text);
+  color: var(--mm-accent-ink);
 }
 
 .bajaj-card__btn-solid:hover,

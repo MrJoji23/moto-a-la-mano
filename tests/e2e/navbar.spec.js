@@ -118,12 +118,40 @@ test.describe('Navbar', () => {
     await expect(page).toHaveURL(/#contenido$/)
   })
 
-  test('el CTA abre el modal de contacto', async ({ page }) => {
+  test('el CTA abre el modal de contacto con el botón de envío deshabilitado', async ({
+    page,
+  }) => {
     await page.goto('/')
 
     await page.getByRole('button', { name: 'Contáctanos' }).first().click()
     const dialog = page.getByRole('dialog')
     await expect(dialog).toBeVisible()
+
+    const submitBtn = dialog.locator('button[type="submit"]')
+    await expect(submitBtn).toBeVisible()
+    await expect(submitBtn).toBeDisabled()
+    await expect(submitBtn).toHaveText('Enviar Mensaje')
+
     await expect(dialog.getByRole('button', { name: /cerrar/i })).toBeVisible()
+  })
+
+  test('el modal de "Trabaja con nosotros" muestra el botón de envío deshabilitado', async ({
+    page,
+  }) => {
+    await page.goto('/')
+    await page.waitForLoadState('networkidle')
+
+    await page.getByRole('button', { name: 'Trabaja con Nosotros' }).click()
+
+    const modal = page.getByRole('dialog')
+    await expect(modal).toBeVisible()
+
+    const submitBtn = modal.locator('button[type="submit"]')
+    await expect(submitBtn).toBeVisible()
+    await expect(submitBtn).toBeDisabled()
+    await expect(submitBtn).toHaveText('Enviar Postulación')
+
+    await modal.locator('button.job-btn-cancel').click()
+    await expect(modal).toBeHidden()
   })
 })

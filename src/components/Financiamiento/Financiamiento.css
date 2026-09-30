@@ -11,20 +11,13 @@
   min-height: 480px;
   display: flex;
   align-items: center;
-  background: url('../../assets/images/logos-financiamientos/banner.webp') center/cover no-repeat;
-  background-position: center 0px;
-  overflow: hidden;
-}
-
-.fin-banner-overlay {
-  position: absolute;
-  inset: 0;
   background: linear-gradient(
-    to right,
-    color-mix(in srgb, var(--mm-bg-soft) 55%, transparent) 0%,
-    color-mix(in srgb, var(--mm-bg-soft) 25%, transparent) 50%,
-    transparent 100%
+    135deg,
+    var(--mm-bg-soft) 0%,
+    var(--mm-surface-2) 60%,
+    var(--mm-surface-3) 100%
   );
+  overflow: hidden;
 }
 
 .fin-banner-content {
@@ -88,11 +81,12 @@
 }
 
 .fin-banner-btn:hover {
-  background: var(--mm-accent);
+  background: var(--mm-accent-hover);
+  color: var(--mm-bg);
   transform: translateY(-2px);
 }
 
-/* ===== SECCIÓN FINANCIERAS ===== */
+/* ===== SECCIÓN MÉTODOS DE PAGO ===== */
 .fin-section {
   background: var(--mm-surface-2);
   padding: 64px 48px 80px;
@@ -114,7 +108,7 @@
 /* ===== CARD ===== */
 .fin-card {
   background: var(--mm-surface-3);
-  border: 1px solid var(--mm-light-text-muted);
+  border: 1px solid var(--mm-border-card);
   border-radius: 12px;
   padding: 28px 24px;
   display: flex;
@@ -128,41 +122,11 @@
   transform: translateY(-4px);
 }
 
-.fin-card-header {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 14px !important;
-  flex-wrap: nowrap !important;
-}
-
-.fin-card-logo {
-  width: 36px !important;
-  height: 36px !important;
-  object-fit: contain !important;
-  border-radius: 6px !important;
-  flex-shrink: 0 !important;
-  display: block !important;
-}
-
-.fin-card-icon {
-  font-size: 18px;
-}
-
 .fin-card-nombre {
-  flex: 1 !important;
-  min-width: 0 !important;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--mm-text-muted);
-  letter-spacing: 0.03em;
-  line-height: 1.3;
-}
-
-.fin-card-titulo {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--mm-accent-2);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--mm-text);
+  letter-spacing: 0.01em;
   line-height: 1.3;
 }
 
@@ -174,19 +138,6 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-
-  .fin-banner {
-    background-image: url('../../assets/images/logos-financiamientos/banner-mobil.webp');
-    background-position: 50% top;
-    background-attachment: scroll;
-    background-size: cover;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: 0;
-    justify-content: flex-end;
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
-  }
 
   .fin-banner-title {
     font-size: 28px;
@@ -207,12 +158,6 @@
 
   .fin-banner-content {
     padding: 32px 20px 40px;
-    max-width: 260px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 0;
-    margin-right: auto;
   }
 
   .fin-section {
@@ -225,30 +170,5 @@
 
   .fin-card {
     padding: 24px 20px;
-  }
-
-  .fin-card-header {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 14px !important;
-    flex-wrap: nowrap !important;
-  }
-
-  .fin-card-logo {
-    width: 40px !important;
-    height: 40px !important;
-    flex-shrink: 0 !important;
-    display: block !important;
-  }
-
-  .fin-card-nombre {
-    font-size: 14px !important;
-    flex: 1 !important;
-    min-width: 0 !important;
-  }
-
-  .fin-card-titulo {
-    font-size: 15px;
   }
 }

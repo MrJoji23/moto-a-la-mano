@@ -3,7 +3,6 @@ import { LazyMotion, domAnimation, m, AnimatePresence } from 'framer-motion';
 import './ContactModal.css';
 
 const ContactModal = ({ isOpen, onClose }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState('idle'); // 'idle' | 'success' | 'error' | 'limite'
 
   const [formData, setFormData] = useState({
@@ -33,31 +32,10 @@ const ContactModal = ({ isOpen, onClose }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const sendEmail = async (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setStatus('idle');
-
-    try {
-      const response = await fetch('/api/send-contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setTimeout(() => handleClose(), 4000);
-      } else if (response.status === 429) {
-        setStatus('limite');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Envío desactivado temporalmente: el botón es sólo de vista,
+    // no dispara ninguna petición ni front ni back.
   };
 
   const resetForm = () => {
@@ -95,6 +73,9 @@ const ContactModal = ({ isOpen, onClose }) => {
           >
             <m.div
               className="contact-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Formulario de contacto"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -164,7 +145,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               {/* ── FORMULARIO ── */}
               {status === 'idle' && (
                 <>
-                  <button className="contact-modal__close" onClick={handleClose}>
+                  <button className="contact-modal__close" aria-label="Cerrar modal" onClick={handleClose}>
                     &times;
                   </button>
                   <h2 className="contact-modal__title">Contáctanos</h2>
@@ -264,9 +245,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                         <option value="Otro">Otro</option>
                       </select>
                     </div>
-                    <button type="submit" className="contact-modal__submit" disabled={isSubmitting}>
-                      {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
-                    </button>
+                    <button type="submit" className="contact-modal__submit" disabled>Enviar Mensaje</button>
                   </form>
                 </>
               )}

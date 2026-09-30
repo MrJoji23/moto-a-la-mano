@@ -307,6 +307,7 @@
 .auteco-mcard__btn-solid:focus-visible {
   background: var(--mm-accent);
   border-color: var(--mm-accent);
+  color: var(--mm-accent-ink);
   box-shadow: var(--mm-glow-accent);
 }
 

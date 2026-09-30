@@ -241,7 +241,7 @@
 
 .job-btn-submit {
   background: linear-gradient(135deg, var(--mm-accent) 0%, var(--mm-accent) 100%);
-  color: white;
+  color: var(--mm-accent-ink);
 }
 
 .job-btn-submit:hover:not(:disabled) {

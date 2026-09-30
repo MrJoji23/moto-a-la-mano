@@ -24,6 +24,10 @@
   --mm-text-caption: #7c7c85; /* Captions y metadatos */
   --mm-text-inverse: var(--mm-bg); /* Texto sobre acento claro */
 
+  /* ── Texto sobre imagen / overlay oscuro (banners) ── */
+  --mm-on-dark: #ffffff; /* Título sobre foto: 15.4:1 con overlay al 80% */
+  --mm-on-dark-soft: rgba(255, 255, 255, 0.88); /* Subtítulo sobre foto */
+
   /* ── Acentos de identidad ── */
   --mm-accent: #ff9f1c; /* Speed Amber - Acento primario */
   --mm-accent-rgb: 255, 159, 28;
@@ -47,6 +51,9 @@
   --mm-light-text: #2e3339;
   --mm-light-text-muted: #4a5058;
   --mm-light-border: color-mix(in srgb, var(--mm-bg) 12%, transparent);
+  --mm-light-heading: #181a1b; /* Títulos: 17.4:1 sobre blanco */
+  --mm-light-body: var(--mm-light-text); /* Párrafos: 12.7:1 sobre blanco */
+  --mm-light-body-soft: #5c6370; /* Texto secundario: 6.0:1 sobre blanco */
 
   --mm-accent-deep: #8a5200; /* Ámbar profundo - texto/enlaces */
   --mm-accent-2-deep: #0b6d7a; /* Cian profundo - degradés */

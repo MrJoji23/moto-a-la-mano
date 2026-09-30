@@ -19,16 +19,18 @@ test.describe('Formulario PQRSF', () => {
     }
   })
 
-  test('bloquea el envío con campos vacíos y muestra errores de validación nativos', async ({
-    page,
-  }) => {
+  test('el botón de enviar está deshabilitado (solo de vista)', async ({ page }) => {
     const form = page.locator('form')
     await form.scrollIntoViewIfNeeded()
 
-    await form.locator('button[type="submit"]').click()
+    const submitBtn = form.locator('button[type="submit"]')
+    await expect(submitBtn).toBeVisible()
+    await expect(submitBtn).toBeDisabled()
+    await expect(submitBtn).toHaveText('Enviar Solicitud')
 
-    const validos = await form.evaluate((el) => el.checkValidity())
-    expect(validos).toBe(false)
+    const adjunto = form.locator('#adjunto')
+    await expect(adjunto).toBeVisible()
+    await expect(adjunto).toBeEnabled()
   })
 
   test('exige un documento válido y un correo válido', async ({ page }) => {
@@ -62,10 +64,14 @@ test.describe('Formulario PQRSF', () => {
     await expect(form.locator('.pqrs-page__uploadLabel')).toContainText('soporte.pdf')
   })
 
-  test('muestra estado de éxito al enviar correctamente', async ({ page }) => {
-    await page.route('**/api/pqrs', (route) =>
-      route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' }),
-    )
+  test('el envío está bloqueado: no se dispara ninguna petición ni estado de éxito', async ({
+    page,
+  }) => {
+    let peticiones = 0
+    await page.route('**/api/pqrs', (route) => {
+      peticiones += 1
+      route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' })
+    })
 
     const form = page.locator('form')
     await form.scrollIntoViewIfNeeded()
@@ -75,27 +81,12 @@ test.describe('Formulario PQRSF', () => {
     await form.locator('#celular').fill('3160000000')
     await form.locator('#correo').fill('cliente@correo.com')
     await form.locator('#descripcion').fill('Solicito información sobre el financiamiento.')
-    await form.locator('button[type="submit"]').click()
 
-    await expect(form.getByText(/gracias/i).first()).toBeVisible()
-  })
+    await form.evaluate((el) => el.requestSubmit())
 
-  test('muestra estado de error si la API falla', async ({ page }) => {
-    await page.route('**/api/pqrs', (route) =>
-      route.fulfill({ status: 500, contentType: 'application/json', body: '{}' }),
-    )
-
-    const form = page.locator('form')
-    await form.scrollIntoViewIfNeeded()
-
-    await form.locator('#tipoSolicitud').selectOption({ index: 1 })
-    await form.locator('#documento').fill('1012345678')
-    await form.locator('#celular').fill('3160000000')
-    await form.locator('#correo').fill('cliente@correo.com')
-    await form.locator('#descripcion').fill('Prueba de error.')
-    await form.locator('button[type="submit"]').click()
-
-    await expect(form.getByText(/error|no pudimos/i).first()).toBeVisible()
+    await expect(page.getByText(/gracias/i)).toHaveCount(0)
+    await expect(form.locator('button[type="submit"]')).toBeDisabled()
+    expect(peticiones).toBe(0)
   })
 })
 

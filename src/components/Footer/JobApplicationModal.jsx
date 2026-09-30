@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './JobApplicationModal.css';
 
 const JobApplicationModal = ({ isOpen, onClose }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState('idle');
   const [formData, setFormData] = useState({
     nombre: '',
@@ -29,43 +28,10 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setStatus('idle');
-
-    const data = new FormData();
-    data.append('nombre', formData.nombre);
-    data.append('apellidos', formData.apellidos);
-    data.append('celular', formData.celular);
-    data.append('correo', formData.correo);
-    data.append('cargo', formData.cargo);
-    data.append('motivo', formData.motivo);
-    data.append('website', formData.website); // honeypot
-
-    if (formData.cvFile) {
-      data.append('cvFile', formData.cvFile);
-    }
-
-    try {
-      const response = await fetch('/api/send-application', {
-        method: 'POST',
-        body: data
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setTimeout(() => handleClose(), 4000);
-      } else if (response.status === 429) {
-        setStatus('limite');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Envío desactivado temporalmente: el botón es sólo de vista,
+    // no dispara ninguna petición ni front ni back.
   };
 
   const resetForm = () => {
@@ -85,7 +51,7 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="job-modal-overlay" onClick={handleClose}>
-      <div className="job-modal-content" onClick={e => e.stopPropagation()}>
+      <div className="job-modal-content" role="dialog" aria-modal="true" aria-label="Formulario de postulación" onClick={e => e.stopPropagation()}>
 
         {status === 'success' && (
           <div className="status-container">
@@ -137,7 +103,7 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
           <>
             <div className="job-modal-header">
               <h3>Trabaja con Nosotros</h3>
-              <button className="job-modal-close" onClick={handleClose}>×</button>
+              <button className="job-modal-close" aria-label="Cerrar modal" onClick={handleClose}>×</button>
             </div>
             <form onSubmit={handleSubmit} className="job-modal-form">
 
@@ -188,8 +154,8 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
                 <input type="file" name="cvFile" onChange={handleChange} accept=".pdf,.doc,.docx" />
               </div>
               <div className="job-modal-actions">
-                <button type="submit" className="job-btn-submit" disabled={isSubmitting}>
-                  {isSubmitting ? 'Enviando...' : 'Enviar Postulación'}
+                <button type="submit" className="job-btn-submit" disabled>
+                  Enviar Postulación
                 </button>
                 <button type="button" className="job-btn-cancel" onClick={handleClose}>Cancelar</button>
               </div>

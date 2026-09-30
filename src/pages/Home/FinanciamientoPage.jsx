@@ -9,13 +9,13 @@ const FinanciamientoPage = () => {
         <title>Financiamiento – MotoCenter</title>
         <meta
           name="description"
-          content="Financia tu moto hasta en el 100% con Banco de Bogotá, Vanti, Progreser, Sufi, Crediorbe, Avanza, Pick, Sistecredito y Addi 77. Cuotas flexibles, sin filas y proceso 100% online."
+          content="Financia tu moto hasta en el 100% con MotoCenter. Paga con Nequi, Nu o Davivienda, en cuotas flexibles y proceso 100% online en Bogotá y Soacha."
         />
         <link rel="canonical" href="https://motocenter.com/financiamiento" />
         <meta property="og:title" content="Financiamiento – MotoCenter" />
         <meta
           property="og:description"
-          content="Financia tu moto con las mejores tasas. Banco de Bogotá, Vanti, Progreser y más."
+          content="Financia tu moto y paga con Nequi, Nu o Davivienda. Cuotas flexibles y sin filas."
         />
         <meta property="og:url" content="https://motocenter.com/financiamiento" />
         <meta property="og:type" content="website" />
